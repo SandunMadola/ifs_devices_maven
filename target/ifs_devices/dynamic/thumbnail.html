@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<!--div class="ignore"></div>
+<h1>{{some}}</h1-->
+<link href="styles/thumbnail.css" rel="stylesheet" type="text/css"/>
+<section class="b_2 hide-on-small-only">
+
+    <!--<div class="ignore"></div>-->
+    <div class="main_content"> 
+        <div class ="sub_content"><!--sub_content-->
+            <!--#wrap-->
+
+                <h3 class="left">All Devices </h3>
+                
+                <div class="right"> <!--list_style_buttons-->
+                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left"><i class="material-icons">grid_on</i></a>
+                    <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+
+                </div>
+<!--        <div class ="sub_content">
+            <div id="wrap">
+
+
+                <span class="list_style_buttons">
+                    <a href="#/thumbnail" id="gridview" class="switcher"><img src="images/grid_view_active.png" alt="Grid"></a>
+                    <a href="#/devices" id="listview" class="switcher active"><img src="images/list_view.png" alt="List"></a>
+
+                </span>
+                <h1>All Devices</h1>
+
+            </div>-->
+
+        </div>
+
+        <div class="ifs_banner" ng-controller="deviceCtrl">
+
+            <center>
+                <ul id="deviceS" class="grid clearfix ">
+                    <li ng-animate= "'animate'" class = "clearfix" ng-repeat="item in devices| filter: query"> 
+                        <a href="#/details/{{devices.indexOf(item)}}">
+                            <div class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%;width: 10px; background-color: green;float: left; " > </div>
+                            <!--                        <div class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>-->
+                            <img  ng-src="images/{{item.shortname}}.jpg">
+                            <div class="info">
+                                <h3> {{item.name}} </h3>
+
+                                <h4> {{item.type}} </h4>
+                                <h4> {{item.OS}} </h4>
+                                <h4> Owned by : {{item.Sub_Product_Area}} </h4>
+
+                                <div class="buttonClass col m11 l11 row" >
+                                    <button style="margin-top:  20px" type="button" class="Now waves-effect waves-light btn col m5 l5">Now</button>
+                                    <p class="col m1 l1 "> </p>
+                                    <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col m5 l5">Later</button>
+
+                                </div>
+
+
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </center>
+        </div>
+
+    </div>              
+
+</section>
+
+
+

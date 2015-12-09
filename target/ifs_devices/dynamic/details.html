@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<link href="styles/device_style.css" rel="stylesheet" type="text/css"/>
+<section class="deviceinfo">
+
+    
+    <div class="main_content">
+        <div class="ifs_banner" ng-controller="detailsCtrl">
+
+            <!--            <div class="col s12 m3 l4 hide-on-med-and-up">
+                            <img  style="width: 45%" ng-src="images/{{item.shortname}}.jpg">
+                        </div>-->
+
+            <!--            <div class="buttonClass col s12 row hide-on-med-and-up " style="position: fixed; margin-left: 50px">
+                            
+                            <button style="margin-top:  20px " type="button" class="Now waves-effect waves-light btn col s5">Now</button>
+                            <p class="col s1  "> </p>
+                            <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col s5 ">Later</button>
+            
+                        </div>-->
+
+            <!--            <div class="buttonClass col m12 l12 row hide-on-small-only" style="position: fixed">
+                           
+                            <button style="margin-top:  20px" type="button" class="Now waves-effect waves-light btn col m5 l5">Now</button>
+                            <p class="col m1 l1 "> </p>
+                            <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col m5 l5">Later</button>
+            
+                        </div>-->
+
+
+
+            <!--            <div class="buttonClass col m12 row show-on-medium hide-on-small-only hide-on-large-only" style="position: fixed; margin-left: -180px; width: 50%">
+                           
+                            <button style="margin-top:  20px" type="button" class="Now waves-effect waves-light btn col m5 ">Now</button>
+                            <p class="col m1  "> </p>
+                            <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col m5 ">Later</button>
+            
+                        </div>-->
+            <div class="buttonClass row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
+                <div style="width: 50%; float: left"> 
+                    <h1>{{devices[whichItem].name}}</h1>
+                </div>
+                <div style="width: 50%; float: left"> 
+                    <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" data-target="modal1" class="btn modal-trigger" >Now</button>
+
+                    <!--                    <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" class="Now waves-effect waves-light btn ">Now</button>-->
+                    <p style="width: 4%; float: left"> </p>
+                    <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" class="Later waves-effect waves-light btn ">Later</button>
+                </div>
+            </div>
+
+
+            <div class="buttonClass row show-on-medium-and-down hide-on-large-only" style="position: fixed;margin-left: -50%;
+                 width: 100% ">
+                <div style=" width: 100%; float: left; "> 
+                    <h1>{{devices[whichItem].name}}</h1>
+                </div>
+                <div style="width: 100%; float: left; margin-left: 10px; background-color: #fafafa;"> 
+                    <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" class="Now waves-effect waves-light btn ">Now</button>
+                    <p style="width: 4%; float: left"> </p>
+                    <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" class="Later waves-effect waves-light btn ">Later</button>
+                </div>
+            </div>
+
+            <div class="fixed-action-btn" style="bottom: 10px; right: 5px;">
+                <a class="btn-floating btn-large purple" href="#/details/{{whichItem}}/edit_mode">
+                    <i class="material-icons" style="line-height: 15.5px;">mode_edit</i>
+                </a>
+                <!--                <ul>
+                
+                                    <li><a class="btn-floating yellow darken-1" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="material-icons">format_quote</i></a></li>
+                                    <li><a class="btn-floating green" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="material-icons">publish</i></a></li>
+                
+                                </ul>-->
+            </div>
+
+            <div class="device cf" ng-model="devices">
+
+                <div class="col s12 m3 l4 hide-on-med-and-down">
+                    <img  style="width: 20%; " ng-src="images/{{devices[whichItem].shortname}}.jpg">
+                </div>
+                <div class="col s12 m3 l4 hide-on-large-only">
+                    <img  style="width: 40%; margin-top: 130px" ng-src="images/{{devices[whichItem].shortname}}.jpg">
+                </div>
+
+                <!--                <img ng-src="images/{{devices[whichItem].shortname}}.jpg">  -->
+                <!--                <h1>{{devices[whichItem].name}}</h1>-->
+                <div class="info">
+
+                    <h2> Type : {{devices[whichItem].type}}</h2>
+                    <h3> Platform : {{devices[whichItem].Platform}}</h3>
+                    <h3> OS : {{devices[whichItem].OS}}</h3>
+                    <h3> Belongs to : {{devices[whichItem].Sub_Product_Area}}</h3>
+                    <h3> Size : {{devices[whichItem].Size}}</h3>
+                    <h3> Resolution : {{devices[whichItem].Resolution}}</h3>
+                    <h3> Location : {{devices[whichItem].Location}}</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--    <form style="display: inline" action="#/devices" method="get">
+            <button>Back to All devices</button>
+    
+        </form>-->
+    <!--<a href="#/devices">&laquo; Back to All devices</a>-->
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <input type="date" class="datepicker">
+        </div>
+        <div class="modal-footer">
+            <a  class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,80 @@
+
+    [
+                  {
+                    "name": "Nexus 7",
+                    "shortname":"4",
+                    "type": "Tablet",
+                    "Platform": "Android",
+                    "OS": "Android 5.0.2",
+                    "Sub_Product_Area": "MaSS"
+                  },
+                  
+                  {
+                    "name":"Samsung Galaxy S II",
+                    
+                    "shortname":"2",
+                    "type": "Phone",
+                    "Platform": "Android",
+                    "OS": "Android 4.0.3",
+                    "Sub_Product_Area": "MaSS"
+                  },
+                  {
+                    "name":"Microsoft Surface 2",
+                    "shortname":"11",
+                    "type": "Tablet",
+                    "Platform": "Windows",
+                    "OS": "Windows 8",
+                    "Sub_Product_Area": "CLIENT"
+                  },
+                  {
+                    "name":"Mac Mini (2010)",
+                    "shortname":"12",
+                    "type": "Desktop Computer",
+                    "Platform": "Mac",
+                    "OS": "OS X 10.10 Yosemite",
+                    "Sub_Product_Area": "LABS"
+                  },
+                  {
+                    "name":"HTC Desire",
+                    "shortname":"15",
+                    "type": "Phone",
+                    "Platform": "Android",
+                    "OS": "Android 2.3.3",
+                    "Sub_Product_Area": "MaSS"
+                  },
+                  {
+                    "name":"Apple MacBook Pro",
+                    "shortname":"13",
+                    "type": "Notebook",
+                    "Platform": "Mac",
+                    "OS": "OS X 10.10.3 Yosemite",
+                    "Sub_Product_Area": "MaSS"
+                  },
+                  {
+                    "name":"Nokia 920",
+                    "shortname":"14",
+                    "type": "Phone",
+                    "Platform": "Windows Phone",
+                    "OS": "Windows Phone",
+                    "Sub_Product_Area": "Technology"
+                  },
+                  
+
+                  {
+                    "name":"iPhone 6",
+                    "shortname":"16",
+                    "type": "Phone",
+                    "Platform": "iOS",
+                    "OS": "iOS 8.3",
+                    "Sub_Product_Area": "CLIENT"
+                  },
+                  {
+                    "name":"Macbook Pro Laptop(with Retina)",
+                    "shortname":"7",
+                    "type": "Laptop",
+                    "Platform": "Mac",
+                    "OS": "OS X 10.10.1 Yosemite",
+                    "Sub_Product_Area": "LABS"
+                  }
+                ] 
+

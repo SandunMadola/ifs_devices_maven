@@ -1,0 +1,88 @@
+
+<!--div class="ignore"></div>
+<h1>{{some}}</h1-->
+
+<link href="styles/device_style.css" rel="stylesheet" type="text/css"/>
+<section class="b_1">
+
+
+
+    <div class="main_content"> 
+        <div class ="sub_content"><!--sub_content-->
+            <!--#wrap-->
+
+                <h3 class="left">All Devices </h3>
+                
+                <div class="right"> <!--list_style_buttons-->
+                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left"><i class="material-icons">grid_on</i></a>
+                    <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+
+                </div>
+                
+                
+
+            
+        </div>
+        <div class="ignore"></div>
+        <div class="ifs_banner" ng-controller="deviceCtrl">
+
+            <center>
+                <ul class="devicelist">
+                    <!--device cf--> 
+                    <li class = "hoverable card-panel row" ng-repeat="item in devices| filter: query"> 
+                        <!--<div class="row">-->
+                        <a href="#/details/{{devices.indexOf(item)}}">
+                            <div class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: green;float: left; " > </div>
+                            <div class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>
+
+                            <div class="col s11 m3 l4 hide-on-med-and-up " style="float: none">
+                                <img style="width: 45%" ng-src="images/{{item.shortname}}.jpg">
+                                
+                            </div>
+
+                            <div class="info col s12 m5 l5">
+
+                                <h3  class="col s12 m11 l11 "> {{item.name}} </h3>
+
+                                <h4 class="col s12 m11 l11"> Type : {{item.type}} </h4>
+                                <h4 class="col s12 m11 l11"> Platform : {{item.platform}} </h4>
+                                <h4 class="col s12 m11 l11"> Owned by : {{item.Sub_Product_Area}} </h4>
+                                <br>
+                                <h4 class="col s12 m11 l11"> Currently with : {{item.Sub_Product_Area}}  </h4>
+
+                            </div>
+
+                            <div class="col s11 m3 l4 hide-on-small-only">
+                                <img  style="width: 55%" ng-src="images/{{item.shortname}}.jpg">
+                            </div>
+                        </a>
+                      
+                        <div class="buttonClass col s12 m2 l2" >
+                            <button style="margin-top:  20px" type="button" data-target="modal1" class="waves-effect waves-light btn modal-trigger col s5 m11 l11"> Now </button>
+                            <p class="col s1 hide-on-med-and-up"> </p>
+                            <button style="margin-top:  20px" type="button" data-target="modal1" class="waves-effect waves-light btn modal-trigger col s5 m11 l11">Later</button>
+
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <h4>Modal Header</h4>
+                                    <p>A bunch of text</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--</div>-->
+                    </li>
+
+                </ul>
+
+            </center>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+</section>

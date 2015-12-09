@@ -1,0 +1,313 @@
+<link href="styles/request_style.css" rel="stylesheet" type="text/css"/>
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+</script>
+<section class="c">        
+    <!--<div class="ignore"></div>-->
+    <h4>{{some}}</h4>
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+
+                <div class="hoverable card-panel row">
+
+                    <div class="input-field col m6 col s12">
+                        <!--<i class="material-icons prefix">devices</i>-->
+                        <input id="devicename" type="text" class="validate" ng-model="request.deviceName" required>
+                        <label for="devicename">Device Name</label>
+                    </div>  
+
+                    <div class="input-field col m6 col s12">
+                        <select ng-model="request.type">
+                            <option value="" disabled selected >Choose your option</option>
+                            <option value="phone">Phone</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="desktop">Desktop</option> 
+                        </select>
+                        <label>Type</label>
+                    </div> 
+
+                    <div class="input-field col m6 s12">
+                        <select ng-model="request.platform">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="android">Android</option>
+                            <option value="mac">MAC</option>
+                            <option value="ios">IOS</option>                     
+                            <option value="windows">Windows</option>
+                            <option value="windows_phone">Windows Phone</option> 
+                        </select>
+                        <label>Platform</label>
+                    </div>        
+
+                    <div class="input-field col m6 col s12">
+                        <!--<i class="material-icons prefix">devices</i>-->
+                        <input id="os" type="text" class="validate" ng-model="request.OS" required>
+                        <label for="os">Operating System</label>
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                        <select ng-model="request.priority">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <label>Priority</label>
+                    </div>  
+
+                    <div class="input-field col m6 col s12">                    
+                        <input id="size" type="text" class="validate" ng-model="request.size">
+                        <label for="size">Size Inches</label>
+                    </div>
+
+                    <div class="input-field col m6 col s12">                    
+                        <input id="resolution" type="text" class="validate" ng-model="request.resolution">
+                        <label for="resolution">Display Resolution in pixels</label>
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                        <select ng-model="request.location" >
+                            <option value="" disabled selected>Choose your option</option>                        
+                            <option value="cmb">CMB</option>
+                            <option value="lkp">LKP</option> 
+                        </select>
+                        <label>Location</label>
+                    </div>
+
+                    <div class="input-field col m6 col s12">
+                        <!--<i class="material-icons prefix">devices</i>-->
+                        <input id="spa" type="text" class="validate" ng-model="request.spa" required>
+                        <label for="spa">Sub-Product Area</label>
+                    </div>
+
+                    <div class="input-field col m6 col s12">
+                        <!--<i class="material-icons prefix">devices</i>-->
+                        <input id="pro" type="text" class="validate" ng-model="request.project" required>
+                        <label for="pro">Project</label>
+                    </div>    
+
+                    <div class="input-field col m6 col s12">
+                        <!--<i class="material-icons prefix">devices</i>-->
+                        <input id="url" type="text" class="validate" ng-model="request.url" required>
+                        <label for="url">URL</label>
+                    </div>
+
+                    <div class="input-field col m6 col s12">
+                        <!--<i class="material-icons prefix">account_circle</i>-->
+                        <input id="icon_prefix" type="text" class="validate" ng-model="request.userName" required  maxlength="6" length="6">
+                        <label for="icon_prefix">User Name</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea" length="120" ng-model="request.comment"></textarea>
+                        <label for="textarea1">Comment</label>
+                    </div>
+
+                </div>
+                <!--
+                                <ul class=" collapsible" data-collapsible="accordion">
+                                    <li>                         
+                                        <div class="collapsible-header ">More Details<i class="material-icons right">more_vert</i></div>
+                                        <div class="edit_card_panel collapsible-body card-panel row">                            
+                
+                                            <div class="input-field col s12">
+                                                <textarea id="textarea1" class="materialize-textarea" length="120" ng-model="request.comment"></textarea>
+                                                <label for="textarea1">Comment</label>
+                                            </div>
+                
+                                        </div>
+                                    </li>
+                                </ul>-->
+
+                <button class="btn waves-effect waves-purple waves-light"  type="submit" name="action"><!--ng-click="ss()" -->
+                    Submit                
+                </button>
+            </div>
+
+        </form>
+
+        <p>{{request}}</p>
+        <pre>{{request| json}}</pre>
+
+    </div>
+    <!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+    <button data-target="modal1" class="btn modal-trigger hide-on-small-only">Now</button>
+    <button data-target="modal2" class="btn modal-trigger hide-on-small-only">Later</button>
+    <!-- Modal Structure -->
+
+    <form class="hide-on-small-only">
+        <!--now button start-->
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal" style="width: 360px; max-height: 100%; height: 75%;" >
+            <div class="modal-content">
+                <h4>Borrow Now</h4>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="un" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
+                    <label for="un">Username</label>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons " style="alignment-adjust: before-edge">timelapse</i>
+                    <select ng-model="now.to">
+                        <option value="" disabled selected>Duration </option>
+                        <option value="1day">1 day</option>
+                        <option value="2day">2 days</option>
+                        <option value="3day">3 days</option>                     
+                        <option value="4day">4 days</option>
+                        <option value="5day">5 days</option> 
+                        <option value="6day">6 days</option> 
+                        <option value="1week">1 week</option> 
+                        <option value="2week">2 weeks</option> 
+                        <option value="3week">3 weeks</option> 
+                        <option value="1month">1 month</option> 
+
+                    </select>
+
+                    <!--<label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>-->
+                </div> 
+                <br> <br> <br> <br>
+                <p>{{now}}</p>
+            </div>
+            <div class="modal-footer">
+                <a  class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+            </div>
+        </div>   
+        <!--now button end-->
+        <!--later button start-->
+        <div id="modal2" class="modal" style="width: 360px; max-height: 100%;height: 75%;">
+            <div class="modal-content">
+                <h4>Borrow Later</h4>
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="un2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
+                    <label for="un2">User Name</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">today</i>
+                    <input id="calender" type="text" class="datepicker" ng-model="later.from" required><!--type="date"-->
+                    <label for="calender">From</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons">timelapse</i>
+                    <select ng-model="later.to" required>
+                        <option value="" disabled selected>Duration</option>
+                        <option value="1day">1 day</option>
+                        <option value="2day">2 days</option>
+                        <option value="3day">3 days</option>                     
+                        <option value="4day">4 days</option>
+                        <option value="5day">5 days</option> 
+                        <option value="6day">6 days</option> 
+                        <option value="1week">1 week</option> 
+                        <option value="2week">2 weeks</option> 
+                        <option value="3week">3 weeks</option> 
+                        <option value="1month">1 month</option> 
+
+                    </select>              
+                </div> 
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
+            </div>
+            <p>{{later}}</p>
+        </div>
+
+        <!--later button end-->
+    </form>
+    <!--show on small-->
+
+    <!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+    <button data-target="modal11" class="btn modal-trigger show-on-small-only hide-on-med-and-up">Now</button>
+    <button data-target="modal22" class="btn modal-trigger show-on-small-only hide-on-med-and-up">Later</button>
+    <!-- Modal Structure -->
+
+    <form class="show-on-small-only hide-on-med-and-up">
+        <!--now button start-->
+
+        <!-- Modal Structure -->
+        <div id="modal11" class="modal" style="width: 100%; max-height: 100%; height: 100%;" >
+            <div class="modal-content">
+                <h4>Borrow Now</h4>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="un" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
+                    <label for="un">Username</label>
+                </div>
+
+
+                <div class="input-field ">
+                    <i class="material-icons " style="alignment-adjust: before-edge">timelapse</i>
+                    <select ng-model="now.to">
+                        <option value="" disabled selected>Duration </option>
+                        <option value="1day">1 day</option>
+                        <option value="2day">2 days</option>
+                        <option value="3day">3 days</option>                     
+                        <option value="4day">4 days</option>
+                        <option value="5day">5 days</option> 
+                        <option value="6day">6 days</option> 
+                        <option value="1week">1 week</option> 
+                        <option value="2week">2 weeks</option> 
+                        <option value="3week">3 weeks</option> 
+                        <option value="1month">1 month</option> 
+
+                    </select>
+
+                    <!--                    <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>-->
+                </div>
+
+                <p>{{now}}</p>
+            </div>
+            <div class="modal-footer">
+                <a  class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+            </div>
+        </div>   
+        <!--now button end-->
+        <!--later button start-->
+        <div id="modal22" class="modal" style="width: 100%; height: 100%; max-height: 100%;">
+            <div class="modal-content">
+                <h4>Borrow Later</h4>
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="un2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
+                    <label for="un2">User Name</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">today</i>
+                    <input id="calender" type="text" class="datepicker" ng-model="later.from" required><!--type="date"-->
+                    <label for="calender">From</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons">timelapse</i>
+                    <select ng-model="later.to" required>
+                        <option value="" disabled selected>Duration</option>
+                        <option value="1day">1 day</option>
+                        <option value="2day">2 days</option>
+                        <option value="3day">3 days</option>                     
+                        <option value="4day">4 days</option>
+                        <option value="5day">5 days</option> 
+                        <option value="6day">6 days</option> 
+                        <option value="1week">1 week</option> 
+                        <option value="2week">2 weeks</option> 
+                        <option value="3week">3 weeks</option> 
+                        <option value="1month">1 month</option> 
+
+                    </select>              
+                </div> 
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
+            </div>
+            <p>{{later}}</p>
+        </div>
+
+        <!--later button end-->
+    </form>
+</section>
