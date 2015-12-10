@@ -11,35 +11,7 @@ and open the template in the editor.
     <div class="main_content">
         <div class="ifs_banner" ng-controller="detailsCtrl">
 
-            <!--            <div class="col s12 m3 l4 hide-on-med-and-up">
-                            <img  style="width: 45%" ng-src="images/{{item.shortname}}.jpg">
-                        </div>-->
-
-            <!--            <div class="buttonClass col s12 row hide-on-med-and-up " style="position: fixed; margin-left: 50px">
-                            
-                            <button style="margin-top:  20px " type="button" class="Now waves-effect waves-light btn col s5">Now</button>
-                            <p class="col s1  "> </p>
-                            <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col s5 ">Later</button>
-            
-                        </div>-->
-
-            <!--            <div class="buttonClass col m12 l12 row hide-on-small-only" style="position: fixed">
-                           
-                            <button style="margin-top:  20px" type="button" class="Now waves-effect waves-light btn col m5 l5">Now</button>
-                            <p class="col m1 l1 "> </p>
-                            <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col m5 l5">Later</button>
-            
-                        </div>-->
-
-
-
-            <!--            <div class="buttonClass col m12 row show-on-medium hide-on-small-only hide-on-large-only" style="position: fixed; margin-left: -180px; width: 50%">
-                           
-                            <button style="margin-top:  20px" type="button" class="Now waves-effect waves-light btn col m5 ">Now</button>
-                            <p class="col m1  "> </p>
-                            <button style="margin-top:  20px" type="button" class="Later waves-effect waves-light btn col m5 ">Later</button>
-            
-                        </div>-->
+      
             <div class="buttonClass row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
                 <div style="width: 50%; float: left"> 
                     <h1>{{devices[whichItem].name}}</h1>
@@ -49,7 +21,7 @@ and open the template in the editor.
 
                     <!--                    <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" class="Now waves-effect waves-light btn ">Now</button>-->
                     <p style="width: 4%; float: left"> </p>
-                    <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" class="Later waves-effect waves-light btn ">Later</button>
+                    <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" data-target="modal1" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
                 </div>
             </div>
 
@@ -81,10 +53,10 @@ and open the template in the editor.
             <div class="device cf" ng-model="devices">
 
                 <div class="col s12 m3 l4 hide-on-med-and-down">
-                    <img  style="width: 20%; " ng-src="images/{{devices[whichItem].shortname}}.jpg">
+                    <img  style="width: 20%; " ng-src="images/{{devices[whichItem].image_no}}.jpg">
                 </div>
                 <div class="col s12 m3 l4 hide-on-large-only">
-                    <img  style="width: 40%; margin-top: 130px" ng-src="images/{{devices[whichItem].shortname}}.jpg">
+                    <img  style="width: 40%; margin-top: 130px" ng-src="images/{{devices[whichItem].image_no}}.jpg">
                 </div>
 
                 <!--                <img ng-src="images/{{devices[whichItem].shortname}}.jpg">  -->
@@ -92,12 +64,13 @@ and open the template in the editor.
                 <div class="info">
 
                     <h2> Type : {{devices[whichItem].type}}</h2>
-                    <h3> Platform : {{devices[whichItem].Platform}}</h3>
+                    <h3> Platform : {{devices[whichItem].platform}}</h3>
                     <h3> OS : {{devices[whichItem].OS}}</h3>
-                    <h3> Belongs to : {{devices[whichItem].Sub_Product_Area}}</h3>
-                    <h3> Size : {{devices[whichItem].Size}}</h3>
-                    <h3> Resolution : {{devices[whichItem].Resolution}}</h3>
-                    <h3> Location : {{devices[whichItem].Location}}</h3>
+                    <h3> Belongs to : {{devices[whichItem].sub_Product_Area_name}}</h3>
+                    <h3> Size : {{devices[whichItem].size}} inches</h3>
+                    <h3> Resolution : {{devices[whichItem].resolution}} inches</h3>
+                    <h3> Location : {{devices[whichItem].location}}</h3>
+                    <h3> URL : {{devices[whichItem].URL}}</h3>
 
                 </div>
 

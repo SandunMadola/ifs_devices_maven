@@ -38,10 +38,10 @@ public class Model {
 
         return req;
     }
-    
-    public Request GetRequest(){
-    System.out.println("Inside the model");
-            System.out.println("Inside the model");
+
+    public Request GetRequest() {
+        System.out.println("Inside the model");
+        System.out.println("Inside the model");
         Request req = null;
         try {
             Connection connection = Database.Get_Connection();
@@ -50,5 +50,17 @@ public class Model {
             System.out.println("erro" + e);
         }
         return req;
+    }
+
+    public ArrayList<DeviceList> GetAllDevices() throws Exception {
+
+        ArrayList<DeviceList> allDevices = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            allDevices = Query.GetAllDevices(connection);
+        } catch (Exception e) {
+            throw e;
+        }
+        return allDevices;
     }
 }
