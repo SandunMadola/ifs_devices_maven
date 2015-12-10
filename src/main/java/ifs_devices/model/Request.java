@@ -15,11 +15,12 @@ public class Request {
     private String Type;
     private String Platform;
     private String OS;
-    private int Priority;
-    private int Size;
+    private String Priority;
+    private String Size;
     private String Resolution;
     private String Location;
     private String SPA;
+    private String Request_Status;
     private String Project;
     private String URL;
     private String UserName;
@@ -57,19 +58,19 @@ public class Request {
         this.OS = OS;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return Priority;
     }
 
-    public void setPriority(int Priority) {
+    public void setPriority(String Priority) {
         this.Priority = Priority;
     }
 
-    public int getSize() {
+    public String getSize() {
         return Size;
     }
 
-    public void setSize(int Size) {
+    public void setSize(String Size) {
         this.Size = Size;
     }
 
@@ -95,6 +96,14 @@ public class Request {
 
     public void setSPA(String SPA) {
         this.SPA = SPA;
+    }
+
+    public String getRequest_Status() {
+        return Request_Status;
+    }
+
+    public void setRequest_Status(String Request_Status) {
+        this.Request_Status = Request_Status;
     }
 
     public String getProject() {

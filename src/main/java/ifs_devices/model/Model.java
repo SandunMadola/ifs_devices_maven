@@ -38,4 +38,17 @@ public class Model {
 
         return req;
     }
+    
+    public Request GetRequest(){
+    System.out.println("Inside the model");
+            System.out.println("Inside the model");
+        Request req = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            req = Query.getRequest(connection);
+        } catch (Exception e) {
+            System.out.println("erro" + e);
+        }
+        return req;
+    }
 }

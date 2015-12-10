@@ -41,17 +41,21 @@ public class Query {
         String Type = request.getType();
         String Platform = request.getPlatform();
         String OS = request.getOS();
-        int Priority = request.getPriority();
-        int Size = request.getSize();
+        String Priority = request.getPriority();
+        String Size = request.getSize();
         String Resolution = request.getResolution();
         String Location = request.getLocation();
         String SPA = request.getSPA();
+        String Request_Status = request.getRequest_Status();
         String Project = request.getProject();
         String URL = request.getURL();
         String UserName = request.getUserName();
         String Comment = request.getComment();
-        
-        String query = "INSERT INTO employee (name,age) VALUES ('" + Device_name + "'," + Size + ")";
+
+        String query = "INSERT INTO add_request"
+                + " (device_Name, type, platform, OS, size, resolution, username, sub_Product_Area, request_Status, priority, location, comments, url, project)"
+                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "')";
+        //db set auto increment
         System.out.println(query);
         try {
             Statement statement = connection.createStatement();
@@ -61,5 +65,34 @@ public class Query {
         }
 
         return request;
+    }
+
+    public static Request getRequest(Connection connection) throws Exception {
+        System.out.println("Query");
+        Request req = new Request();
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM add_request");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                req.setDevice_name(rs.getString("device_Name"));
+                req.setType(rs.getString("type"));
+                req.setPlatform(rs.getString("platform"));
+                req.setOS(rs.getString("OS"));
+                req.setSize(rs.getString("size"));
+                req.setResolution(rs.getString("resolution"));
+                req.setUserName(rs.getString("username"));
+                req.setSPA(rs.getString("sub_Product_Area"));
+                req.setRequest_Status(rs.getString("request_Status"));
+                req.setPriority(rs.getString("priority"));
+                req.setLocation(rs.getString("location"));
+                req.setComment(rs.getString("comments"));
+                req.setURL(rs.getString("url"));
+                req.setProject(rs.getString("project"));
+
+            }
+            return req;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

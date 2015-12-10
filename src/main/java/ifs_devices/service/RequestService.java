@@ -13,9 +13,23 @@ import ifs_devices.model.Request;
  * @author sanmlk
  */
 public class RequestService {
-    
-        public Request addRequest(Request request) {
-        System.out.println("EmployeeService call");
+
+    public Request getRequest() {
+        System.out.println("RequestService call");
+        Request req = null;
+        try {
+            Model model = new Model();
+            req = model.GetRequest();
+            //System.out.println("sandun");
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+        return req;
+    }
+
+    public Request addRequest(Request request) {
+        System.out.println("RequestService call");
         Request req = null;
         try {
             Model model = new Model();
