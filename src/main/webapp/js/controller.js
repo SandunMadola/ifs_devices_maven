@@ -62,14 +62,58 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
-
+        
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
 
     }]);
 
 homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.some = "Request a device";
-        $scope.update = angular.copy.request;
-//        $scope.update = angular.copy.later;
+        $scope.SendData = function () {
+            // use $.param jQuery function to serialize data from JSON 
+            var data = JSON.stringify({
+                device_name: request.device_name,
+                type: request.type,
+                platform: request.platform,
+                OS: request.OS,
+                priority: request.priority,
+                size: request.size,
+                resolution: request.resolution,
+                location: request.location,
+                SPA: request.SPA,
+                project: request.project,
+                URL: request.URL,
+                userName: request.userName,
+                comment: request.comment
+
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            $http.post('webapi/request', data, config)
+                    .success(function (data, status, headers, config) {
+                        $scope.PostDataResponse = data;
+                    })
+                    .error(function (data, status, header, config) {
+                        $scope.ResponseDetails = "Data: " + data +
+                                "<hr />status: " + status +
+                                "<hr />headers: " + header +
+                                "<hr />config: " + config;
+                    });
+        };
+        $scope.sendPost = function () {
+            $http.post('webapi/request', request, {headers: {'Content-Type': 'application/json'}})
+                    .success(function (response) {
+                        $scope.PostDataResponse = response;
+                    });
+        };
 
         $(document).ready(function () {
             $('select').material_select();

@@ -16,7 +16,7 @@
 
                     <div class="input-field col m6 col s12">
                         <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="devicename" type="text" class="validate" ng-model="request.deviceName" required>
+                        <input id="devicename" type="text" class="validate" ng-model="request.device_name" required>
                         <label for="devicename">Device Name</label>
                     </div>  
 
@@ -81,7 +81,7 @@
 
                     <div class="input-field col m6 col s12">
                         <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="spa" type="text" class="validate" ng-model="request.spa" required>
+                        <input id="spa" type="text" class="validate" ng-model="request.SPA" required>
                         <label for="spa">Sub-Product Area</label>
                     </div>
 
@@ -93,7 +93,7 @@
 
                     <div class="input-field col m6 col s12">
                         <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="url" type="text" class="validate" ng-model="request.url" required>
+                        <input id="url" type="text" class="validate" ng-model="request.URL" required>
                         <label for="url">URL</label>
                     </div>
 
@@ -124,16 +124,18 @@
                                     </li>
                                 </ul>-->
 
-                <button class="btn waves-effect waves-purple waves-light"  type="submit" name="action"><!--ng-click="ss()" -->
+                <button class="btn waves-effect waves-purple waves-light"  ng-click="SendData()" type="submit" name="action"><!--ng-click="ss()" -->
                     Submit                
                 </button>
             </div>
 
         </form>
 
-        <p>{{request}}</p>
+        <!--<p>{{request}}</p>-->
+        
         <pre>{{request| json}}</pre>
-
+        <p>{{PostDataResponse}}</p>       
+        {{ResponseDetails}}
     </div>
     <!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
     <button data-target="modal1" class="btn modal-trigger hide-on-small-only">Now</button>
@@ -143,7 +145,7 @@
     <form class="hide-on-small-only">
         <!--now button start-->
 
-        <!-- Modal Structure -->
+        <!-- Modal Structure -->    
         <div id="modal1" class="modal" style="width: 360px; max-height: 100%; height: 75%;" >
             <div class="modal-content">
                 <h4>Borrow Now</h4>
