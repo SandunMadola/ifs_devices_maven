@@ -100,7 +100,7 @@ public class Query {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT a.name, a.type, a.platform, a.image_no, a.OS, a.size, a.resolution, a.URL, b.location, c.sub_Product_Area_ID, c.sub_Product_Area_name, d.device_ID, d.username FROM device_model a JOIN device b ON (a.model_ID = b.model_ID) JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) JOIN borrow_device d ON (b.device_ID = d.device_ID)");
+            PreparedStatement ps = connection.prepareStatement("SELECT a.name, a.type, a.platform, a.image_no, a.OS, a.size, a.resolution, a.URL, b.location, c.sub_Product_Area_ID, c.sub_Product_Area_name, d.device_ID, d.username, d.transaction_Mode FROM device_model a JOIN device b ON (a.model_ID = b.model_ID) JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) JOIN borrow_device d ON (b.device_ID = d.device_ID)");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -119,6 +119,7 @@ public class Query {
                 devicels.setResolution(rs.getString("resolution"));
                 devicels.setURL(rs.getString("URL"));
                 devicels.setLocation(rs.getString("location"));
+                devicels.setTransaction_Mode(rs.getString("transaction_Mode"));
                 devicedata.add(devicels);
             }
             return devicedata;
