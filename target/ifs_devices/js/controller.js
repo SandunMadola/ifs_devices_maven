@@ -62,7 +62,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
-        
+
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
@@ -72,9 +72,8 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
 homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.some = "Request a device";
-        $scope.SendData = function () {
-            // use $.param jQuery function to serialize data from JSON 
-            var data = JSON.stringify({
+        $scope.SendData = function (request) {
+            var data = {
                 device_name: request.device_name,
                 type: request.type,
                 platform: request.platform,
@@ -85,34 +84,31 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
                 location: request.location,
                 SPA: request.SPA,
                 project: request.project,
+                request_Status: "new",
                 URL: request.URL,
                 userName: request.userName,
                 comment: request.comment
-
-            });
+            };
 
             var config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }
+            var res = $http.post('webapi/request', data, config);
+            res.success(function (data, status, headers, config) {
+                $scope.PostDataResponse = data;
+                $scope.msg = "Request Sent Successfully !!!";
+                $scope.waitt = "modal1";
+                $(".call_to_modal").click();
 
-            $http.post('webapi/request', data, config)
-                    .success(function (data, status, headers, config) {
-                        $scope.PostDataResponse = data;
-                    })
-                    .error(function (data, status, header, config) {
-                        $scope.ResponseDetails = "Data: " + data +
-                                "<hr />status: " + status +
-                                "<hr />headers: " + header +
-                                "<hr />config: " + config;
-                    });
-        };
-        $scope.sendPost = function () {
-            $http.post('webapi/request', request, {headers: {'Content-Type': 'application/json'}})
-                    .success(function (response) {
-                        $scope.PostDataResponse = response;
-                    });
+            });
+            res.error(function (data, status, headers, config) {
+                $scope.msg = "Request Unsuccessful ...";                
+                $scope.waitt = "modal1";
+                alert("failure message: " + JSON.stringify({data: data}));
+                $(".call_to_modal").click();
+            });
         };
 
         $(document).ready(function () {
@@ -137,11 +133,9 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
 
     }]);
 homeCtrls.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
-//        $http.get('js/data.json').success(function (data) {
-//            $scope.devices = data;
-//        });
-        $http.get('webapi/employee').success(function (data) {
-            $scope.employee = data;
+
+        $http.get('js/data.json').success(function (data) {
+            $scope.request = data;
         });
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
