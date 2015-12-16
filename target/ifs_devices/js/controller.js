@@ -49,14 +49,15 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.devices = data;
             $scope.whichItem = $routeParams.itemId;
         });
-        $scope.mo = true;
-        $scope.popup = function () {
-            if ($scope.mo == false) {
-                $scope.mo = true;
-            } else {
-                $scope.mo = false;
-            }
-        };
+        
+//        $scope.mo = true;
+//        $scope.popup = function () {
+//            if ($scope.mo == false) {
+//                $scope.mo = true;
+//            } else {
+//                $scope.mo = false;
+//            }
+//        };
 
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
