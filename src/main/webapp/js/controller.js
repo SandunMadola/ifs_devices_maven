@@ -49,7 +49,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.devices = data;
             $scope.whichItem = $routeParams.itemId;
         });
-        
+
 //        $scope.mo = true;
 //        $scope.popup = function () {
 //            if ($scope.mo == false) {
@@ -105,7 +105,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
 
             });
             res.error(function (data, status, headers, config) {
-                $scope.msg = "Request Unsuccessful ...";                
+                $scope.msg = "Request Unsuccessful ...";
                 $scope.waitt = "modal1";
                 alert("failure message: " + JSON.stringify({data: data}));
                 $(".call_to_modal").click();
@@ -135,18 +135,32 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
     }]);
 homeCtrls.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
 
-        $http.get('js/data.json').success(function (data) {
+        $http.get('webapi/request').success(function (data) {
             $scope.request = data;
         });
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
-        })
+        });
 
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
+        $scope.collapsibleElements = [{
+                icon: 'mdi-image-filter-drama',
+                title: 'First',
+                content: 'Sandun Madola'
+            }, {
+                icon: 'mdi-maps-place',
+                title: 'Second',
+                content: 'Lorem ipsum dolor sit amet.'
+            }, {
+                icon: 'mdi-social-whatshot',
+                title: 'Third',
+                content: 'Lorem ipsum dolor sit amet.'
+            }
+        ];
     }]);
 
 homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {

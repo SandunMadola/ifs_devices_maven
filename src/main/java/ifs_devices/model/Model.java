@@ -39,10 +39,9 @@ public class Model {
         return req;
     }
 
-    public Request GetRequest() {
+    public ArrayList<Request> GetRequest() {        
         System.out.println("Inside the model");
-        System.out.println("Inside the model");
-        Request req = null;
+        ArrayList<Request> req = null;
         try {
             Connection connection = Database.Get_Connection();
             req = Query.getRequest(connection);

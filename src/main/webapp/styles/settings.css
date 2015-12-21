@@ -1,0 +1,51 @@
+/*.s .for_view{
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+
+.s .for_expand{
+
+     font-size: 1.25em; 
+    max-height: 1.25em;
+    line-height: 0px;
+    padding: .8em 5%;
+    text-align: center;
+    margin-left: -10%;
+    margin-right: 0;
+
+}*/
+/*    .collapsible{
+        box-shadow: none;
+
+    }*/
+.edit_card_panel {
+    margin: 0;   
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 21, 2015, 3:00:24 PM
+    Author     : sanmlk
+*/
+.s .for_expand, .s .for_view{
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem;
+}
+.lll{
+    text-align: left;
+}
+
