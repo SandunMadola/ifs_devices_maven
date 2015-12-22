@@ -33,7 +33,7 @@ public class Model {
             Connection connection = Database.Get_Connection();
             req = Query.addRequest(request, connection);
         } catch (Exception e) {
-            System.out.println("erro" + e);
+            System.out.println("error" + e);
         }
 
         return req;
@@ -46,9 +46,35 @@ public class Model {
             Connection connection = Database.Get_Connection();
             req = Query.getRequest(connection);
         } catch (Exception e) {
-            System.out.println("erro" + e);
+            System.out.println("error" + e);
         }
         return req;
+    }
+    
+    public BorrowDevice addBorrowRequest(BorrowDevice borrowRequest) throws Exception {
+        System.out.println("Inside the model");
+        BorrowDevice borrowreq = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            borrowreq = Query.addBorrowRequest(borrowRequest, connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return borrowreq;
+    }
+
+    public BorrowDevice GetBorrowRequest() {
+        System.out.println("Inside the GetBorrowRequest() model");
+        System.out.println("Inside the GetBorrowRequest() model");
+        BorrowDevice borrowreq = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            borrowreq = Query.getBorrowRequest(connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+        return borrowreq;
     }
 
     public ArrayList<DeviceList> GetAllDevices() throws Exception {

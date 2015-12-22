@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 public class Query {
 
@@ -62,7 +64,7 @@ public class Query {
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception e) {
-            System.out.println("erro" + e);
+            System.out.println("error" + e);
         }
 
         return request;
@@ -98,6 +100,57 @@ public class Query {
         }
     }
 
+    public static BorrowDevice addBorrowRequest(BorrowDevice borrowRequest, Connection connection) throws SQLException {
+        System.out.println("Inside the addBorrowRequest Query");
+
+        
+        String transaction_Mode = borrowRequest.getTransaction_Mode();
+        String transaction_Type = borrowRequest.getTransaction_Type();
+        String username = borrowRequest.getUsername();
+        String device_ID = borrowRequest.getDevice_ID();
+        String from_Date = borrowRequest.getFrom_Date();
+        String to_Date = borrowRequest.getTo_Date();
+
+        String query = "INSERT INTO borrow_device"
+                + " (transaction_Mode, transaction_Type, username, device_ID, from_Date, to_Date)"
+                + " VALUES ('" + transaction_Mode + "','" + transaction_Type + "','" + username + "','" + device_ID + "','" + from_Date + "','" + to_Date + "')";
+        
+  
+        //db set auto increment
+        System.out.println(query);
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return borrowRequest;
+    }
+
+    public static BorrowDevice getBorrowRequest(Connection connection) throws Exception {
+        System.out.println(" GetBorrowDevice Query");
+        BorrowDevice borrowreq = new BorrowDevice();
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM borrow_device");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                borrowreq.setTransaction_ID(rs.getInt("transaction_ID"));
+                borrowreq.setTransaction_Mode(rs.getString("transaction_Mode"));
+                borrowreq.setTransaction_Type(rs.getString("transaction_Type"));
+                borrowreq.setUsername(rs.getString("username"));
+                borrowreq.setDevice_ID(rs.getString("device_ID"));
+                borrowreq.setFrom_Date(rs.getString("from_Date"));
+                borrowreq.setTo_Date(rs.getString("to_date"));
+//                borrowreq.setFrom_Date(rs.getDate(1) != null) ? rs.getDate(1).toLocalDate() : null;
+              
+            }
+            return borrowreq;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
     static ArrayList<DeviceList> GetAllDevices(Connection connection) throws Exception {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
