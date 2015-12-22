@@ -133,7 +133,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
         });
 
     }]);
-homeCtrls.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
+homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $http.get('webapi/request').success(function (data) {
             $scope.request = data;
