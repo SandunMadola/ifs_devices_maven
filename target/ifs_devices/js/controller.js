@@ -85,7 +85,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
                 location: request.location,
                 SPA: request.SPA,
                 project: request.project,
-                request_Status: "new",
+                request_Status: "New",
                 URL: request.URL,
                 userName: request.userName,
                 comment: request.comment

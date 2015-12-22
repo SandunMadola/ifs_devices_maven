@@ -1,4 +1,4 @@
-/*.s .for_view{
+/*.requested .for_view{
     width: 2rem;
     font-size: 1.6rem;
     line-height: 3rem;
@@ -9,7 +9,7 @@
 }
 
 
-.s .for_expand{
+.requested .for_expand{
 
      font-size: 1.25em; 
     max-height: 1.25em;
@@ -36,7 +36,7 @@ and open the template in the editor.
     Created on : Dec 21, 2015, 3:00:24 PM
     Author     : sanmlk
 */
-.s .for_expand, .s .for_view{
+.requested .for_expand, .requested .for_view{
     width: 2rem;
     font-size: 1.6rem;
     line-height: 3rem;
@@ -48,4 +48,23 @@ and open the template in the editor.
 .lll{
     text-align: left;
 }
-
+.requested p a:link {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+}
+.requested p a:visited {
+    color: plum;
+    background-color: transparent;
+    text-decoration: none;
+}
+.requested p a:hover {
+    color: palevioletred;
+    background-color: transparent;
+    text-decoration: underline;
+}
+.requested p a:active {
+    color: orchid;
+    background-color: transparent;
+    text-decoration: underline;
+}

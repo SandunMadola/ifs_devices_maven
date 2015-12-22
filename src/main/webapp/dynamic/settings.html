@@ -1,3 +1,4 @@
+<link href="styles/settings.css" rel="stylesheet" type="text/css"/>
 <script>
     $(document).ready(function () {
         $('.collapsible').collapsible({
@@ -6,9 +7,7 @@
     });
 </script>
 
-<link href="styles/settings.css" rel="stylesheet" type="text/css"/>
-
-<section class="s">
+<section class="requested">
     <p>{{some}}</p>
     <!--<p>{{request[0].device_name}}</p>-->
     <!--<p>{{request}}</p>-->
@@ -23,9 +22,9 @@
 
         <div id="test1" class="col s12 m12 l12">
             <ul class="collapsible" data-collapsible="accordion" watch>            
-                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request">                         
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request | filter:'New' | orderBy:'priority'">                         
                     <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6">{{req.device_name}}</div> <div class="col m3 l3">{{req.userName}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
-                    <div class="edit_card_panel collapsible-body card-panel row">
+                    <div class="collapsible-body">
                         
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
                         <div class="row"><p class="lll col s12 m6 l6">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>
@@ -37,9 +36,9 @@
                         <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6">{{req.URL}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>                         
                         <!--                        
                                                 <p>dd</p><p>{{req.device_name}}</p>
                                                 <p>{{req.priority}}</p>
@@ -55,13 +54,11 @@
                                                 <p>{{req.URL}}</p>
                                                 <p>{{req.location}}</p>
                                                 <p>{{req.platform}}</p>-->
-
-
                     </div>
                 </li>
-                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request">                         
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request|filter:'New' | orderBy:'priority'">                         
                     <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}}</div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>
-                    <div class="edit_card_panel collapsible-body card-panel row">                            
+                    <div class=" collapsible-body">             <!--edit_card_panel-->
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
                         <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
                         <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
@@ -72,7 +69,7 @@
                         <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
                         <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
                         <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6">{{req.URL}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
                         <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
                         <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
                         <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
@@ -82,28 +79,97 @@
             </ul>    
         </div>
 
-        <div id="test2" class="col s12">
-            <ul class="collapsible" data-collapsible="accordion" watch>
-                <li ng-repeat="single in collapsibleElements">
-                    <div class="collapsible-header"><i class="material-icons">important_devices</i><div class=" left col s4">{{single.icon}}</div><div class=" left col s1">{{single.title}}</div><div class="col s7">{{single.title}}</div></div>
-                    <div class="collapsible-body"><p>{{single.content}}</p></div>
-                </li>
-            </ul>
-        </div>
+        <div id="test2" class="col s12 m12 l12">
+            <ul class="collapsible" data-collapsible="accordion" watch>            
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request | filter:'In progress'">                         
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6">{{req.device_name}}</div> <div class="col m3 l3">{{req.userName}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-body">
+                        
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Project</p><p class="lll col s12 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p><p class="lll col s12 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p><p class="lll col s12 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Size</p><p class="lll col s12 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p><p class="lll col s12 m6 l6">{{req.SPA}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
 
-        <div id="test3" class="col s12">
-            <ul class="collapsible watch" data-collapsible="accordion" >            
-                <li ng-repeat="req in request">                         
-                    <div class="collapsible-header ">{{req.name}} by {{req.type}}<i class="material-icons right">more_vert</i></div>
-                    <div class="collapsible-body">                            
-                        <p>{{req.shortname}}</p>
                     </div>
                 </li>
-            </ul>
-        </div>
-        <div id="test4" class="col s12">
+                
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request|filter:'In progress'">                         
+                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}}</div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>
+                    <div class=" collapsible-body">             <!--edit_card_panel-->
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
 
-        </div>
+                    </div>
+                </li>
+            </ul>    
+        </div>  
+        
+        <div id="test3" class="col s12 m12 l12">
+            <ul class="collapsible" data-collapsible="accordion" watch>            
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request | filter:'Complete'">                         
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6">{{req.device_name}}</div> <div class="col m3 l3">{{req.userName}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-body">
+                        
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Project</p><p class="lll col s12 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p><p class="lll col s12 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p><p class="lll col s12 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Size</p><p class="lll col s12 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p><p class="lll col s12 m6 l6">{{req.SPA}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
+
+                    </div>
+                </li>
+                
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request|filter:'Complete'">                         
+                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}}</div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>
+                    <div class=" collapsible-body">             <!--edit_card_panel-->
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
+
+                    </div>
+                </li>
+            </ul>    
+        </div>        
     </div>
 
 
