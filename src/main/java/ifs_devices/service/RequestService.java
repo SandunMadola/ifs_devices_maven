@@ -7,6 +7,7 @@ package ifs_devices.service;
 
 import ifs_devices.model.Model;
 import ifs_devices.model.Request;
+import java.util.List;
 
 /**
  *
@@ -14,9 +15,9 @@ import ifs_devices.model.Request;
  */
 public class RequestService {
 
-    public Request getRequest() {
+    public List<Request> getRequest() {
         System.out.println("RequestService call");
-        Request req = null;
+        List<Request> req = null;
         try {
             Model model = new Model();
             req = model.GetRequest();

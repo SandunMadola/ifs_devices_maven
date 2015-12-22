@@ -26,9 +26,9 @@ app.config(['$routeProvider', function ($routeProvider) {
                     templateUrl: 'dynamic/request.html',
                     controller: 'requestCtrl'
                 }).
-                when('/settings', {
-                    templateUrl: 'dynamic/settings.html',
-                    controller: 'settingsCtrl'
+                when('/requested', {
+                    templateUrl: 'dynamic/requested.html',
+                    controller: 'requestedCtrl'
                 }).                        
                 otherwise({
                     redirectTo: '/home'

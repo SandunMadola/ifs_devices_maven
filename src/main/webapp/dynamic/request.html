@@ -11,25 +11,28 @@
     <h4>{{some}}</h4>
 
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" name="userForm" novalidate>
             <div class="row">
 
                 <div class="hoverable card-panel row">
-
-                    <div class="input-field col m6 col s12">                        
-                        <input id="devicename" type="text" class="validate" ng-model="request.device_name" required>
-                        <label for="devicename">Device Name</label>
+                    
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.device_name.$invalid && !userForm.device_name.$pristine}">                        
+                        <input id="devicename" name="device_name" type="text" class="validate" ng-model="request.device_name" required>
+                        <label for="devicename" ng-show="userForm.device_name.$invalid && !userForm.device_name.$pristine" style="color: #b71c1c">Device name is required.</label>
+                        <label for="devicename" ng-hide="userForm.device_name.$invalid && !userForm.device_name.$pristine">Device Name</label>
                     </div>  
 
-                    <div class="input-field col m6 col s12">
-                        <select ng-model="request.type">
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.type.$invalid && !userForm.type.$pristine}">
+                        <select name="type" ng-model="request.type" required>
                             <option value="" disabled selected >Choose your option</option>
                             <option value="phone">Phone</option>
                             <option value="tablet">Tablet</option>
                             <option value="laptop">Laptop</option>
                             <option value="desktop">Desktop</option> 
                         </select>
-                        <label>Type</label>
+                        <label ng-show="userForm.type.$invalid && !userForm.type.$pristine" style="color: #b71c1c">Device type is required.</label>
+                        <label ng-hide="userForm.type.$invalid && !userForm.type.$pristine">Type</label>
+                        <!--<label>Type</label>-->
                     </div> 
 
                     <div class="input-field col m6 s12">
@@ -44,9 +47,11 @@
                         <label>Platform</label>
                     </div>        
 
-                    <div class="input-field col m6 col s12">                        
-                        <input id="os" type="text" class="validate" ng-model="request.OS" required>
-                        <label for="os">Operating System</label>
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.OS.$invalid && !userForm.OS.$pristine}">                        
+                        <input id="os" type="text" name="OS" class="validate" ng-model="request.OS" required>
+                        <label for="os" ng-show="userForm.OS.$invalid && !userForm.OS.$pristine" style="color: #b71c1c">Operating System is required.</label>
+                        <label for="os" ng-hide="userForm.OS.$invalid && !userForm.OS.$pristine">Operating System</label>
+                        
                     </div>
 
                     <div class="input-field col m6 s12">
@@ -60,14 +65,16 @@
                         <label>Priority</label>
                     </div>  
 
-                    <div class="input-field col m6 col s12">                    
-                        <input id="size" type="text" class="validate" ng-model="request.size">
-                        <label for="size">Size Inches</label>
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.size.$invalid && !userForm.size.$pristine}">                    
+                        <input id="size" name="size" type="text" class="validate" ng-model="request.size" required>
+                        <label for="size" ng-show="userForm.size.$invalid && !userForm.size.$pristine" style="color: #b71c1c">Size is required.</label>
+                        <label for="size" ng-hide="userForm.size.$invalid && !userForm.size.$pristine">Size Inches</label>
                     </div>
 
-                    <div class="input-field col m6 col s12">                    
-                        <input id="resolution" type="text" class="validate" ng-model="request.resolution">
-                        <label for="resolution">Display Resolution in pixels</label>
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.resolution.$invalid && !userForm.resolution.$pristine}">                    
+                        <input id="resolution" name="resolution" type="text" class="validate" ng-model="request.resolution" required>
+                        <label for="resolution" ng-show="userForm.resolution.$invalid && !userForm.resolution.$pristine" style="color: #b71c1c">Resolution is required.</label>
+                        <label for="resolution" ng-hide="userForm.resolution.$invalid && !userForm.resolution.$pristine">Display Resolution in pixels</label>
                     </div>
 
                     <div class="input-field col m6 s12">
@@ -84,19 +91,25 @@
                         <label for="spa">Sub-Product Area</label>
                     </div>
 
-                    <div class="input-field col m6 col s12">
-                        <input id="pro" type="text" class="validate" ng-model="request.project" required>
-                        <label for="pro">Project</label>
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.project.$invalid && !userForm.project.$pristine}">
+                        <input id="pro" type="text" name="project" class="validate" ng-model="request.project" required>
+                        <label for="pro" ng-show="userForm.project.$invalid && !userForm.project.$pristine" style="color: #b71c1c">Project is required.</label>
+                        <label for="pro" ng-hide="userForm.project.$invalid && !userForm.project.$pristine">Project</label>
+                        <!--<label for="pro">Project</label>-->
                     </div>    
 
-                    <div class="input-field col m6 col s12">
-                        <input id="url" type="text" class="validate" ng-model="request.URL" required>
-                        <label for="url">URL</label>
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.url.$invalid && !userForm.url.$pristine}">
+                        <input id="url" type="text" name="url" class="validate" ng-model="request.URL" required>
+                        <label for="url" ng-show="userForm.url.$invalid && !userForm.url.$pristine" style="color: #b71c1c">URL is required.</label>
+                        <label for="url" ng-hide="userForm.url.$invalid && !userForm.url.$pristine">URL</label>
+                        <!--<label for="url">URL</label>-->
                     </div>
 
-                    <div class="input-field col m6 col s12">
-                        <input id="icon_prefix" type="text" class="validate" ng-model="request.userName" required  maxlength="6" length="6">
-                        <label for="icon_prefix">User Name</label>
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.username.$invalid && !userForm.username.$pristine}">
+                        <input id="icon_prefix" name="username" type="text" class="validate" ng-model="request.userName" required  maxlength="6" length="6">
+                        <label for="icon_prefix" ng-show="userForm.username.$invalid && !userForm.username.$pristine" style="color: #b71c1c">User Name is required.</label>
+                        <label for="icon_prefix" ng-hide="userForm.username.$invalid && !userForm.username.$pristine">User Name</label>
+                        <!--<label for="icon_prefix">User Name</label>-->
                     </div>
 
                     <div class="input-field col s12">
@@ -113,7 +126,7 @@
             </div>
 
             <a class="call_to_modal waves-effect waves-light modal-trigger" data-target="modal1"></a>
-            
+
             <!--call to modal from controller-->
         </form>         
         {{msg}}

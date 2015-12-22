@@ -42,3 +42,7 @@
 .c h5{
     text-align: left;   
 }
+.c input.ng-invalid && ng-dirty[type="text"], input.ng-invalid[type="text"]:focus, input.ng-invalid[type="password"], input.ng-invalid[type="password"]:focus, input.ng-invalid[type="email"], input.ng-invalid[type="email"]:focus, input.ng-invalid[type="url"], input.ng-invalid[type="url"]:focus, input.ng-invalid[type="time"], input.ng-invalid[type="time"]:focus, input.ng-invalid[type="date"], input.ng-invalid[type="date"]:focus, input.ng-invalid[type="datetime-local"], input.ng-invalid[type="datetime-local"]:focus, input.ng-invalid[type="tel"], input.ng-invalid[type="tel"]:focus, input.ng-invalid[type="number"], input.ng-invalid[type="number"]:focus, input.ng-invalid[type="search"], input.ng-invalid[type="search"]:focus, textarea.materialize-textarea.ng-invalid, textarea.materialize-textarea.ng-invalid:focus {
+    border-bottom: 1px solid #F44336;
+    box-shadow: 0px 1px 0px 0px #F44336;
+}

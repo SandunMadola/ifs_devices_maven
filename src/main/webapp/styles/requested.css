@@ -1,0 +1,70 @@
+/*.requested .for_view{
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+
+.requested .for_expand{
+
+     font-size: 1.25em; 
+    max-height: 1.25em;
+    line-height: 0px;
+    padding: .8em 5%;
+    text-align: center;
+    margin-left: -10%;
+    margin-right: 0;
+
+}*/
+/*    .collapsible{
+        box-shadow: none;
+
+    }*/
+.edit_card_panel {
+    margin: 0;   
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 21, 2015, 3:00:24 PM
+    Author     : sanmlk
+*/
+.requested .for_expand, .requested .for_view{
+    width: 2rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 1rem;
+}
+.lll{
+    text-align: left;
+}
+.requested p a:link {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+}
+.requested p a:visited {
+    color: plum;
+    background-color: transparent;
+    text-decoration: none;
+}
+.requested p a:hover {
+    color: palevioletred;
+    background-color: transparent;
+    text-decoration: underline;
+}
+.requested p a:active {
+    color: orchid;
+    background-color: transparent;
+    text-decoration: underline;
+}

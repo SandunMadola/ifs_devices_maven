@@ -7,6 +7,7 @@ package ifs_devices.resources;
 
 import ifs_devices.model.Request;
 import ifs_devices.service.RequestService;
+import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,7 +27,7 @@ public class RequestResource {
     RequestService requestService = new RequestService();
 
     @GET
-    public Request getRequest() {
+    public List<Request> getRequest() {
         System.out.println("/request call");
         return requestService.getRequest();
     }

@@ -47,8 +47,7 @@ homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) 
 homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
-            $scope.whichItem = $routeParams.itemId;
-            
+            $scope.whichItem = $routeParams.itemId;            
         });
 
           $scope.date = new Date();
@@ -126,7 +125,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
                 location: request.location,
                 SPA: request.SPA,
                 project: request.project,
-                request_Status: "new",
+                request_Status: "New",
                 URL: request.URL,
                 userName: request.userName,
                 comment: request.comment
@@ -174,20 +173,34 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
         });
 
     }]);
-homeCtrls.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
+homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $http) {
 
-        $http.get('js/data.json').success(function (data) {
+        $http.get('webapi/request').success(function (data) {
             $scope.request = data;
         });
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
-        })
+        });
 
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
+        $scope.collapsibleElements = [{
+                icon: 'mdi-image-filter-drama',
+                title: 'First',
+                content: 'Sandun Madola'
+            }, {
+                icon: 'mdi-maps-place',
+                title: 'Second',
+                content: 'Lorem ipsum dolor sit amet.'
+            }, {
+                icon: 'mdi-social-whatshot',
+                title: 'Third',
+                content: 'Lorem ipsum dolor sit amet.'
+            }
+        ];
     }]);
 
 homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {

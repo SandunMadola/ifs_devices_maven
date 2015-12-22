@@ -19,7 +19,6 @@ public class Database {
         String user = "root";
         String password = "root";
 //        String SQL= "SELECT CASE WHEN `date`!='0000-00-00' THEN `date` END new_date FROM  borrow_device";
-        
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);

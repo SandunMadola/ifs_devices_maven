@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 public class Query {
 
@@ -68,13 +70,14 @@ public class Query {
         return request;
     }
 
-    public static Request getRequest(Connection connection) throws Exception {
+    public static ArrayList<Request> getRequest(Connection connection) throws Exception {
         System.out.println("Query");
-        Request req = new Request();
+        ArrayList<Request> requests = new ArrayList<Request>();        
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM add_request");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                Request req = new Request();
                 req.setDevice_name(rs.getString("device_Name"));
                 req.setType(rs.getString("type"));
                 req.setPlatform(rs.getString("platform"));
@@ -89,9 +92,9 @@ public class Query {
                 req.setComment(rs.getString("comments"));
                 req.setURL(rs.getString("url"));
                 req.setProject(rs.getString("project"));
-
+                requests.add(req);
             }
-            return req;
+            return requests;
         } catch (Exception e) {
             throw e;
         }
