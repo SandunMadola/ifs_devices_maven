@@ -24,6 +24,9 @@
         box-shadow: none;
 
     }*/
+.switch label .lever{
+    margin: 16px 16px;
+}
 .edit_card_panel {
     margin: 0;   
 }

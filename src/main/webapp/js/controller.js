@@ -47,29 +47,29 @@ homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) 
 homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
-            $scope.whichItem = $routeParams.itemId;            
+            $scope.whichItem = $routeParams.itemId;
         });
 
-          $scope.date = new Date();
+        $scope.date = new Date();
 //          alert($scope.date);
-            
+
         $scope.SendData = function (now) {
-            
+
             $scope.n = parseInt(now.to);
 //            alert($scope.n);
-            $scope.toDate = (new Date( (new Date()).setDate( (new Date()).getDate()+$scope.n)));
+            $scope.toDate = (new Date((new Date()).setDate((new Date()).getDate() + $scope.n)));
 //            alert( $scope.toDate.getFullYear()+'-'+ $scope.toDate.getMonth()+'-'+ $scope.toDate.getDate());
             $scope.y = $scope.toDate.getFullYear();
-            $scope.m = $scope.toDate.getMonth()+1;
+            $scope.m = $scope.toDate.getMonth() + 1;
             $scope.d = $scope.toDate.getDate();
-            
+
             var Nowdata = {
                 transaction_Mode: "red",
                 transaction_Type: "now",
                 username: now.userName,
                 device_ID: $("#getdeviceID").text(),
                 from_Date: $("#todaydate").text(),
-                to_Date: $scope.y+'-'+$scope.m+'-'+ $scope.d
+                to_Date: $scope.y + '-' + $scope.m + '-' + $scope.d
             };
 
             var config = {
@@ -113,6 +113,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
 homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.some = "Request a device";
+        $scope.date = new Date();
         $scope.SendData = function (request) {
             var data = {
                 device_name: request.device_name,
@@ -128,14 +129,15 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
                 request_Status: "New",
                 URL: request.URL,
                 userName: request.userName,
-                comment: request.comment
+                comment: request.comment,
+                date: $("#getdate").text()
             };
 
             var config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }
+            };
             var res = $http.post('webapi/request', data, config);
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
@@ -178,6 +180,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $http.get('webapi/request').success(function (data) {
             $scope.request = data;
         });
+        
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
@@ -187,20 +190,11 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
-        $scope.collapsibleElements = [{
-                icon: 'mdi-image-filter-drama',
-                title: 'First',
-                content: 'Sandun Madola'
-            }, {
-                icon: 'mdi-maps-place',
-                title: 'Second',
-                content: 'Lorem ipsum dolor sit amet.'
-            }, {
-                icon: 'mdi-social-whatshot',
-                title: 'Third',
-                content: 'Lorem ipsum dolor sit amet.'
-            }
-        ];
+
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+
     }]);
 
 homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {
