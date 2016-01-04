@@ -25,6 +25,15 @@ public class Request {
     private String URL;
     private String UserName;
     private String Comment;
+    private String Date;
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String Date) {
+        this.Date = Date;
+    }
 
     public String getDevice_name() {
         return Device_name;

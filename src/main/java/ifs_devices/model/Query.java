@@ -54,10 +54,11 @@ public class Query {
         String URL = request.getURL();
         String UserName = request.getUserName();
         String Comment = request.getComment();
+        String Date = request.getDate();
 
         String query = "INSERT INTO add_request"
-                + " (device_Name, type, platform, OS, size, resolution, username, sub_Product_Area, request_Status, priority, location, comments, url, project)"
-                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "')";
+                + " (device_Name, type, platform, OS, size, resolution, username, sub_Product_Area, request_Status, priority, location, comments, url, project, date)"
+                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "')";
         //db set auto increment
         System.out.println(query);
         try {
@@ -92,6 +93,7 @@ public class Query {
                 req.setComment(rs.getString("comments"));
                 req.setURL(rs.getString("url"));
                 req.setProject(rs.getString("project"));
+                req.setDate(rs.getString("date"));
                 requests.add(req);
             }
             return requests;
