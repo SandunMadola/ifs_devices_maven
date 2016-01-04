@@ -6,6 +6,7 @@ homeCtrls.controller('staticCtrl', ['$scope', function ($scope) {
         $scope.searched = function () {
             $scope.search_bar = !$scope.search_bar;
         };
+        $('#wait_moment').fadeOut('slow');
     }]);
 
 homeCtrls.controller('homeCtrl', ['$scope', function ($scope) {
@@ -112,9 +113,13 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
     }]);
 
 homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http) {
+        $('#wait_moment').fadeOut('slow');
+
         $scope.some = "Request a device";
         $scope.date = new Date();
         $scope.SendData = function (request) {
+            $('#wait_moment').fadeIn('slow');
+
             var data = {
                 device_name: request.device_name,
                 type: request.type,
@@ -141,12 +146,14 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
             var res = $http.post('webapi/request', data, config);
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
+                $('#wait_moment').fadeOut('slow');
                 $scope.msg = "Request Sent Successfully !!!";
                 $scope.waitt = "modal1";
                 $(".call_to_modal").click();
 
             });
             res.error(function (data, status, headers, config) {
+                $('#wait_moment').fadeOut('slow');
                 $scope.msg = "Request Unsuccessful ...";
                 $scope.waitt = "modal1";
                 alert("failure message: " + JSON.stringify({data: data}));
@@ -176,18 +183,18 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
 
     }]);
 homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $http) {
-
+        $scope.result = false;
         $http.get('webapi/request').success(function (data) {
             $scope.request = data;
+            $('#wait_moment').fadeOut('slow');
         });
-        
+
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
         });
 
         $(document).ready(function () {
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
 
@@ -196,8 +203,8 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         });
 
     }]);
-
 homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {
+
         $scope.some = "This is thumbnail page";
 
         $(document).ready(function () {
@@ -219,9 +226,7 @@ homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
         });
-
     }]);
-
 homeCtrls.controller('edit_modeCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
         $http.get('js/data.json').success(function (data) {
             $scope.edit = data;

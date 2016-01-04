@@ -9,61 +9,50 @@
 <section class="c">        
 
     <h4>{{some}}</h4>
-
+    <div id="wait_moment">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div></div>
     <div class="row">
-        <form class="col s12" name="userForm" novalidate>
+        <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="row">
 
                 <div class="hoverable card-panel row">
-                    
+
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.device_name.$invalid && !userForm.device_name.$pristine}">                        
                         <input id="devicename" name="device_name" type="text" class="validate" ng-model="request.device_name" required>
                         <label for="devicename" ng-show="userForm.device_name.$invalid && !userForm.device_name.$pristine" style="color: #b71c1c">Device name is required.</label>
-                        <label for="devicename" ng-hide="userForm.device_name.$invalid && !userForm.device_name.$pristine">Device Name</label>
+                        <label for="devicename" ng-hide="userForm.device_name.$invalid && !userForm.device_name.$pristine">Device Name *</label>
                     </div>  
 
-                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.type.$invalid && !userForm.type.$pristine}">
-                        <select name="type" ng-model="request.type" required>
-                            <option value="" disabled selected >Choose your option</option>
-                            <option value="phone">Phone</option>
-                            <option value="tablet">Tablet</option>
-                            <option value="laptop">Laptop</option>
-                            <option value="desktop">Desktop</option> 
-                        </select>
-                        <label ng-show="userForm.type.$invalid && !userForm.type.$pristine" style="color: #b71c1c">Device type is required.</label>
-                        <label ng-hide="userForm.type.$invalid && !userForm.type.$pristine">Type</label>
-                        <!--<label>Type</label>-->
-                    </div> 
-
-                    <div class="input-field col m6 s12">
-                        <select ng-model="request.platform">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="android">Android</option>
-                            <option value="mac">MAC</option>
-                            <option value="ios">IOS</option>                     
-                            <option value="windows">Windows</option>
-                            <option value="windows_phone">Windows Phone</option> 
-                        </select>
-                        <label>Platform</label>
-                    </div>        
-
-                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.OS.$invalid && !userForm.OS.$pristine}">                        
-                        <input id="os" type="text" name="OS" class="validate" ng-model="request.OS" required>
-                        <label for="os" ng-show="userForm.OS.$invalid && !userForm.OS.$pristine" style="color: #b71c1c">Operating System is required.</label>
-                        <label for="os" ng-hide="userForm.OS.$invalid && !userForm.OS.$pristine">Operating System</label>
-                        
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.username.$invalid && !userForm.username.$pristine}">
+                        <input id="icon_prefix" name="username" type="text" class="validate" ng-model="request.userName" required  maxlength="6" length="6">
+                        <label for="icon_prefix" ng-show="userForm.username.$invalid && !userForm.username.$pristine" style="color: #b71c1c">User Name is required.</label>
+                        <label for="icon_prefix" ng-hide="userForm.username.$invalid && !userForm.username.$pristine">User Name *</label>
+                        <!--<label for="icon_prefix">User Name</label>-->
                     </div>
 
-                    <div class="input-field col m6 s12">
-                        <select ng-model="request.priority">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                        <label>Priority</label>
-                    </div>  
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.Spa.$invalid && !userForm.Spa.$pristine}">
+                        <input id="spa" name="Spa" type="text" class="validate" ng-model="request.SPA" required>
+                        <label for="spa" ng-show="userForm.Spa.$invalid && !userForm.Spa.$pristine" style="color: #b71c1c">Sub Product Area is required.</label>
+                        <label for="spa" ng-hide="userForm.Spa.$invalid && !userForm.Spa.$pristine">Sub Product Area *</label>
+                        <!--<label for="spa">Sub Product Area *</label>-->
+                    </div>
+
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.project.$invalid && !userForm.project.$pristine}">
+                        <input id="pro" type="text" name="project" class="validate" ng-model="request.project" required>
+                        <label for="pro" ng-show="userForm.project.$invalid && !userForm.project.$pristine" style="color: #b71c1c">Project is required.</label>
+                        <label for="pro" ng-hide="userForm.project.$invalid && !userForm.project.$pristine">Project *</label>
+                        <!--<label for="pro">Project</label>-->
+                    </div>
 
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.size.$invalid && !userForm.size.$pristine}">                    
                         <input id="size" name="size" type="text" class="validate" ng-model="request.size" required>
@@ -77,52 +66,75 @@
                         <label for="resolution" ng-hide="userForm.resolution.$invalid && !userForm.resolution.$pristine">Display Resolution in pixels</label>
                     </div>
 
-                    <div class="input-field col m6 s12">
-                        <select ng-model="request.location" >
-                            <option value="" disabled selected>Choose your option</option>                        
-                            <option value="cmb">CMB</option>
-                            <option value="lkp">LKP</option> 
-                        </select>
-                        <label>Location</label>
-                    </div>
-
-                    <div class="input-field col m6 col s12">
-                        <input id="spa" type="text" class="validate" ng-model="request.SPA" required>
-                        <label for="spa">Sub-Product Area</label>
-                    </div>
-
-                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.project.$invalid && !userForm.project.$pristine}">
-                        <input id="pro" type="text" name="project" class="validate" ng-model="request.project" required>
-                        <label for="pro" ng-show="userForm.project.$invalid && !userForm.project.$pristine" style="color: #b71c1c">Project is required.</label>
-                        <label for="pro" ng-hide="userForm.project.$invalid && !userForm.project.$pristine">Project</label>
-                        <!--<label for="pro">Project</label>-->
-                    </div>    
-
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.url.$invalid && !userForm.url.$pristine}">
                         <input id="url" type="text" name="url" class="validate" ng-model="request.URL" required>
                         <label for="url" ng-show="userForm.url.$invalid && !userForm.url.$pristine" style="color: #b71c1c">URL is required.</label>
                         <label for="url" ng-hide="userForm.url.$invalid && !userForm.url.$pristine">URL</label>
                         <!--<label for="url">URL</label>-->
+                    </div>                    
+
+                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.OS.$invalid && !userForm.OS.$pristine}">                        
+                        <input id="os" type="text" name="OS" class="validate" ng-model="request.OS" required>
+                        <label for="os" ng-show="userForm.OS.$invalid && !userForm.OS.$pristine" style="color: #b71c1c">Operating System is required.</label>
+                        <label for="os" ng-hide="userForm.OS.$invalid && !userForm.OS.$pristine">Operating System</label>
                     </div>
 
-                    <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.username.$invalid && !userForm.username.$pristine}">
-                        <input id="icon_prefix" name="username" type="text" class="validate" ng-model="request.userName" required  maxlength="6" length="6">
-                        <label for="icon_prefix" ng-show="userForm.username.$invalid && !userForm.username.$pristine" style="color: #b71c1c">User Name is required.</label>
-                        <label for="icon_prefix" ng-hide="userForm.username.$invalid && !userForm.username.$pristine">User Name</label>
-                        <!--<label for="icon_prefix">User Name</label>-->
+                    <div class="input-field col m6 s12">
+                        <select id="qw" ng-model="request.platform">
+                            <!--<option value=" " disabled selected>Choose your option</option>-->
+                            <option value="android">Android</option>
+                            <option value="mac">MAC</option>
+                            <option value="ios">IOS</option>                     
+                            <option value="windows">Windows</option>
+                            <option value="windows_phone">Windows Phone</option> 
+                        </select>                        
+                        <label>Platform</label>
+                    </div>                    
+
+                    <div class="input-field col m6 col s12">
+                        <select name="type" ng-model="request.type">
+                            <option value="" disabled selected >Choose your option</option>
+                            <option value="phone">Phone</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="desktop">Desktop</option> 
+                        </select>
+                        <!-- <label ng-show="userForm.type.$invalid && !userForm.type.$pristine" style="color: #b71c1c">Device type is required.</label>
+                        <label ng-hide="userForm.type.$invalid && !userForm.type.$pristine">Type</label>-->
+                        <label>Type</label>
+                    </div> 
+
+                    <div class="input-field col m6 s12">
+                        <select ng-model="request.priority">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <label>Priority</label>
+                    </div>  
+
+                    <div class="input-field col m6 s12" ng-class="{'has-error':userForm.type.$invalid && !userForm.type.$pristine}">
+                        <select ng-model="request.location" required>
+                            <option value="" disabled selected>Choose your option</option>                        
+                            <option value="cmb">CMB</option>
+                            <option value="lkp">LKP</option> 
+                        </select>
+                        <label>Location *</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea" length="120" ng-model="request.comment"></textarea>
+                        <textarea id="textarea1" class="materialize-textarea" length="1000" ng-model="request.comment"></textarea>
                         <label for="textarea1">Comment</label>
                     </div>
 
                 </div>
-
-                <button class="btn waves-effect waves-purple waves-light" ng-click="SendData(request)" type="submit" name="action">
-                    Submit                    
-                </button>
-
+                <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="SendData(request)">Submit</button>
+                <!--                <button class="btn waves-effect waves-purple waves-light"  type="submit" name="action">
+                                    Submit                    
+                                </button>-->
+                <!--ng-click="SendData(request)"-->
             </div>
 
             <a class="call_to_modal waves-effect waves-light modal-trigger" data-target="modal1"></a>
@@ -154,7 +166,7 @@
         <button class="btn modal-action modal-close waves-effect waves-purple waves-light">OK</button>
         <div> <p> </p> </div>
     </div>
-<p ng-hide="false" id="getdate" >{{date| date:'yyyy-MM-dd'}}</p>
+    <p ng-show="false" id="getdate" >{{date| date:'yyyy-MM-dd'}}</p>
 </section>
 
 
@@ -173,3 +185,5 @@
                         </div>
                     </li>
                 </ul>-->
+
+<!--http://codepen.io/sevilayha/pen/xFcdI-->
