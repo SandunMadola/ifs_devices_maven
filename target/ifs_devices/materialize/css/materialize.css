@@ -6084,11 +6084,12 @@ a.waves-effect .waves-ripple {
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;
-  width: 55%;
+  width: 35%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
-  will-change: top, opacity; }
+  will-change: top, opacity;
+  }
   @media only screen and (max-width : 992px) {
     .modal {
       width: 80%; } }

@@ -7,20 +7,31 @@
 <section class="b_3">
     <div class="deviceinfo">
         <!--main_content-->
+        
         <div class="">
             <div class="ifs_banner">
 
                 <!--Show on large only-->
                 <div class="buttonClass row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
                     <div  style="width: 50%; float: left"> 
+                        <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div> 
+<!--                        <div ng-show="{{item.transaction_Mode == 'red'}}" class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: red;float: left; " > </div>     
+                        <div ng-show="{{item.transaction_Mode == 'orange'}}" class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: orange;float: left; " > </div>     
+                        <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: green;float: left; " > </div>     -->
                         <h1>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </h1>
                     </div>
-
+                    
                     <div style="width: 50%; float: left"> 
-
-                        <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger">Now</button>
-                        <p style="width: 4%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 48%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
+                        
+                       <button  style="margin-top:  20px; width: 28%; float: left; height: 46px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger" >Now</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button  style="margin-top:  20px; width: 28%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button style="margin-top:  20px; width: 28%; float: left; height: 46px;" type="button" class="waves-effect waves-light btn " >Get Now</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button  style="margin-top:  20px; width: 28%; float: left; height: 46px; " type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger" >Cancel</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button  style="margin-top:  20px; width: 28%; float: left; height: 46px; " type="button" data-target="modal3" class="Return waves-effect waves-light btn modal-trigger" >Return</button>
                     </div>
                 </div>
 
@@ -28,13 +39,21 @@
                 <div id="nnn" class="buttonClass row show-on-medium-and-down hide-on-large-only" style="position: fixed;margin-left: -50%;
                      width: 100% ">
                     <div  style=" width: 100%; float: left; "> 
+                        <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div>     
+
                         <h1>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}]</h1>
                     </div>
 
                     <div style="width: 100%; float: left; margin-left: 10px; background-color: #fafafa;"> 
                         <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal11" class="Now waves-effect waves-light btn modal-trigger">Now</button>
-                        <p style="width: 4%; float: left"> </p>
+                        <p style="width: 3%; float: left"> </p>
                         <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal22" class="Later waves-effect waves-light btn modal-trigger">Later</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" class="waves-effect waves-light btn modal-trigger">Get Now</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger">Cancel</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal3" class="Return waves-effect waves-light btn modal-trigger">Return</button>
                     </div>
                 </div>
 
@@ -62,13 +81,16 @@
 
                     <div class="col s12 m3 l4 hide-on-med-and-down">
                         <img  style="width: 20%; " ng-src="images/{{devices[whichItem].image_no}}.jpg">
+
                     </div>
+
                     <div class="col s12 m3 l4 hide-on-large-only">
                         <img  style="width: 40%; margin-top: 130px" ng-src="images/{{devices[whichItem].image_no}}.jpg">
                     </div>
 
 
                     <div class="info">
+
 
                         <h2> Type : {{devices[whichItem].type}}</h2>
                         <h3> Platform : {{devices[whichItem].platform}}</h3>
@@ -84,16 +106,24 @@
                 </div>
                 
                 <div ng-hide="true" > 
-                    <p id="getdeviceID" > {{devices[whichItem].device_ID}}</p>
+                    <p id="getcolor" >{{devices[whichItem].transaction_Mode}}</p>
+                </div>
+                <div ng-hide="true" > 
+                    <p id="getun" >{{devices[whichItem].username}}</p>
+                </div>
+                <div ng-hide="true" > 
+                    <p id="getdeviceID" >{{devices[whichItem].device_ID}}</p>
                 </div>
 
-            <div ng-hide = "true">
-                <p id="todaydate" > {{date| date:'yyyy-MM-dd'}}</p>
-            </div>
-
-            <div ng-hide = "true" >
-                <p id="toDate" > {{toDate | date:'yyyy-MM-dd'}} </p>
-            </div>
+                <div ng-hide = "true">
+                    <p id="todaydate" > {{date| date:'yyyy-MM-dd'}}</p>
+                </div>
+                <div ng-hide = "true" >
+                    <p id="fromDate" > {{$('.datepicker').pickadate() | date:'yyyy-MM-dd'}} </p>
+                </div>
+                <div ng-hide = "true" >
+                    <p id="toDate" > {{toDate| date:'yyyy-MM-dd'}} </p>
+                </div>
 
             </div>
         </div>
@@ -134,10 +164,10 @@
 
                         <!--                    <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>-->
                     </div> 
-                   
-                        
-                    
-<!--                    <p>{{now}}</p>-->
+
+
+
+                    <!--                    <p>{{now}}</p>-->
                 </div>
                 <div class="modal-footer">
                     <a  ng-click="SendData(now)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
@@ -155,34 +185,67 @@
                     </div>
                     <div class="input-field">
                         <i class="material-icons prefix">today</i>
-                        <input id="calender" type="text" class="datepicker" ng-model="later.from" required>
+                        <input id="calender" format="yyyy-MM-dd" type="text" class="datepicker" ng-model="later.from" required>
                         <label for="calender">From</label>
                     </div>
                     <div class="input-field">
                         <i class="material-icons">timelapse</i>
                         <select id="bbb" ng-model="later.to" required>
                             <option value="" disabled selected>Duration</option>
-                            <option value="1day">1 day</option>
-                            <option value="2day">2 days</option>
-                            <option value="3day">3 days</option>                     
-                            <option value="4day">4 days</option>
-                            <option value="5day">5 days</option> 
-                            <option value="6day">6 days</option> 
-                            <option value="1week">1 week</option> 
-                            <option value="2week">2 weeks</option> 
-                            <option value="3week">3 weeks</option> 
-                            <option value="1month">1 month</option> 
+                            <option value="1">1 day</option>
+                            <option value="2">2 days</option>
+                            <option value="3">3 days</option>                     
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option> 
+                            <option value="6">6 days</option> 
+                            <option value="7">1 week</option> 
+                            <option value="14">2 weeks</option> 
+                            <option value="21">3 weeks</option> 
+                            <option value="30">1 month</option>  
 
                         </select>              
                     </div> 
                 </div>
                 <div class="modal-footer">
-                    <button ng-click="SendData(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
+                    <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
                 </div>
                 <p>{{later}}</p>
             </div>
 
             <!--        later button end-->
+            
+            <div id="modal3" class="modal " style="width: 360px; max-height: 50%; height: 35%;" >
+                <div class="modal-content" >
+                    <h4>Return the device</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un3" type="text" class="validate" maxlength="6" ng-model="returnDevice.userName" length="6" required>
+                        <label for="un3">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData3(returnDevice)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div> 
+            
+            <div id="modal4" class="modal " style="width: 360px; max-height: 50%; height: 35%;" >
+                <div class="modal-content" >
+                    <h4>Cancel the device</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un4" type="text" class="validate" maxlength="6" ng-model="cancel.userName" length="6" required>
+                        <label for="un4">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData3(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div>
+            
         </form>
 
         <form>
@@ -195,24 +258,24 @@
 
                     <div class="input-field">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="un" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
-                        <label for="un">Username</label>
+                        <input id="unn" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
+                        <label for="unn">Username</label>
                     </div>
 
                     <div class="input-field">
                         <i class="material-icons " style="alignment-adjust: before-edge">timelapse</i>
                         <select id="aaaa" ng-model="now.to">
                             <option value="" disabled selected>Duration </option>
-                            <option value="1day">1 day</option>
-                            <option value="2day">2 days</option>
-                            <option value="3day">3 days</option>                     
-                            <option value="4day">4 days</option>
-                            <option value="5day">5 days</option> 
-                            <option value="6day">6 days</option> 
-                            <option value="1week">1 week</option> 
-                            <option value="2week">2 weeks</option> 
-                            <option value="3week">3 weeks</option> 
-                            <option value="1month">1 month</option> 
+                            <option value="1">1 day</option>
+                            <option value="2">2 days</option>
+                            <option value="3">3 days</option>                     
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option> 
+                            <option value="6">6 days</option> 
+                            <option value="7">1 week</option> 
+                            <option value="14">2 weeks</option> 
+                            <option value="21">3 weeks</option> 
+                            <option value="30">1 month</option> 
 
                         </select>
 
@@ -265,8 +328,8 @@
                     <h4>Borrow Later</h4>
                     <div class="input-field">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="un2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
-                        <label for="un2">User Name</label>
+                        <input id="unn2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
+                        <label for="unn2">User Name</label>
                     </div>
                     <div class="input-field">
                         <i class="material-icons prefix">today</i>
@@ -277,16 +340,16 @@
                         <i class="material-icons">timelapse</i>
                         <select id="bbbb" ng-model="later.to" required>
                             <option value="" disabled selected>Duration</option>
-                            <option value="1day">1 day</option>
-                            <option value="2day">2 days</option>
-                            <option value="3day">3 days</option>                     
-                            <option value="4day">4 days</option>
-                            <option value="5day">5 days</option> 
-                            <option value="6day">6 days</option> 
-                            <option value="1week">1 week</option> 
-                            <option value="2week">2 weeks</option> 
-                            <option value="3week">3 weeks</option> 
-                            <option value="1month">1 month</option> 
+                            <option value="1">1 day</option>
+                            <option value="2">2 days</option>
+                            <option value="3">3 days</option>                     
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option> 
+                            <option value="6">6 days</option> 
+                            <option value="7">1 week</option> 
+                            <option value="14">2 weeks</option> 
+                            <option value="21">3 weeks</option> 
+                            <option value="30">1 month</option>  
 
                         </select>              
                     </div> 
@@ -324,7 +387,7 @@
                                 </div>-->
 
                 <div class="modal-footer">
-                    <button ng-click="SendData(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
+                    <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
                 </div>
                 <p>{{later}}</p>
             </div>
@@ -425,7 +488,7 @@
 
     </div>
     <a class="call_to_modal waves-effect waves-light modal-trigger" data-target="modal65"></a>
-    <div id="modal65" class="modal card-panel" style="width: 35%">
+    <div id="modal65" class="modal card-panel"  >
         <div class="modal-content">
 
             <h4>{{msg}}</h4>
@@ -433,4 +496,14 @@
         <button class="btn modal-action modal-close waves-effect waves-purple waves-light">OK</button>
         <div> <p> </p> </div>
     </div>
+
+    <!--    <a class="call_to_modal waves-effect waves-light modal-trigger hide-on-small-only show-on-medium-and-up" data-target="modal655"></a>
+        <div id="modal655" class="modal card-panel" style="width: 55%; height: auto;">
+            <div class="modal-content">
+    
+                <h4>{{msg}}</h4>
+            </div>
+            <button class="btn modal-action modal-close waves-effect waves-purple waves-light">OK</button>
+            <div> <p> </p> </div>
+        </div>-->
 </section>

@@ -88,4 +88,17 @@ public class Model {
         }
         return allDevices;
     }
+
+    public String deleteTransaction(int id) throws Exception {
+        System.out.println("Inside the model");
+        String del = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            del = Query.deleteTransaction(id, connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return del;
+    }
 }

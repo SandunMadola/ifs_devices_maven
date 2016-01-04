@@ -157,7 +157,7 @@ public class Query {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT a.name, a.type, a.platform, a.image_no, a.OS, a.size, a.resolution, a.URL, b.location, c.sub_Product_Area_ID, c.sub_Product_Area_name, d.device_ID, d.username, d.transaction_Mode FROM device_model a JOIN device b ON (a.model_ID = b.model_ID) JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) JOIN borrow_device d ON (b.device_ID = d.device_ID)");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID)");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -183,5 +183,19 @@ public class Query {
         } catch (Exception e) {
             throw e;
         }
+    }
+    
+    public static String deleteTransaction(int id, Connection connection) throws SQLException {
+        System.out.println("Inside the Query");
+        String query = "DELETE FROM borrow_device WHERE transaction_ID = " + id + "";
+        System.out.println(query);
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return "SUCCESS!!!";
     }
 }

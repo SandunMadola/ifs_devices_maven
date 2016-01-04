@@ -163,15 +163,15 @@ h1.ng-binding {
     padding: 0;
     background: #FDF6E3;
 }
-with animation 
+/*with animation */
 .b_1 .devicelist li {
 
     border-bottom: 1px dotted black;
     opacity: .9;
-    -webkit-transition: all 0.3s ease-out;
+/*    -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;*/
 }
 .b_1 .devicelist a {
     display: block;
@@ -181,10 +181,10 @@ with animation
 .b_1 .devicelist li:hover {
     background: #FDF6E3;
     opacity: 1;
-    -webkit-transform: scale(1.2);
+/*    -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     -o-transform: scale(1.2);
-    transform: scale(1.2);
+    transform: scale(1.2);*/
 }
 
 .b_1 .cf {
@@ -203,7 +203,7 @@ with animation
     margin: 0;
     padding: 10px 10px 0 10px;
     opacity: .9;
-    -webkit-transition: all 0.3s ;
+/*    -webkit-transition: all 0.3s ;*/
     display: block;
     float: left;
 }
@@ -272,7 +272,7 @@ with animation
 }
 
 
-.b_1.device.ng-enter.ng-enter-active,
+/*.b_1.device.ng-enter.ng-enter-active,
 .b_1.device.ng-leave {
     opacity: 1;
     height: 80px;
@@ -284,7 +284,7 @@ with animation
     opacity: 0;
     height: 0;
     overflow: hidden;
-}
+}*/
 .b_1 .row:after {
     content: ""; 
     display: table;
