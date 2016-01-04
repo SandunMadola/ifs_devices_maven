@@ -47,29 +47,73 @@ homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) 
 homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
-            $scope.whichItem = $routeParams.itemId;            
-        });
-
-          $scope.date = new Date();
-//          alert($scope.date);
+            $scope.whichItem = $routeParams.itemId;
             
+        });
+//        $scope.loading=false;
+//        window.onload = function(){
+//            
+//            $scope.c = $("#getcolor").text();
+//            alert($scope.c);
+//            
+//           $scope.$apply(function(){
+//               $scope.loading=true
+//              
+//            });
+//            if ($scope.c == 'red') {
+//                
+//               $scope.loading=true;
+//               alert($scope.c);
+//            
+//            } else {
+//                $scope.$apply(function(){
+//               $scope.loading=false;
+////               alert($scope.c);
+//            });
+//            }
+//             
+//        };
+
+//       
+//        $scope.isred = function(){
+//            $scope.c = $("#getcolor").text();
+////            alert($scope.c);
+////            alert("hiiii");
+//            if ($scope.c == 'red') {
+//                
+//               $scope.red= true;
+//               $scope.green= false;
+//               $scope.yellow= false;
+//
+//            
+//            } else {
+//                $scope.$apply(function(){
+//               $scope.loading=false;
+////               alert($scope.c);
+//            });
+//
+//        };
+//    };
+        
+        $scope.date = new Date();
+
         $scope.SendData = function (now) {
             
             $scope.n = parseInt(now.to);
 //            alert($scope.n);
-            $scope.toDate = (new Date( (new Date()).setDate( (new Date()).getDate()+$scope.n)));
+            $scope.toDate = (new Date((new Date()).setDate((new Date()).getDate() + $scope.n)));
 //            alert( $scope.toDate.getFullYear()+'-'+ $scope.toDate.getMonth()+'-'+ $scope.toDate.getDate());
             $scope.y = $scope.toDate.getFullYear();
-            $scope.m = $scope.toDate.getMonth()+1;
+            $scope.m = $scope.toDate.getMonth() + 1;
             $scope.d = $scope.toDate.getDate();
-            
+
             var Nowdata = {
                 transaction_Mode: "red",
-                transaction_Type: "now",
+                transaction_Type: "return",
                 username: now.userName,
                 device_ID: $("#getdeviceID").text(),
                 from_Date: $("#todaydate").text(),
-                to_Date: $scope.y+'-'+$scope.m+'-'+ $scope.d
+                to_Date: $scope.y + '-' + $scope.m + '-' + $scope.d
             };
 
             var config = {
@@ -89,6 +133,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 alert("failure message: " + JSON.stringify({data: data}));
                 $(".call_to_modal").click();
             });
+
         };
 //        $scope.mo = true;
 //        $scope.popup = function () {
@@ -98,6 +143,91 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 //                $scope.mo = false;
 //            }
 //        };
+
+        $('.datepicker').pickadate({
+            format: 'yyyy-mm-dd',
+            formatSubmit: 'yyyy/mm/dd'
+        });
+
+        $scope.SendData2 = function (later) {
+
+            $scope.l = parseInt(later.to);
+            $scope.lt = new Date(new Date().setDate((new Date(later.from)).getDate() + $scope.l));
+
+            $scope.yy = $scope.lt.getFullYear();
+            $scope.mm = $scope.lt.getMonth() + 1;
+            $scope.dd = $scope.lt.getDate();
+
+            var Laterdata = {
+                transaction_Mode: "orange",
+                transaction_Type: "cancel",
+                username: later.userName,
+                device_ID: $("#getdeviceID").text(),
+                from_Date: later.from,
+                to_Date: $scope.yy + '-' + $scope.mm + '-' + $scope.dd
+            };
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            var res = $http.post('webapi/borrowNow', Laterdata, config);
+            res.success(function (data, status, headers, config) {
+                $scope.PostDataResponse = data;
+                $scope.msg = "Request Sent Successfully!!!";
+                $(".call_to_modal").click();
+
+            });
+            res.error(function (data, status, headers, config) {
+                $scope.msg = "Request Unsuccessful";
+                alert("failure message: " + JSON.stringify({data: data}));
+                $(".call_to_modal").click();
+            });
+        };
+
+        $scope.SendData3 = function (returnDevice) {
+ 
+            $scope.username = $("#getun").text();
+
+            if (returnDevice.userName == $scope.username) {
+                $scope.msg = "Request granted!";
+                $(".call_to_modal").click();
+            } else {
+                $scope.msg = "Wrong Username! Request Cannot be granted!";
+                $(".call_to_modal").click();
+            }
+        };
+        
+        $scope.SendData4 = function (cancel) {
+ 
+            $scope.username = $("#getun").text();
+
+            if (cancel.userName == $scope.username) {
+                $scope.msg = "Request granted!";
+                $(".call_to_modal").click();
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                var res = $http.delete('webapi/cancel/{transaction_ID}', config);
+                res.success(function (data, status, headers, config) {
+
+                    $scope.msg = "Request Sent Successfully!!!";
+                    $(".call_to_modal").click();
+
+                });
+                res.error(function (data, status, headers, config) {
+                    $scope.msg = "Request Unsuccessful";
+//                alert("failure message: " + JSON.stringify({data: data}));
+                    $(".call_to_modal").click();
+                });
+            } else {
+                $scope.msg = "Request Cannot be granted!";
+                $(".call_to_modal").click();
+            }
+        };
 
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
