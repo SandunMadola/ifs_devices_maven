@@ -1,4 +1,7 @@
-
+.c .btn:disabled{
+    background-color: #CE93D8 !important;
+    color: #FFF !important;
+}
 .c i {
     float: left;
     /* font-size: 1.25em; */

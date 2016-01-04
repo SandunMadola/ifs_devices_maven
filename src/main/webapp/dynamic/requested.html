@@ -1,8 +1,29 @@
 <link href="styles/requested.css" rel="stylesheet" type="text/css"/>
+<!--<script>
+            jQuery(document).ready(function ($) {
 
-<section class="requested">
-
-    <div class="switch col s12 row">
+// site preloader -- also uncomment the div in the header and the css style for #preloader
+            $(window).load(function () {                
+                $('#wait_moment').fadeOut('slow', function () {
+                    $(this).remove();                    
+                });
+            });            
+        });
+</script>-->
+<section class="requested"> 
+    <div id="wait_moment">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div></div>
+    <div class="switch col s12 row" style="margin-bottom: 1px">
         <h5 class="col s5" style="text-align: right">Requested</h5>
         <label class="col s2">
             <!--Requested-->
@@ -13,7 +34,7 @@
         <h5 class="col s5" style="text-align: left">Completed</h5>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom: 1px">
 
         <div class="col s2 m1 l1" style="float: left; text-align: left">
             <a class="hoverable waves-effect waves-light" ng-click="showInputLabel = !showInputLabel"><i class="material-icons">filter_list</i></a>           
@@ -90,21 +111,35 @@
                 <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'New'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
                     <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}} - <b>{{req.SPA}}</b></div> <i class=" col s1 material-icons right for_expand">more_vert</i></div>
                     <div class=" collapsible-body">             <!--edit_card_panel-->
+                        <!--                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
+                                                <div class="row"><p class="col s12 m6 l6 ">Date</p><p class="col s12 m6 l6">{{req.date}}</p></div>-->
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Date</p><p class="col s12 m6 l6">{{req.date}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Size</p><p class="lll col s6 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">User Name</p><p class="lll col s6 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p><p class="lll col s6 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Comment</p><p class="lll col s6 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Type</p><p class="lll  col s6 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">URL</p><p class="lll col s6 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Location</p><p class="lll col s6 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Platform</p><p class="lll col s6 m6 l6">{{req.platform}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s6 m6 l6">{{req.date}}</p></div>
                     </div>
                 </li>
             </ul>    
@@ -211,9 +246,17 @@
             </ul>    
         </div>   
     </div>
-
+{{result}}ssss
 </section>
-
+<script>
+            $(document).ready(function () {
+            $(window).load(function () {                
+                $('#wait_moment').fadeOut('slow', function () {
+                    $(this).remove();                    
+                });
+            });            
+        });
+</script>
 
 <script src="js/materialize.min.js" type="text/javascript"></script>
 <!--http://krescruz.github.io/angular-materialize/#collapsible-->
