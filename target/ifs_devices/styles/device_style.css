@@ -179,7 +179,7 @@ h1.ng-binding {
 }
 
 .b_1 .devicelist li:hover {
-    background: #FDF6E3;
+/*    background: #FDF6E3;*/
     opacity: 1;
 /*    -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);

@@ -30,12 +30,12 @@ and open the template in the editor.
 
             <center>
                 <ul id="deviceS" class="grid clearfix ">
-                    <li ng-animate="'animate'" class = "clearfix hoverable" ng-repeat="item in devices| filter: query"> 
+                    <li ng-animate="'animate'" class = "clearfix hoverable" ng-repeat="item in devices| orderBy: ['transaction_Mode']"> 
                         <a href="#/details/{{devices.indexOf(item)}}">
-                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%;width: 10px; background-color: red;float: left; " > </div>
+<!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%;width: 10px; background-color: red;float: left; " > </div>
                             <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%;width: 10px; background-color: orange;float: left; " > </div>
-                            <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%; width: 10px; background-color: green; float: left;" > </div>
-                            <!--                        <div class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>-->
+                            <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%; width: 10px; background-color: green; float: left;" > </div>-->
+                            <div class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 18%;width: 15px; background-color: {{item.transaction_Mode}}; float: left;" > </div>
                             <img  ng-src="images/{{item.image_no}}.jpg">
                             <div class="info">
                                 <h3> {{item.name}} - [id  {{item.device_ID}}] </h3>
@@ -43,7 +43,6 @@ and open the template in the editor.
                                 <h4> {{item.type}} </h4>
                                 <h4> {{item.OS}} </h4>
                                 <h4> Owned by : {{item.sub_Product_Area_name}} </h4>
-
 
                             </div>
 

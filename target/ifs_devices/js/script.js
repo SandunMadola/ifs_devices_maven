@@ -8,6 +8,9 @@ $(document).ready(function () {
     $('.dropdown-button').dropdown();
 });
 
+
+
+
 //$(document).ready(function () {
 //    $(".b_count").click(function () {
 //        $("#collapse1").slideToggle("slow");
