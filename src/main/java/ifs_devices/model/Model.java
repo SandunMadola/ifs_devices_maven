@@ -115,6 +115,17 @@ public class Model {
         return update;
     }
 
-  
+  public String returnDeviceTransaction(int id) throws Exception {
+        System.out.println("Inside the model");
+        String ret = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            ret = Query.returnDeviceTransaction(id, connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return ret;
+    }
     
 }

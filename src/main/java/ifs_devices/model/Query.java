@@ -219,4 +219,22 @@ public class Query {
         return updateDevice;
     }
     
+   public static String returnDeviceTransaction(int id, Connection connection) throws SQLException {
+        System.out.println("Inside the Query");
+        
+        String query1 = "INSERT INTO returned_devices ( transaction_ID, transaction_Mode, transaction_Type, username, device_ID, from_Date, to_Date, returned_Date ) SELECT transaction_ID, transaction_Mode, transaction_Type, username, device_ID, from_Date, to_Date, CURDATE() FROM borrow_device WHERE transaction_ID = " + id + "";
+        String query2 = "DELETE FROM borrow_device WHERE transaction_ID = " + id + "";
+        System.out.println(query1);
+        System.out.println(query2);
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query1);
+            statement.executeUpdate(query2);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return "SUCCESS!!!";
+    }
+    
 }

@@ -196,10 +196,28 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.transactionID = $("#getTransID").text();
 
             if (returnDevice.userName == $scope.username) {
-                $scope.msg = "Request granted!";
-                $(".call_to_modal").click();
+//                $scope.msg = "Request granted!";
+//                $(".call_to_modal").click();
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                var xx = 'webapi/return/' + $scope.transactionID;
+                var res = $http.delete(xx, config);
+                res.success(function (data, status, headers, config) {
+
+                    $scope.msg = "Return request Sent Successfully!";
+                    $(".call_to_modal").click();
+
+                });
+                res.error(function (data, status, headers, config) {
+                    $scope.msg = "Request Unsuccessful";
+//                alert("failure message: " + JSON.stringify({data: data}));
+                    $(".call_to_modal").click();
+                });
             } else {
-                $scope.msg = "Wrong Username! Request Cannot be granted!";
+                $scope.msg = "Incorrect Username! Return request Cannot be granted";
                 $(".call_to_modal").click();
             }
         };
@@ -231,7 +249,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                     $(".call_to_modal").click();
                 });
             } else {
-                $scope.msg = "Cancel request Cannot be granted!";
+                $scope.msg = "Incorrect Username! Cancel request Cannot be granted";
                 $(".call_to_modal").click();
             }
         };
