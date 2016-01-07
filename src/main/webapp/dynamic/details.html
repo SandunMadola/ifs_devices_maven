@@ -35,7 +35,7 @@
                         <p style="width: 3%; float: left"> </p>
                         <button  style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" class="waves-effect waves-light btn " >Get</button>
+                        <button style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal5" class="Get waves-effect waves-light btn modal-trigger" >Get</button>
                         <p style="width: 3%; float: left"> </p>
                         <button style="margin-top:  20px; width: 17%; float: left; height: 46px; " type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger" >Cancel</button>
                         <p style="width: 3%; float: left"> </p>
@@ -58,7 +58,7 @@
                         <p style="width: 3%; float: left"> </p>
                         <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal22" class="Later waves-effect waves-light btn modal-trigger">Later</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" class="waves-effect waves-light btn modal-trigger">Get Now</button>
+                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px; " type="button" data-target="modal55" class="Get waves-effect waves-light btn modal-trigger">Get </button> 
                         <p style="width: 3%; float: left"> </p>
                         <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal44" class="Cancel waves-effect waves-light btn modal-trigger">Cancel</button>
                         <p style="width: 3%; float: left"> </p>
@@ -80,7 +80,7 @@
                                 </div>-->
 
                 <div class="fixed-action-btn" style="bottom: 10px; right: 5px;">
-                    <a class="btn-floating btn-large purple" href="#/details/{{whichItem}}/edit_mode">
+                    <a class="btn-floating btn-large purple" href="#/details/{{devices[whichItem]}}/edit_mode">
                         <i class="material-icons">mode_edit</i>
                     </a>
 
@@ -108,11 +108,15 @@
                         <h3> Resolution : {{devices[whichItem].resolution}} inches</h3>
                         <h3> Location : {{devices[whichItem].location}}</h3>
                         <h3> URL : {{devices[whichItem].URL}}</h3>
-
+                        
                     </div>
 
                 </div>
                 
+                <!--To get data to the controller from the front-end-->
+                <div ng-hide="true" > 
+                    <p id="getTransID" >{{devices[whichItem].transaction_ID}}</p>
+                </div>
                 <div ng-hide="true" > 
                     <p id="getcolor" >{{devices[whichItem].transaction_Mode}}</p>
                 </div>
@@ -175,7 +179,7 @@
 
 
 
-                                        <p>{{now}}</p>
+<!--                                        <p>{{now}}</p>-->
                 </div>
                 <div class="modal-footer">
                     <a  ng-click="SendData(now)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
@@ -250,7 +254,23 @@
 
                 </div>
                 <div  class="modal-footer">
-                    <a  ng-click="SendData3(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                    <a  ng-click="SendData4(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div>
+
+             <div id="modal5" class="modal " style="width: 360px; max-height: 50%; height: 45%;" >
+                <div class="modal-content" >
+                    <h4>Get the booked device Now</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un5" type="text" class="validate" maxlength="6" ng-model="get.userName" length="6" required>
+                        <label for="un5">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData5(get)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
                 </div>
             </div>
             
@@ -260,7 +280,7 @@
 <!--                                now button start-->
 
 <!--                                 Modal Structure     -->
-            <div id="modal11" class="modal" style="width: 100%; max-height: 100%; height: 100%;"  >
+            <div id="modal11" class="modal" style="width: 360px; max-height: 100%; height: auto;"  >
                 <div class="modal-content" >
                     <h4>Borrow Now</h4>
 
@@ -289,8 +309,7 @@
 
                                                                     <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
                     </div> 
-                    <br> <br> <br> <br>
-                    <p>{{now}}</p>
+                    
                 </div>
 
 <!--                                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
@@ -331,7 +350,7 @@
             </div>   
 <!--                                now button end-->
 <!--                                later button start-->
-            <div id="modal22" class="modal" style="width: 100%; max-height: 100%; height: 100%;" >
+            <div id="modal22" class="modal" style="width: 360px; max-height: 100%; height: auto;" >
                 <div class="modal-content" >
                     <h4>Borrow Later</h4>
                     <div class="input-field">
@@ -402,7 +421,7 @@
 
 <!--                                later button end-->
 
-            <div id="modal33" class="modal " style="width: 360px; max-height: 100%; height: 50%;" >
+            <div id="modal33" class="modal " style="width: 360px; max-height: 100%; height: auto;" >
                 <div class="modal-content" >
                     <h4>Return the device</h4>
                     <br>
@@ -418,7 +437,7 @@
                 </div>
             </div> 
             
-            <div id="modal44" class="modal " style="width: 360px; max-height: 100%; height: 50%;" >
+            <div id="modal44" class="modal " style="width: 360px; max-height: 100%; height: auto;" >
                 <div class="modal-content" >
                     <h4>Cancel the device</h4>
                     <br>
@@ -430,9 +449,26 @@
 
                 </div>
                 <div  class="modal-footer">
-                    <a  ng-click="SendData3(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                    <a  ng-click="SendData4(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
                 </div>
             </div>
+
+            <div id="modal55" class="modal " style="width: 360px; max-height: 100%; height: auto;" >
+                <div class="modal-content" >
+                    <h4>Get the booked device Now</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un55" type="text" class="validate" maxlength="6" ng-model="get.userName" length="6" required>
+                        <label for="un55">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData5(get)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div>
+
         </form>
 
 <!--            show on small-->

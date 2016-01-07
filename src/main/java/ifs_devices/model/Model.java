@@ -101,4 +101,20 @@ public class Model {
 
         return del;
     }
+    
+    public BorrowDevice updateDevice(BorrowDevice updateDevice) throws Exception {
+        System.out.println("Inside the model");
+        BorrowDevice update = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            update = Query.updateDevice(updateDevice, connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return update;
+    }
+
+  
+    
 }

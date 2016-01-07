@@ -5,25 +5,26 @@
  */
 package ifs_devices.service;
 
+import ifs_devices.model.BorrowDevice;
 import ifs_devices.model.Model;
 
 /**
  *
  * @author nedilk
  */
-public class CancelService {
+public class GetDeviceService {
     
-    public String deleteTransaction(int id) {
-        System.out.println("CancelService delete call"); 
-        String delTrans = null;
+    public BorrowDevice updateDevice(BorrowDevice updatedevice) {
+        System.out.println("GetDeviceService Update");
+        BorrowDevice update = null;
         try {
             Model model = new Model();
-            delTrans = model.deleteTransaction(id);
+            update = model.updateDevice(updatedevice);
         } catch (Exception e) {
             System.out.println("error");
-        }        
-        return delTrans;
-    }
+        }
 
+        return update;
+    }
     
 }

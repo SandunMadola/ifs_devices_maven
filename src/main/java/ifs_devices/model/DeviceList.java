@@ -27,6 +27,7 @@ public class DeviceList {
     private String username;
     private String location;
     private String transaction_Mode;
+    private int transaction_ID;
     
 
     public String getName() {
@@ -157,6 +158,13 @@ public class DeviceList {
     public void setTransaction_Mode(String transaction_Mode) {
         this.transaction_Mode = transaction_Mode;
     }
-    
+
+    public int getTransaction_ID() {
+        return transaction_ID;
+    }
+
+    public void setTransaction_ID(int transaction_ID) {
+        this.transaction_ID = transaction_ID;
+    }
     
 }

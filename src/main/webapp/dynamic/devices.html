@@ -66,11 +66,14 @@
 
                             <div class="buttonClass col s12 m2 l2" >
                                 <button ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}"  style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Now </button>
+                                 <p ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="col s1 hide-on-med-and-up"> </p>
+                                <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
+                                 <p class="col s1 hide-on-med-and-up"> </p>
                                 <button ng-show="{{item.transaction_Mode == 'red'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Return </button>
                                 <button ng-show="{{item.transaction_Mode == 'orange'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Get Now </button>
                                 <button ng-show="{{item.transaction_Mode == 'orange'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Cancel </button>
                                 <p class="col s1 hide-on-med-and-up"> </p>
-                                <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
+                                
 
                             </div>
                         </a>

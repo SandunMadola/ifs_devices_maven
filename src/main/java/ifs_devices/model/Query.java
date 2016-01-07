@@ -178,6 +178,7 @@ public class Query {
                 devicels.setLocation(rs.getString("location"));
                 devicels.setTransaction_Mode(rs.getString("transaction_Mode"));
                 devicedata.add(devicels);
+                devicels.setTransaction_ID(rs.getInt("transaction_ID"));
             }
             return devicedata;
         } catch (Exception e) {
@@ -198,4 +199,24 @@ public class Query {
 
         return "SUCCESS!!!";
     }
+    
+    public static BorrowDevice updateDevice(BorrowDevice updateDevice, Connection connection) throws SQLException {
+        System.out.println("Inside the Query");
+        
+        String transaction_Mode = updateDevice.getTransaction_Mode();
+        String transaction_Type = updateDevice.getTransaction_Type();
+        int transaction_ID = updateDevice.getTransaction_ID();
+     
+        String query = "UPDATE borrow_device SET transaction_Mode = 'red', transaction_Type = 'return' WHERE transaction_ID = " + transaction_ID;
+        System.out.println(query);
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return updateDevice;
+    }
+    
 }

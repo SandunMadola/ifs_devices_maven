@@ -5,9 +5,10 @@
  */
 package ifs_devices.resources;
 
-import ifs_devices.service.CancelService;
+import ifs_devices.model.BorrowDevice;
+import ifs_devices.service.GetDeviceService;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -17,21 +18,18 @@ import javax.ws.rs.core.MediaType;
  *
  * @author nedilk
  */
-
-@Path("/cancel")
+@Path("/get")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-
-public class CancelResource {
+public class GetResource {
     
-   CancelService cancelService = new CancelService();
-  
-    @DELETE
+    GetDeviceService getDeviceService = new GetDeviceService();
+    
+    @PUT
     @Path("/{transaction_ID}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String deleteTransaction(@PathParam("transaction_ID") int id) {
-        System.out.println("/cancel DELETE call");
-        return cancelService.deleteTransaction(id);
+    public BorrowDevice updateDevice(@PathParam("transaction_ID") int id, BorrowDevice updatedevice) {
+        updatedevice.setTransaction_ID(id);
+        return getDeviceService.updateDevice(updatedevice);
     }
     
 }

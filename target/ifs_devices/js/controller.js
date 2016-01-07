@@ -193,6 +193,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
         $scope.SendData3 = function (returnDevice) {
  
             $scope.username = $("#getun").text();
+            $scope.transactionID = $("#getTransID").text();
 
             if (returnDevice.userName == $scope.username) {
                 $scope.msg = "Request granted!";
@@ -206,19 +207,21 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
         $scope.SendData4 = function (cancel) {
  
             $scope.username = $("#getun").text();
+            $scope.transactionID = $("#getTransID").text();
 
             if (cancel.userName == $scope.username) {
-                $scope.msg = "Request granted!";
-                $(".call_to_modal").click();
+//                $scope.msg = "Request granted!";
+//                $(".call_to_modal").click();
                 var config = {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 };
-                var res = $http.delete('webapi/cancel/{transaction_ID}', config);
+                var x = 'webapi/cancel/'+$scope.transactionID;
+                var res = $http.delete(x, config);
                 res.success(function (data, status, headers, config) {
 
-                    $scope.msg = "Request Sent Successfully!!!";
+                    $scope.msg = "Cancel request Sent Successfully!";
                     $(".call_to_modal").click();
 
                 });
@@ -228,11 +231,43 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                     $(".call_to_modal").click();
                 });
             } else {
-                $scope.msg = "Request Cannot be granted!";
+                $scope.msg = "Cancel request Cannot be granted!";
                 $(".call_to_modal").click();
             }
         };
 
+        $scope.SendData5 = function (get) {
+ 
+            $scope.username = $("#getun").text();
+            $scope.transactionID = $("#getTransID").text();
+
+            if (get.userName == $scope.username) {
+//                $scope.msg = "Request granted!";
+//                $(".call_to_modal").click();
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                var xx = 'webapi/get/'+$scope.transactionID;
+                var res = $http.put(xx, config);
+                res.success(function (data, status, headers, config) {
+
+                    $scope.msg = "Get Now request Sent Successfully!";
+                    $(".call_to_modal").click();
+
+                });
+                res.error(function (data, status, headers, config) {
+                    $scope.msg = "Request Unsuccessful";
+//                alert("failure message: " + JSON.stringify({data: data}));
+                    $(".call_to_modal").click();
+                });
+            } else {
+                $scope.msg = "Get Now request Cannot be granted!";
+                $(".call_to_modal").click();
+            }
+        };
+        
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();

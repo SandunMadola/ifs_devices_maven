@@ -78,6 +78,10 @@
     
 }
 
+.b_3 ng-show ng-hide {
+    display: none;
+}
+
 /*.b_3 input[type=text] {
     
 height: 3rem;
