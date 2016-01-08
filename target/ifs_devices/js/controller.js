@@ -128,7 +128,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             var res = $http.post('webapi/borrowNow', Nowdata, config);
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
-                $scope.msg = "Request Sent Successfully!!!";
+                $scope.msg = "Device is successfully borrowed";
                 $(".call_to_modal").click();
 
             });
@@ -152,8 +152,9 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             format: 'yyyy-mm-dd',
             formatSubmit: 'yyyy/mm/dd'
         });
-
+            
         $scope.SendData2 = function (later) {
+
 
             $scope.l = parseInt(later.to);
             $scope.lt = new Date(new Date().setDate((new Date(later.from)).getDate() + $scope.l));
@@ -179,12 +180,12 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             var res = $http.post('webapi/borrowNow', Laterdata, config);
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
-                $scope.msg = "Request Sent Successfully!!!";
+                $scope.msg = "Device is booked successfully";
                 $(".call_to_modal").click();
 
             });
             res.error(function (data, status, headers, config) {
-                $scope.msg = "Request Unsuccessful";
+                $scope.msg = "Book device later request unsuccessful";
                 alert("failure message: " + JSON.stringify({data: data}));
                 $(".call_to_modal").click();
             });
@@ -207,17 +208,17 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 var res = $http.delete(xx, config);
                 res.success(function (data, status, headers, config) {
 
-                    $scope.msg = "Return request Sent Successfully!";
+                    $scope.msg = "Device is successfully returned";
                     $(".call_to_modal").click();
 
                 });
                 res.error(function (data, status, headers, config) {
-                    $scope.msg = "Request Unsuccessful";
+                    $scope.msg = "Return device request Unsuccessful";
 //                alert("failure message: " + JSON.stringify({data: data}));
                     $(".call_to_modal").click();
                 });
             } else {
-                $scope.msg = "Incorrect Username! Return request Cannot be granted";
+                $scope.msg = "Incorrect Username! Return request cannot be granted";
                 $(".call_to_modal").click();
             }
         };
@@ -239,17 +240,17 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 var res = $http.delete(x, config);
                 res.success(function (data, status, headers, config) {
 
-                    $scope.msg = "Cancel request Sent Successfully!";
+                    $scope.msg = "Device booking is cancelled";
                     $(".call_to_modal").click();
 
                 });
                 res.error(function (data, status, headers, config) {
-                    $scope.msg = "Request Unsuccessful";
+                    $scope.msg = "Cancelling a booking unsuccessful";
 //                alert("failure message: " + JSON.stringify({data: data}));
                     $(".call_to_modal").click();
                 });
             } else {
-                $scope.msg = "Incorrect Username! Cancel request Cannot be granted";
+                $scope.msg = "Incorrect Username! Cancel request cannot be granted";
                 $(".call_to_modal").click();
             }
         };
@@ -271,17 +272,17 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 var res = $http.put(xx, config);
                 res.success(function (data, status, headers, config) {
 
-                    $scope.msg = "Get Now request Sent Successfully!";
+                    $scope.msg = "This device is successfully taken now";
                     $(".call_to_modal").click();
 
                 });
                 res.error(function (data, status, headers, config) {
-                    $scope.msg = "Request Unsuccessful";
+                    $scope.msg = "Get now request unsuccessful";
 //                alert("failure message: " + JSON.stringify({data: data}));
                     $(".call_to_modal").click();
                 });
             } else {
-                $scope.msg = "Get Now request Cannot be granted!";
+                $scope.msg = "Incorrect username! Get Now request cannot be granted";
                 $(".call_to_modal").click();
             }
         };
@@ -293,7 +294,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15 // Creates a dropdown of 15 years to control year
+            selectYears: 15// Creates a dropdown of 15 years to control year
         });
 
     }]);

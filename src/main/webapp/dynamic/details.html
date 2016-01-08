@@ -16,7 +16,7 @@
                 <div class=" row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
                     <div  style="width: 30%; float: left"> 
                         <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div> 
-                        <h2  style="text-align: left"> <b>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b> </h1>
+                        <h3  style="text-align: left"> <b>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b> </h3>
                     </div>
                 
                     <div  style="width: 70%; float: left; "> 
@@ -50,7 +50,7 @@
                      width: 100% ">
                     <div  style=" width: 100%; float: left; "> 
                         <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div>     
-                        <h2> <b> {{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b></h2>
+                        <h3> <b> {{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b></h3>
                     </div>
 
                     <div style="width: 100%; float: left; margin-left: 10px; background-color: #fafafa;"> 
@@ -88,7 +88,7 @@
 
                 <div class="device cf" ng-model="devices">
 
-                    <div class="col s12 m3 l4 hide-on-med-and-down">
+                    <div class="col s12 m3 l4 hide-on-med-and-down" >
                         <img  style="width: 20%; " ng-src="images/{{devices[whichItem].image_no}}.jpg">
 
                     </div>
@@ -97,10 +97,11 @@
 <!--margin-top: 160px--><img  style="width: 40%; margin-top: 190px" ng-src="images/{{devices[whichItem].image_no}}.jpg">
                     </div>
                   
-                    <div class="info">
+                    <div class="info" style="text-align: left; margin-left: 25px;">
 
 
-                        <h2> Type : {{devices[whichItem].type}}</h2>
+<!--                        <h3 class="col l6"> Type : </h3> <h3 class="col l6">{{devices[whichItem].type}}</h3>-->
+                        <h3> Type : {{devices[whichItem].type}}</h3>
                         <h3> Platform : {{devices[whichItem].platform}}</h3>
                         <h3> OS : {{devices[whichItem].OS}}</h3>
                         <h3> Belongs to : {{devices[whichItem].sub_Product_Area_name}}</h3>
@@ -197,7 +198,7 @@
                     </div>
                     <div class="input-field">
                         <i class="material-icons prefix">today</i>
-                        <input id="calender" format="yyyy-MM-dd" type="text" class="datepicker" ng-model="later.from" required>
+                        <input id="calender" format="yyyy-MM-dd" type="text" class="datepicker" disable="disable" ng-model="later.from" required>
                         <label for="calender">From</label>
                     </div>
                     <div class="input-field">
