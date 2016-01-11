@@ -10,19 +10,24 @@
             });            
         });
 </script>-->
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+</script>
 <section class="requested"> 
     <div id="wait_moment">
-    <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
-            </div><div class="gap-patch">
-                <div class="circle"></div>
-            </div><div class="circle-clipper right">
-                <div class="circle"></div>
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
             </div>
-        </div>
-    </div></div>
+        </div></div>
     <div class="switch col s12 row" style="margin-bottom: 1px">
         <h5 class="col s5" style="text-align: right">Requested</h5>
         <label class="col s2">
@@ -34,14 +39,9 @@
         <h5 class="col s5" style="text-align: left">Completed</h5>
     </div>
 
-    <div class="row" style="margin-bottom: 1px">
+    <div class="row show-on-medium-and-up hide-on-small-only" style="margin-bottom: 1px">
 
-        <div class="col s2 m1 l1" style="float: left; text-align: left">
-            <a class="hoverable waves-effect waves-light" ng-click="showInputLabel = !showInputLabel"><i class="material-icons">filter_list</i></a>           
-        </div>
-
-        <div class="input-field col s10 m5 l5" ng-show="showInputLabel">
-            <!--            <input id="last_name" type="text" ng-model="xxx" class="validate">-->
+        <div class="input-field col s10 m5 l5" ng-show="showInputLabel">            
             <input id="Custom_filter" type="text" class="validate" ng-model="custom_filter" >
             <label for="Custom_filter">Filter</label>
         </div> 
@@ -60,8 +60,38 @@
                 <label for="c3">Date</label>            
             </p>
         </div>
+        <div class="col s2 m1 l1" style="float: right; text-align: left">
+            <a class="hoverable waves-effect waves-light" ng-click="showInputLabel = !showInputLabel"><i class="material-icons">filter_list</i></a>           
+        </div>
+    </div>
+    <div class="row show-on-small-only hide-on-med-and-up" style="margin-bottom: 1px">
+
+        <div class="input-field col s10 m5 l5" ng-show="showInputLabel">            
+            <input id="Custom_filter" type="text" class="validate" ng-model="custom_filter" >
+            <label for="Custom_filter">Filter</label>
+        </div> 
+        
+        <div class="col s2 m1 l1" style="float: right; text-align: left">
+            <a class="hoverable waves-effect waves-light" ng-click="showInputLabel = !showInputLabel"><i class="material-icons">filter_list</i></a>           
+        </div>
+        
+        <div class="col s12 m6 l6">
+            <p class="col s4 m4 l4" ng-show="showInputLabel">
+                <input type="checkbox" id="c1" ng-model="spa"  ng-true-value="SPA" ng-false-value=""/>
+                <label for="c1">SPA</label>            
+            </p>
+            <p class="col s4 m4 l4" ng-show="showInputLabel">
+                <input type="checkbox" id="c2" ng-model="prio"  ng-true-value="priority" ng-false-value=""/>
+                <label for="c2">Priority</label>            
+            </p>
+            <p class="col s4 m4 l4" ng-show="showInputLabel">
+                <input type="checkbox" id="c3" ng-model="dat"  ng-true-value="date" ng-false-value=""/>
+                <label for="c3">Date</label>            
+            </p>
+        </div>
 
     </div>
+
 
     <div class="row" id="tab1" ng-show="!checked">
         <div class="col s12">
@@ -71,14 +101,15 @@
             </ul>
         </div>  
 
-        <div id="test1" class="col s12 m12 l12">            
-            <ul class="collapsible" data-collapsible="accordion" watch>            
-                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'New'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">                         
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6">{{req.device_name}}</div> <div class="col m3 l3">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
-                    <div class="collapsible-body">
+        <div id="test1" class="col s12 m12 l12">
+            <ul class="collapsible" data-collapsible="accordion" watch>        
+                <!--Large and Medium devices-->
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'New'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-body" ng-hide="_edit1"> <!--View Mode-->             
 
-                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="lll col s12 m6 l6">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                        <div class="row"><p class="lll col s12 m6 l6 ">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>                        
                         <div class="row"><p class="lll col s12 m6 l6 ">Project</p><p class="lll col s12 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p><p class="lll col s12 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p><p class="lll col s12 m6 l6">{{req.resolution}}</p></div>
@@ -87,45 +118,99 @@
                         <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m6 l6">{{req.date}}</p></div>
-                        <!--                        
-                                                <p>dd</p><p>{{req.device_name}}</p>
-                                                <p>{{req.priority}}</p>
-                                                <p>{{req.project}}</p>
-                                                <p>{{req.request_Status}}</p>
-                                                <p>{{req.resolution}}</p>
-                                                <p>{{req.size}}</p>
-                                                <p>{{req.SPA}}</p>
-                                                <p>{{req.OS}}</p>
-                                                <p>{{req.comment}}</p>
-                                                <p>{{req.type}}</p>
-                                                <p>{{req.userName}}</p>
-                                                <p>{{req.URL}}</p>
-                                                <p>{{req.location}}</p>
-                                                <p>{{req.platform}}</p>-->
+                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s12 m1 l1 " ng-click="_edit1 = !_edit1" ng-hide="_edit1">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
                     </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit1"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s12 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s12 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s12 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s12 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s12 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s12 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s12 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p>
+                                <input disabled class="lll col s12 m2 l2" type="search" value="{{req.request_Status}}"/>                             
+                                <div class=" col m1 l1"> <pre>  </pre></div>                            
+                                <select class="browser-default validate lll col s12 m2 l2" ng-click="bb(changed)"ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s12 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s12 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s12 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s12 m4 l4" type="search" value="{{req.date}}"/>
+                                <div class="lll col m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit1 = !_edit1" ng-hide="_edit1"><i class="material-icons">edit_mode</i></div>-->
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="[_edit1 = !_edit1]" ng-show="_edit1" >
+                                        <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                    </div>                   
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="update(req, changed)" ng-show="_edit1">
+                                        <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </li>
+
                 <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'New'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}} - <b>{{req.SPA}}</b></div> <i class=" col s1 material-icons right for_expand">more_vert</i></div>
-                    <div class=" collapsible-body">             <!--edit_card_panel-->
-                        <!--                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
-                                                <div class="row"><p class="col s12 m6 l6 ">Date</p><p class="col s12 m6 l6">{{req.date}}</p></div>-->
+                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8" style="text-align: left;">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>                    
+                    <div class="collapsible-body" ng-hide="_edit1"> <!--View Mode-->             
+
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
                         <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
@@ -136,23 +221,107 @@
                         <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p><p class="lll col s6 m6 l6">{{req.OS}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Comment</p><p class="lll col s6 m6 l6">{{req.comment}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Type</p><p class="lll  col s6 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="lll col s6 m6 l6 ">URL</p><p class="lll col s6 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">URL</p><p class="lll col s6 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Location</p><p class="lll col s6 m6 l6">{{req.location}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Platform</p><p class="lll col s6 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s6 m6 l6">{{req.date}}</p></div>
+                        <!--<div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s6 m6 l6">{{req.date}}</p></div>-->
+                        <div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s4 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s2 m1 l1 " ng-click="_edit1 = !_edit1" ng-hide="_edit1">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
                     </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit1"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s6 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s6 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s6 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s6 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s6 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s6 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s6 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Request Status<input disabled type="search" value="{{req.request_Status}}"/></p>
+                                <!--                                <input disabled class="lll col s3 m2 l2" type="search" value="{{req.request_Status}}"/>                             -->
+                                <!--<div class=" col m1 l1"> <pre>  </pre></div>-->                            
+                                <select class="browser-default validate lll col s6 m2 l2" ng-click="bb(changed)" ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s6 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s6 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s6 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s6 m4 l4" type="search" value="{{req.date}}"/>
+                            </div>
+                            <div class="lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit1 = !_edit1" ng-hide="_edit1"><i class="material-icons">edit_mode</i></div>-->
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="[_edit1 = !_edit1]" ng-show="_edit1" >
+                                    <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                </div>                   
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(req, changed)" ng-show="_edit1">
+                                    <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </li>
             </ul>    
-        </div>
+        </div>  
 
         <div id="test2" class="col s12 m12 l12">
-            <ul class="collapsible" data-collapsible="accordion" watch>            
+            <ul class="collapsible" data-collapsible="accordion" watch>        
+                <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'In progress'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6">{{req.device_name}}</div> <div class="col m3 l3">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
-                    <div class="collapsible-body">
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-body" ng-hide="_edit2"> <!--View Mode-->             
 
-                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="lll col s12 m6 l6">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                        <div class="row"><p class="lll col s12 m6 l6 ">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>                        
                         <div class="row"><p class="lll col s12 m6 l6 ">Project</p><p class="lll col s12 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p><p class="lll col s12 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p><p class="lll col s12 m6 l6">{{req.resolution}}</p></div>
@@ -161,35 +330,200 @@
                         <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m6 l6">{{req.date}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s12 m1 l1 " ng-click="_edit2 = !_edit2" ng-hide="_edit2">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
                     </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit2"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s12 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s12 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s12 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s12 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s12 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s12 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s12 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p>
+                                <input disabled class="lll col s12 m2 l2" type="search" value="{{req.request_Status}}"/>                             
+                                <div class=" col m1 l1"> <pre>  </pre></div>                            
+                                <select class="browser-default validate lll col s12 m2 l2" ng-click="bb(changed)"ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s12 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s12 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s12 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s12 m4 l4" type="search" value="{{req.date}}"/>
+                                <div class="lll col m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit2 = !_edit2" ng-hide="_edit2"><i class="material-icons">edit_mode</i></div>-->
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="[_edit2 = !_edit2]" ng-show="_edit2" >
+                                        <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                    </div>                   
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="update(req, changed)" ng-show="_edit2">
+                                        <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </li>
 
                 <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'In progress'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>
-                    <div class=" collapsible-body">             <!--edit_card_panel-->
+                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8" style="text-align: left;">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>                    
+                    <div class="collapsible-body" ng-hide="_edit2"> <!--View Mode-->             
+
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Date</p><p class="col s12 m6 l6">{{req.date}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Size</p><p class="lll col s6 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">User Name</p><p class="lll col s6 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p><p class="lll col s6 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Comment</p><p class="lll col s6 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Type</p><p class="lll  col s6 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">URL</p><p class="lll col s6 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Location</p><p class="lll col s6 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Platform</p><p class="lll col s6 m6 l6">{{req.platform}}</p></div>
+                        <!--<div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s6 m6 l6">{{req.date}}</p></div>-->
+                        <div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s4 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s2 m1 l1 " ng-click="_edit2 = !_edit2" ng-hide="_edit2">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
                     </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit2"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s6 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s6 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s6 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s6 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s6 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s6 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s6 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Request Status<input disabled type="search" value="{{req.request_Status}}"/></p>
+                                <!--                                <input disabled class="lll col s3 m2 l2" type="search" value="{{req.request_Status}}"/>                             -->
+                                <!--<div class=" col m1 l1"> <pre>  </pre></div>-->                            
+                                <select class="browser-default validate lll col s6 m2 l2" ng-click="bb(changed)" ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s6 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s6 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s6 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s6 m4 l4" type="search" value="{{req.date}}"/>
+                            </div>
+                            <div class="lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit2 = !_edit2" ng-hide="_edit2"><i class="material-icons">edit_mode</i></div>-->
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="[_edit2 = !_edit2]" ng-show="_edit2" >
+                                    <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                </div>                   
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(req, changed)" ng-show="_edit2">
+                                    <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </li>
             </ul>    
-        </div>  
+        </div>
 
 
     </div>
@@ -197,17 +531,18 @@
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s6 col l3"><a href="#test3">Completed</a></li>
-                <li class="tab col s6 col l3"><a href="#test5">Rejected</a></li>                               
+                <li class="tab col s6 col l3"><a href="#test4">Rejected</a></li>                               
             </ul>
         </div>
         <div id="test3" class="col s12 m12 l12">
-            <ul class="collapsible" data-collapsible="accordion" watch>            
-                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Complete'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6">{{req.device_name}}</div> <div class="col m3 l3">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
-                    <div class="collapsible-body">
+            <ul class="collapsible" data-collapsible="accordion" watch>        
+                <!--Large and Medium devices-->
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Completed'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-body" ng-hide="_edit3"> <!--View Mode-->             
 
-                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="lll col s12 m6 l6">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                        <div class="row"><p class="lll col s12 m6 l6 ">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>                        
                         <div class="row"><p class="lll col s12 m6 l6 ">Project</p><p class="lll col s12 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p><p class="lll col s12 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p><p class="lll col s12 m6 l6">{{req.resolution}}</p></div>
@@ -216,46 +551,434 @@
                         <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
                         <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m6 l6">{{req.date}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s12 m1 l1 " ng-click="_edit3 = !_edit3" ng-hide="_edit3">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
                     </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit3"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s12 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s12 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s12 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s12 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s12 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s12 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s12 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p>
+                                <input disabled class="lll col s12 m2 l2" type="search" value="{{req.request_Status}}"/>                             
+                                <div class=" col m1 l1"> <pre>  </pre></div>                            
+                                <select class="browser-default validate lll col s12 m2 l2" ng-click="bb(changed)"ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s12 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s12 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s12 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s12 m4 l4" type="search" value="{{req.date}}"/>
+                                <div class="lll col m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit3 = !_edit3" ng-hide="_edit3"><i class="material-icons">edit_mode</i></div>-->
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="[_edit3 = !_edit3]" ng-show="_edit3" >
+                                        <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                    </div>                   
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="update(req, changed)" ng-show="_edit3">
+                                        <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </li>
 
-                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'Complete'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>
-                    <div class=" collapsible-body">             <!--edit_card_panel-->
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'Completed'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8" style="text-align: left;">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>                    
+                    <div class="collapsible-body" ng-hide="_edit3"> <!--View Mode-->             
+
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Priority</p><p class="col s12 m6 l6">{{req.priority}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Project</p><p class="col s12 m6 l6">{{req.project}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Request Status</p><p class="col s12 m6 l6">{{req.request_Status}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Resolution</p><p class="col s12 m6 l6">{{req.resolution}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Size</p><p class="col s12 m6 l6">{{req.size}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Sub Product Area</p><p class="col s12 m6 l6">{{req.SPA}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Operating System</p><p class="col s12 m6 l6">{{req.OS}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Comment</p><p class="col s12 m6 l6">{{req.comment}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Type</p><p class="col s12 m6 l6">{{req.type}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">URL</p><p class="col s12 m6 l6"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Location</p><p class="col s12 m6 l6">{{req.location}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">User Name</p><p class="col s12 m6 l6">{{req.userName}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Platform</p><p class="col s12 m6 l6">{{req.platform}}</p></div>
-                        <div class="row"><p class="col s12 m6 l6 ">Date</p><p class="col s12 m6 l6">{{req.date}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Size</p><p class="lll col s6 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">User Name</p><p class="lll col s6 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p><p class="lll col s6 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Comment</p><p class="lll col s6 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Type</p><p class="lll  col s6 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">URL</p><p class="lll col s6 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Location</p><p class="lll col s6 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Platform</p><p class="lll col s6 m6 l6">{{req.platform}}</p></div>
+                        <!--<div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s6 m6 l6">{{req.date}}</p></div>-->
+                        <div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s4 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s2 m1 l1 " ng-click="_edit3 = !_edit3" ng-hide="_edit3">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
                     </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit3"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s6 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s6 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s6 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s6 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s6 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s6 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s6 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Request Status<input disabled type="search" value="{{req.request_Status}}"/></p>
+                                <!--                                <input disabled class="lll col s3 m2 l2" type="search" value="{{req.request_Status}}"/>                             -->
+                                <!--<div class=" col m1 l1"> <pre>  </pre></div>-->                            
+                                <select class="browser-default validate lll col s6 m2 l2" ng-click="bb(changed)" ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s6 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s6 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s6 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s6 m4 l4" type="search" value="{{req.date}}"/>
+                            </div>
+                            <div class="lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit3 = !_edit3" ng-hide="_edit3"><i class="material-icons">edit_mode</i></div>-->
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="[_edit3 = !_edit3]" ng-show="_edit3" >
+                                    <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                </div>                   
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(req, changed)" ng-show="_edit3">
+                                    <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </li>
             </ul>    
-        </div>   
+        </div> 
+
+        <div id="test4" class="col s12 m12 l12">
+            <ul class="collapsible" data-collapsible="accordion" watch>        
+                <!--Large and Medium devices-->
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Rejected'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-body" ng-hide="_edit4"> <!--View Mode-->             
+
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                        <div class="row" style="color: red"><p class="lll col s12 m6 l6 ">Rejected :</p><p class="lll col s12 m6 l6">{{req.reject_comment}}</p></div>                        
+                        <div class="row"><p class="lll col s12 m6 l6 ">Priority</p><p class="lll col s12 m6 l6">{{req.priority}}</p></div>                        
+                        <div class="row"><p class="lll col s12 m6 l6 ">Project</p><p class="lll col s12 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p><p class="lll col s12 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p><p class="lll col s12 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Size</p><p class="lll col s12 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">User Name</p><p class="lll col s12 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p><p class="lll col s12 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Comment</p><p class="lll col s12 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Type</p><p class="lll  col s12 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">URL</p><p class="lll col s12 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Location</p><p class="lll col s12 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Platform</p><p class="lll col s12 m6 l6">{{req.platform}}</p></div>
+                        <div class="row"><p class="lll col s12 m6 l6 ">Date</p><p class="lll col s12 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s12 m1 l1 " ng-click="_edit4 = !_edit4" ng-hide="_edit4">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
+                    </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit4"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s12 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s12 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s12 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s12 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s12 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s12 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s12 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s12 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Request Status</p>
+                                <input disabled class="lll col s12 m2 l2" type="search" value="{{req.request_Status}}"/>                             
+                                <div class=" col m1 l1"> <pre>  </pre></div>                            
+                                <select class="browser-default validate lll col s12 m2 l2" ng-click="bb(changed)"ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s12 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s12 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s12 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s12 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s12 m4 l4" type="search" value="{{req.date}}"/>
+                                <div class="lll col m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="[_edit4 = !_edit4]" ng-show="_edit4" >
+                                        <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                    </div>                   
+                                    <div class="btn-small waves-effect waves-light left col m6 l6" ng-click="update(req, changed)" ng-show="_edit4">
+                                        <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
+                </li>
+
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'Rejected'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                    <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8" style="text-align: left;">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>                    
+                    <div class="collapsible-body" ng-hide="_edit4"> <!--View Mode-->             
+
+                        <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
+                        <div class="row" style="color: red"><p class="lll col s6 m6 l6 ">Rejected :</p><p class="lll col s6 m6 l6">{{req.reject_comment}}</p></div>                        
+                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Size</p><p class="lll col s6 m6 l6">{{req.size}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">User Name</p><p class="lll col s6 m6 l6">{{req.userName}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p><p class="lll col s6 m6 l6">{{req.OS}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Comment</p><p class="lll col s6 m6 l6">{{req.comment}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Type</p><p class="lll  col s6 m6 l6">{{req.type}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">URL</p><p class="lll col s6 m6 l6" style="text-overflow: ellipsis; overflow: hidden;"><a href="{{req.URL}}" target="_blank">{{req.URL}}</a></p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Location</p><p class="lll col s6 m6 l6">{{req.location}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Platform</p><p class="lll col s6 m6 l6">{{req.platform}}</p></div>
+                        <!--<div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s6 m6 l6">{{req.date}}</p></div>-->
+                        <div class="row"><p class="lll col s6 m6 l6 ">Date</p><p class="lll col s4 m5 l5">{{req.date}}</p>
+                            <div class="btn-small waves-effect waves-light lll col s2 m1 l1 " ng-click="_edit4 = !_edit4" ng-hide="_edit4">
+                                <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
+                            </div>                           
+                        </div>
+                    </div>
+                    <div class="collapsible-body row col s12 m12 l12" ng-show="_edit4"><!--Edit Mode-->              
+                        <form name="userForm">
+                            <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
+                            <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
+                                <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
+                                <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Project</p>
+                                <input ng-model="req.project"class="validate lll col s6 m6 l5" type="search" value="{{req.project}}">
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p>
+                                <input ng-model="req.resolution" class="validate lll col s6 m6 l5" type="search" value="{{req.resolution}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Size</p>
+                                <input ng-model="req.size" class="validate lll col s6 m6 l5" type="search" value="{{req.size}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">User Name</p>
+                                <input disabled class="validate lll col s6 m6 l5" type="search" value="{{req.userName}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p>
+                                <input ng-model="req.OS" class="validate lll col s6 m6 l5" type="search" value="{{req.OS}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">URL</p>
+                                <input ng-model="req.URL" class="validate lll col s6 m6 l5" type="search" value="{{req.URL}}"/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Location</p>
+                                <!--<input ng-model="req.location" class="lll col s12 m2 l2" type="search" value="{{req.location}}"/>-->
+                                <select class="browser-default lll col s6 m5 l5" ng-model="req.location">
+                                    <option ng-repeat="value in loc">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6">Priority</p>
+                                <!--<input ng-model="req.priority" class="lll col s12 m6 l5" type="search" name="{{req.priority}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.priority">
+                                    <option ng-repeat="value in pri">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Type</p>
+                                <!--<input ng-model="req.type" class="lll  col s12 m6 l5" type="search" value="{{req.type}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.type">
+                                    <option ng-repeat="value in typ">{{value}}</option>
+                                </select>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>
+                                <!--<input ng-model="req.platform" class="lll col s12 m6 l5" type="search" value="{{req.platform}}"/>-->
+                                <select class="browser-default validate lll col s6 m5 l5" ng-model="req.platform">
+                                    <option ng-repeat="value in plt">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Request Status<input disabled type="search" value="{{req.request_Status}}"/></p>
+                                <!--                                <input disabled class="lll col s3 m2 l2" type="search" value="{{req.request_Status}}"/>                             -->
+                                <!--<div class=" col m1 l1"> <pre>  </pre></div>-->                            
+                                <select class="browser-default validate lll col s6 m2 l2" ng-click="bb(changed)" ng-model="changed">
+                                    <option value="Not" disabled selected ng-init="">Change</option>
+                                    <option ng-repeat="value in status">{{value}}</option>
+                                </select> 
+                            </div> 
+                            <div class="row ssss" style="display:none;color: red"><p class="lll col s6 m6 l6 ">Reason for Reject *</p>
+                                <input style="color: red" ng-model="req.reject_comment" class="validate lll col s6 m6 l5 validate" type="search" value="{{req.reject_comment}}" required/>
+                            </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Comment</p>
+                                <input ng-model="req.comment" class="validate lll col s6 m6 l5" type="search" value="{{req.comment}}" required/>
+                            </div>                        
+                            <div class="row"><p class="lll col s6 m6 l6 ">Requested Date</p>
+                                <input disabled class="lll col s6 m4 l4" type="search" value="{{req.date}}"/>
+                            </div>
+                            <div class="lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="[_edit4 = !_edit4]" ng-show="_edit4" >
+                                    <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                </div>                   
+                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(req, changed)" ng-show="_edit4">
+                                    <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
+                </li>
+            </ul>    
+        </div>      
     </div>
-{{result}}ssss
+
+    <div id="modal1" class="modal card-panel" style="width: 35%">
+        <div class="modal-content">
+            <h4>{{msg}}</h4>           
+        </div>
+        <button class="btn modal-action modal-close waves-effect waves-purple waves-light">OK</button>
+        <div> <p> </p> </div>
+    </div>
+    {{msg}}
 </section>
+
 <script>
-            $(document).ready(function () {
-            $(window).load(function () {                
-                $('#wait_moment').fadeOut('slow', function () {
-                    $(this).remove();                    
-                });
-            });            
-        });
+//            $(document).ready(function () {
+//            $(window).load(function () {                
+//                $('#wait_moment').fadeOut('slow', function () {
+//                    $(this).remove();                    
+//                });
+//            });            
+//        });
 </script>
 
 <script src="js/materialize.min.js" type="text/javascript"></script>

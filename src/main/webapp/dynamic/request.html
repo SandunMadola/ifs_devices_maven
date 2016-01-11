@@ -10,17 +10,17 @@
 
     <h4>{{some}}</h4>
     <div id="wait_moment">
-    <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
-            </div><div class="gap-patch">
-                <div class="circle"></div>
-            </div><div class="circle-clipper right">
-                <div class="circle"></div>
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
             </div>
-        </div>
-    </div></div>
+        </div></div>
     <div class="row">
         <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="row">
@@ -82,22 +82,22 @@
                     <div class="input-field col m6 s12">
                         <select id="qw" ng-model="request.platform">
                             <!--<option value=" " disabled selected>Choose your option</option>-->
-                            <option value="android">Android</option>
-                            <option value="mac">MAC</option>
-                            <option value="ios">IOS</option>                     
-                            <option value="windows">Windows</option>
-                            <option value="windows_phone">Windows Phone</option> 
+                            <option value="Android">Android</option>
+                            <option value="MAC">MAC</option>
+                            <option value="IOS">IOS</option>                     
+                            <option value="Windows">Windows</option>
+                            <option value="Windows Phone">Windows Phone</option> 
                         </select>                        
                         <label>Platform</label>
-                    </div>                    
+                    </div>   
 
                     <div class="input-field col m6 col s12">
                         <select name="type" ng-model="request.type">
                             <option value="" disabled selected >Choose your option</option>
-                            <option value="phone">Phone</option>
-                            <option value="tablet">Tablet</option>
-                            <option value="laptop">Laptop</option>
-                            <option value="desktop">Desktop</option> 
+                            <option value="Phone">Phone</option>
+                            <option value="Tablet">Tablet</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Desktop">Desktop</option> 
                         </select>
                         <!-- <label ng-show="userForm.type.$invalid && !userForm.type.$pristine" style="color: #b71c1c">Device type is required.</label>
                         <label ng-hide="userForm.type.$invalid && !userForm.type.$pristine">Type</label>-->
@@ -187,3 +187,4 @@
                 </ul>-->
 
 <!--http://codepen.io/sevilayha/pen/xFcdI-->
+<script src="js/materialize.min.js" type="text/javascript"></script>

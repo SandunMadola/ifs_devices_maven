@@ -11,6 +11,7 @@ package ifs_devices.model;
  */
 public class Request {
 
+    private int Id;
     private String Device_name;
     private String Type;
     private String Platform;
@@ -26,7 +27,24 @@ public class Request {
     private String UserName;
     private String Comment;
     private String Date;
+    private String Reject_comment;
 
+    public String getReject_comment() {
+        return Reject_comment;
+    }
+
+    public void setReject_comment(String Reject_comment) {
+        this.Reject_comment = Reject_comment;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+    
     public String getDate() {
         return Date;
     }

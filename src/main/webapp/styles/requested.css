@@ -1,29 +1,7 @@
-/*.requested .for_view{
-    width: 2rem;
-    font-size: 1.6rem;
-    line-height: 3rem;
-    display: block;
-    float: left;
-    text-align: center;
-    margin-right: 1rem;
+input[type="search"] {
+    height: 2rem;
+    margin: 0;
 }
-
-
-.requested .for_expand{
-
-     font-size: 1.25em; 
-    max-height: 1.25em;
-    line-height: 0px;
-    padding: .8em 5%;
-    text-align: center;
-    margin-left: -10%;
-    margin-right: 0;
-
-}*/
-/*    .collapsible{
-        box-shadow: none;
-
-    }*/
 .switch label .lever{
     margin: 16px 16px;
 }
