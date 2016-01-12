@@ -33,7 +33,7 @@
                         
   <!--width & height--> <button style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger" >Now</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button  style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
+                        <button ng-click="ShowBooked()" style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger modal-action modal-close btn waves-effect waves-purple waves-light">Later</button>
                         <p style="width: 3%; float: left"> </p>
                         <button style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal5" class="Get waves-effect waves-light btn modal-trigger" >Get</button>
                         <p style="width: 3%; float: left"> </p>
@@ -56,7 +56,7 @@
                     <div style="width: 100%; float: left; margin-left: 10px; background-color: #fafafa;"> 
 <!--width: 45%;-->      <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal11" class="Now waves-effect waves-light btn modal-trigger">Now</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal22" class="Later waves-effect waves-light btn modal-trigger">Later</button>
+                        <button ng-click="ShowBooked()" style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal22" class="Later waves-effect waves-light btn modal-trigger">Later</button>
                         <p style="width: 3%; float: left"> </p>
                         <button style="margin-top:  20px; width: 30%; float: left;height: 30px; " type="button" data-target="modal55" class="Get waves-effect waves-light btn modal-trigger">Get </button> 
                         <p style="width: 3%; float: left"> </p>
@@ -109,7 +109,7 @@
                         <h3> Resolution : {{devices[whichItem].resolution}} inches</h3>
                         <h3> Location : {{devices[whichItem].location}}</h3>
                         <h3> URL : {{devices[whichItem].URL}}</h3>
-                        
+                                               
                     </div>
 
                 </div>
@@ -175,7 +175,7 @@
 
                         </select>
 
-                                            <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
+                        <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
                     </div> 
 
 
@@ -222,7 +222,11 @@
                 <div class="modal-footer">
                     <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
                 </div>
-<!--                <p>{{later}}</p>-->
+                <div>
+                    <ul ng-repeat="s in booked" watch>
+                        <li> Booked From :  <b>{{s.from_Date}}</b> Till :  <b>{{s.to_Date}}</b> </li>
+                    </ul>
+                </div>
             </div>
 
 <!--                    later button end-->
@@ -417,7 +421,11 @@
                 <div class="modal-footer">
                     <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
                 </div>
-<!--                <p>{{later}}</p>-->
+                <div>
+                    <ul ng-repeat="s in booked" watch>
+                        <li> Booked From :  <b>{{s.from_Date}}</b> Till :  <b>{{s.to_Date}}</b> </li>
+                    </ul>
+                </div>
             </div>
 
 <!--                                later button end-->

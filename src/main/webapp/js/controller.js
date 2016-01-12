@@ -50,6 +50,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.devices = data;
             $scope.whichItem = $routeParams.itemId;
         });
+
 //        $scope.loading=false;
 //        window.onload = function(){
 //            
@@ -94,7 +95,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 //
 //        };
 //    };
-        
+
 //        $scope.date = new Date();
 
         $scope.date = new Date();
@@ -152,7 +153,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             format: 'yyyy-mm-dd',
             formatSubmit: 'yyyy/mm/dd'
         });
-            
+
         $scope.SendData2 = function (later) {
 
 
@@ -189,10 +190,28 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 alert("failure message: " + JSON.stringify({data: data}));
                 $(".call_to_modal").click();
             });
+
+
+        };
+
+        $scope.ShowBooked = function () {
+                        var config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            $scope.deviceID = $("#getdeviceID").text();
+            var yy = 'webapi/bookedDates/"'+$("#getdeviceID").text()+'"'; ///webapi/bookedDates/"D002"
+            var res = $http.get(yy, config).success
+            (function (data) {
+                 
+                $scope.booked = data;
+//                alert($scope.booked);
+            });
         };
 
         $scope.SendData3 = function (returnDevice) {
- 
+
             $scope.username = $("#getun").text();
             $scope.transactionID = $("#getTransID").text();
 
@@ -222,9 +241,9 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 $(".call_to_modal").click();
             }
         };
-        
+
         $scope.SendData4 = function (cancel) {
- 
+
             $scope.username = $("#getun").text();
             $scope.transactionID = $("#getTransID").text();
 
@@ -236,7 +255,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                         'Content-Type': 'application/json'
                     }
                 };
-                var x = 'webapi/cancel/'+$scope.transactionID;
+                var x = 'webapi/cancel/' + $scope.transactionID;
                 var res = $http.delete(x, config);
                 res.success(function (data, status, headers, config) {
 
@@ -256,7 +275,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
         };
 
         $scope.SendData5 = function (get) {
- 
+
             $scope.username = $("#getun").text();
             $scope.transactionID = $("#getTransID").text();
 
@@ -268,7 +287,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                         'Content-Type': 'application/json'
                     }
                 };
-                var xx = 'webapi/get/'+$scope.transactionID;
+                var xx = 'webapi/get/' + $scope.transactionID;
                 var res = $http.put(xx, config);
                 res.success(function (data, status, headers, config) {
 
@@ -286,7 +305,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 $(".call_to_modal").click();
             }
         };
-        
+
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
