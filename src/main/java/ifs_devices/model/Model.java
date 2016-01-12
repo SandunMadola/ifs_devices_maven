@@ -39,7 +39,7 @@ public class Model {
         return req;
     }
 
-    public ArrayList<Request> GetRequest() {        
+    public ArrayList<Request> GetRequest() {
         System.out.println("Inside the model");
         ArrayList<Request> req = null;
         try {
@@ -50,7 +50,20 @@ public class Model {
         }
         return req;
     }
-    
+
+    public Request updateRequest(Request request) throws Exception {
+        System.out.println("Inside the model");
+        Request req = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            req = Query.updateRequest(request, connection);
+        } catch (Exception e) {
+            System.out.println("erro" + e);
+        }
+
+        return req;
+    }
+
     public BorrowDevice addBorrowRequest(BorrowDevice borrowRequest) throws Exception {
         System.out.println("Inside the model");
         BorrowDevice borrowreq = null;

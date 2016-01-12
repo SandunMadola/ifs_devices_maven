@@ -41,4 +41,17 @@ public class RequestService {
 
         return req;
     }
+    
+    public Request updateRequest(Request request) {
+        System.out.println("EmployeeService Update");
+        Request req = null;
+        try {
+            Model model = new Model();
+            req = model.updateRequest(request);
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+        return req;
+    }    
 }

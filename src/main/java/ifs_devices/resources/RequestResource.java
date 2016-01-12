@@ -11,7 +11,9 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -36,5 +38,12 @@ public class RequestResource {
     public Request addRequest(Request request) {
         System.out.println("/request call");
         return requestService.addRequest(request);
+    }
+    
+    @PUT
+    @Path("/{reqID}")
+    public Request updateEmployee(@PathParam("reqID") int id, Request request) {
+        request.setId(id);
+        return requestService.updateRequest(request);
     }
 }
