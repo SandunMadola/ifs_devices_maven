@@ -7,23 +7,23 @@ package ifs_devices.service;
 
 import ifs_devices.model.Model;
 
+
+
 /**
  *
  * @author nedilk
  */
-public class CancelService {
+public class ReturnDeviceService {
     
-    public String deleteTransaction(int id) {
-        System.out.println("CancelService delete call"); 
-        String delTrans = null;
+      public String returnDeviceTransaction(int id) {
+        System.out.println("ReturnDeviceService delete call"); 
+        String returnTrans = null;
         try {
             Model model = new Model();
-            delTrans = model.deleteTransaction(id);
+            returnTrans = model.returnDeviceTransaction(id);
         } catch (Exception e) {
             System.out.println("error");
         }        
-        return delTrans;
+        return returnTrans;
     }
-
-    
 }

@@ -4,61 +4,70 @@
         $('select').material_select();
     });
 </script>
+
 <section class="b_3">
     <div class="deviceinfo">
-        <!--main_content-->
+<!--        main_content-->
         
         <div class="">
             <div class="ifs_banner">
 
-                <!--Show on large only-->
-                <div class="buttonClass row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
-                    <div  style="width: 50%; float: left"> 
+<!--                Show on large only-->
+                <div class=" row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
+                    <div  style="width: 30%; float: left"> 
                         <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div> 
-<!--                        <div ng-show="{{item.transaction_Mode == 'red'}}" class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: red;float: left; " > </div>     
-                        <div ng-show="{{item.transaction_Mode == 'orange'}}" class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: orange;float: left; " > </div>     
-                        <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: green;float: left; " > </div>     -->
-                        <h1>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </h1>
+                        <h3  style="text-align: left"> <b>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b> </h3>
                     </div>
+                
+                    <div  style="width: 70%; float: left; "> 
                     
-                    <div style="width: 50%; float: left"> 
+<!--                        <button ng-show="{{devices[whichItem].transaction_Mode == 'green'}}" style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger" >Now</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button  style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button ng-show="{{devices[whichItem].transaction_Mode == 'orange'}}" style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" class="waves-effect waves-light btn " >Get</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button ng-show="{{devices[whichItem].transaction_Mode == 'orange'}}" style="margin-top:  20px; width: 17%; float: left; height: 46px; " type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger" >Cancel</button>
+                        <p style="width: 3%; float: left"> </p>
+                        <button ng-show="{{devices[whichItem].transaction_Mode == 'red'}}" style="margin-top:  20px; width: 17%; float: left; height: 46px; " type="button" data-target="modal3" class="Return waves-effect waves-light btn modal-trigger" >Return</button>-->
                         
-                       <button  style="margin-top:  20px; width: 28%; float: left; height: 46px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger" >Now</button>
+  <!--width & height--> <button style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger" >Now</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button  style="margin-top:  20px; width: 28%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
+                        <button  style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal2" class="Later waves-effect waves-light btn modal-trigger ">Later</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 28%; float: left; height: 46px;" type="button" class="waves-effect waves-light btn " >Get Now</button>
+                        <button style="margin-top:  20px; width: 17%; float: left; height: 46px;" type="button" data-target="modal5" class="Get waves-effect waves-light btn modal-trigger" >Get</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button  style="margin-top:  20px; width: 28%; float: left; height: 46px; " type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger" >Cancel</button>
+                        <button style="margin-top:  20px; width: 17%; float: left; height: 46px; " type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger" >Cancel</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button  style="margin-top:  20px; width: 28%; float: left; height: 46px; " type="button" data-target="modal3" class="Return waves-effect waves-light btn modal-trigger" >Return</button>
+                        <button style="margin-top:  20px; width: 17%; float: left; height: 46px; " type="button" data-target="modal3" class="Return waves-effect waves-light btn modal-trigger" >Return</button>
+                    
                     </div>
-                </div>
+                   
+               </div>
 
-                <!--Show on small & medium -->
+<!--                Show on small & medium -->
                 <div id="nnn" class="buttonClass row show-on-medium-and-down hide-on-large-only" style="position: fixed;margin-left: -50%;
                      width: 100% ">
                     <div  style=" width: 100%; float: left; "> 
                         <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div>     
-
-                        <h1>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}]</h1>
+                        <h3> <b> {{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b></h3>
                     </div>
 
                     <div style="width: 100%; float: left; margin-left: 10px; background-color: #fafafa;"> 
-                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal11" class="Now waves-effect waves-light btn modal-trigger">Now</button>
+<!--width: 45%;-->      <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal11" class="Now waves-effect waves-light btn modal-trigger">Now</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal22" class="Later waves-effect waves-light btn modal-trigger">Later</button>
+                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal22" class="Later waves-effect waves-light btn modal-trigger">Later</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" class="waves-effect waves-light btn modal-trigger">Get Now</button>
+                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px; " type="button" data-target="modal55" class="Get waves-effect waves-light btn modal-trigger">Get </button> 
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal4" class="Cancel waves-effect waves-light btn modal-trigger">Cancel</button>
+                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal44" class="Cancel waves-effect waves-light btn modal-trigger">Cancel</button>
                         <p style="width: 3%; float: left"> </p>
-                        <button style="margin-top:  20px; width: 45%; float: left;height: 40px" type="button" data-target="modal3" class="Return waves-effect waves-light btn modal-trigger">Return</button>
+                        <button style="margin-top:  20px; width: 30%; float: left;height: 30px" type="button" data-target="modal33" class="Return waves-effect waves-light btn modal-trigger">Return</button>
                     </div>
                 </div>
 
-                <!--Show on medium only-->
-                <!--                <div class="buttonClass row hide-on-small show-on-medium-only hide-on-large  " style="position: fixed;
+<!--                Show on medium only-->
+<!--                                <div class="buttonClass row hide-on-small show-on-medium-only hide-on-large  " style="position: fixed;
                                      width: 90% ">
                                     <div style=" width: 100%; float: left; "> 
                                         <h1>{{devices[whichItem].name}}</h1>
@@ -79,20 +88,20 @@
 
                 <div class="device cf" ng-model="devices">
 
-                    <div class="col s12 m3 l4 hide-on-med-and-down">
+                    <div class="col s12 m3 l4 hide-on-med-and-down" >
                         <img  style="width: 20%; " ng-src="images/{{devices[whichItem].image_no}}.jpg">
 
                     </div>
 
                     <div class="col s12 m3 l4 hide-on-large-only">
-                        <img  style="width: 40%; margin-top: 130px" ng-src="images/{{devices[whichItem].image_no}}.jpg">
+<!--margin-top: 160px--><img  style="width: 40%; margin-top: 190px" ng-src="images/{{devices[whichItem].image_no}}.jpg">
                     </div>
+                  
+                    <div class="info" style="text-align: left; margin-left: 25px;">
 
 
-                    <div class="info">
-
-
-                        <h2> Type : {{devices[whichItem].type}}</h2>
+<!--                        <h3 class="col l6"> Type : </h3> <h3 class="col l6">{{devices[whichItem].type}}</h3>-->
+                        <h3> Type : {{devices[whichItem].type}}</h3>
                         <h3> Platform : {{devices[whichItem].platform}}</h3>
                         <h3> OS : {{devices[whichItem].OS}}</h3>
                         <h3> Belongs to : {{devices[whichItem].sub_Product_Area_name}}</h3>
@@ -100,11 +109,15 @@
                         <h3> Resolution : {{devices[whichItem].resolution}} inches</h3>
                         <h3> Location : {{devices[whichItem].location}}</h3>
                         <h3> URL : {{devices[whichItem].URL}}</h3>
-
+                        
                     </div>
 
                 </div>
                 
+                <!--To get data to the controller from the front-end-->
+                <div ng-hide="true" > 
+                    <p id="getTransID" >{{devices[whichItem].transaction_ID}}</p>
+                </div>
                 <div ng-hide="true" > 
                     <p id="getcolor" >{{devices[whichItem].transaction_Mode}}</p>
                 </div>
@@ -128,13 +141,13 @@
             </div>
         </div>
 
-        <!-- Modal Structure -->
+<!--         Modal Structure -->
 
 
         <form >
-            <!--        now button start-->
+<!--                    now button start-->
 
-            <!--         Modal Structure     -->
+<!--                     Modal Structure     -->
             <div id="modal1" class="modal " style="width: 360px; max-height: 100%; height: 45%;" >
                 <div class="modal-content" >
                     <h4>Borrow Now</h4>
@@ -162,19 +175,19 @@
 
                         </select>
 
-                        <!--                    <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>-->
+                                            <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
                     </div> 
 
 
 
-                    <!--                    <p>{{now}}</p>-->
+<!--                                        <p>{{now}}</p>-->
                 </div>
                 <div class="modal-footer">
                     <a  ng-click="SendData(now)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
                 </div>
             </div>   
-            <!--        now button end-->
-            <!--        later button start-->
+<!--                    now button end-->
+<!--                    later button start-->
             <div id="modal2" class="modal " style="width: 360px; max-height: 100%;height: 55%;">
                 <div class="modal-content">
                     <h4>Borrow Later</h4>
@@ -185,7 +198,7 @@
                     </div>
                     <div class="input-field">
                         <i class="material-icons prefix">today</i>
-                        <input id="calender" format="yyyy-MM-dd" type="text" class="datepicker" ng-model="later.from" required>
+                        <input id="calender" format="yyyy-MM-dd" type="text" class="datepicker" disable="disable" ng-model="later.from" required>
                         <label for="calender">From</label>
                     </div>
                     <div class="input-field">
@@ -209,10 +222,10 @@
                 <div class="modal-footer">
                     <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
                 </div>
-                <p>{{later}}</p>
+<!--                <p>{{later}}</p>-->
             </div>
 
-            <!--        later button end-->
+<!--                    later button end-->
             
             <div id="modal3" class="modal " style="width: 360px; max-height: 50%; height: 35%;" >
                 <div class="modal-content" >
@@ -242,17 +255,33 @@
 
                 </div>
                 <div  class="modal-footer">
-                    <a  ng-click="SendData3(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                    <a  ng-click="SendData4(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div>
+
+             <div id="modal5" class="modal " style="width: 360px; max-height: 50%; height: 45%;" >
+                <div class="modal-content" >
+                    <h4>Get the booked device Now</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un5" type="text" class="validate" maxlength="6" ng-model="get.userName" length="6" required>
+                        <label for="un5">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData5(get)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
                 </div>
             </div>
             
         </form>
 
         <form>
-            <!--                    now button start-->
+<!--                                now button start-->
 
-            <!--                     Modal Structure     -->
-            <div id="modal11" class="modal" style="width: 100%; max-height: 100%; height: 100%;"  >
+<!--                                 Modal Structure     -->
+            <div id="modal11" class="modal" style="width: 360px; max-height: 100%; height: auto;"  >
                 <div class="modal-content" >
                     <h4>Borrow Now</h4>
 
@@ -279,13 +308,12 @@
 
                         </select>
 
-                        <!--                                            <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>-->
+                                                                    <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
                     </div> 
-                    <br> <br> <br> <br>
-                    <p>{{now}}</p>
+                    
                 </div>
 
-                <!--                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
+<!--                                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
                                     <h4>Borrow Now</h4>
                 
                                     <div class="input-field">
@@ -321,9 +349,9 @@
                     <a  ng-click="SendData(now)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
                 </div>
             </div>   
-            <!--                    now button end
-                                later button start-->
-            <div id="modal22" class="modal" style="width: 100%; max-height: 100%; height: 100%;" >
+<!--                                now button end-->
+<!--                                later button start-->
+            <div id="modal22" class="modal" style="width: 360px; max-height: 100%; height: auto;" >
                 <div class="modal-content" >
                     <h4>Borrow Later</h4>
                     <div class="input-field">
@@ -355,7 +383,7 @@
                     </div> 
                 </div>
 
-                <!--                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
+<!--                                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
                                     <h4>Borrow Later</h4>
                                     <div class="input-field">
                                         <i class="material-icons prefix">account_circle</i>
@@ -389,20 +417,69 @@
                 <div class="modal-footer">
                     <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
                 </div>
-                <p>{{later}}</p>
+<!--                <p>{{later}}</p>-->
             </div>
 
-            <!--                    later button end-->
+<!--                                later button end-->
+
+            <div id="modal33" class="modal " style="width: 360px; max-height: 100%; height: auto;" >
+                <div class="modal-content" >
+                    <h4>Return the device</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un33" type="text" class="validate" maxlength="6" ng-model="returnDevice.userName" length="6" required>
+                        <label for="un33">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData3(returnDevice)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div> 
+            
+            <div id="modal44" class="modal " style="width: 360px; max-height: 100%; height: auto;" >
+                <div class="modal-content" >
+                    <h4>Cancel the device</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un44" type="text" class="validate" maxlength="6" ng-model="cancel.userName" length="6" required>
+                        <label for="un44">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData4(cancel)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div>
+
+            <div id="modal55" class="modal " style="width: 360px; max-height: 100%; height: auto;" >
+                <div class="modal-content" >
+                    <h4>Get the booked device Now</h4>
+                    <br>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="un55" type="text" class="validate" maxlength="6" ng-model="get.userName" length="6" required>
+                        <label for="un55">Username</label>
+                    </div>
+
+                </div>
+                <div  class="modal-footer">
+                    <a  ng-click="SendData5(get)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
+                </div>
+            </div>
+
         </form>
 
-        <!--    show on small-->
+<!--            show on small-->
 
-        <!--    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+<!--            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
             <button data-target="modal11" class="btn modal-trigger show-on-small-only hide-on-med-and-up">Now</button>
             <button data-target="modal22" class="btn modal-trigger show-on-small-only hide-on-med-and-up">Later</button>-->
-        <!--     Modal Structure -->
+<!--             Modal Structure -->
 
-        <!--        <form class="show-on-small-only">
+<!--                <form class="show-on-small-only">
                             now button start
         
                              Modal Structure 
@@ -497,7 +574,7 @@
         <div> <p> </p> </div>
     </div>
 
-    <!--    <a class="call_to_modal waves-effect waves-light modal-trigger hide-on-small-only show-on-medium-and-up" data-target="modal655"></a>
+<!--        <a class="call_to_modal waves-effect waves-light modal-trigger hide-on-small-only show-on-medium-and-up" data-target="modal655"></a>
         <div id="modal655" class="modal card-panel" style="width: 55%; height: auto;">
             <div class="modal-content">
     
@@ -507,3 +584,4 @@
             <div> <p> </p> </div>
         </div>-->
 </section>
+ 

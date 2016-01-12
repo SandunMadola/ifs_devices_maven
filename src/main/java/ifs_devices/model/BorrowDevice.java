@@ -21,6 +21,7 @@ public class BorrowDevice {
     private String device_ID;
     private String from_Date;
     private String to_Date;
+    private String returned_Date;
 
     public int getTransaction_ID() {
         return transaction_ID;
@@ -78,6 +79,14 @@ public class BorrowDevice {
 
     public void setTo_Date(String to_Date) {
         this.to_Date = to_Date;
+    }
+
+    public String getReturned_Date() {
+        return returned_Date;
+    }
+
+    public void setReturned_Date(String returned_Date) {
+        this.returned_Date = returned_Date;
     }
 
     
