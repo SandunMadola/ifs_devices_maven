@@ -40,11 +40,12 @@ public class Model {
     }
 
     public ArrayList<Request> GetRequest() {
-        System.out.println("Inside the model");
+        System.out.println("Inside the model get request");
         ArrayList<Request> req = null;
         try {
             Connection connection = Database.Get_Connection();
             req = Query.getRequest(connection);
+            connection.close();
         } catch (Exception e) {
             System.out.println("error" + e);
         }
