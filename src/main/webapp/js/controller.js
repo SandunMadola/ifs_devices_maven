@@ -326,7 +326,10 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
 homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http) {
         $('#wait_moment').fadeOut('slow');
-
+        $http.get('Fixed_Json/platform.json').success(function (data) {
+            $scope.plt = data;
+        });
+       
         $scope.some = "Request a device";
         $scope.date = new Date();
         $scope.SendData = function (request) {
@@ -442,7 +445,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             $('#wait_moment').fadeIn('slow');
             if (changed === 'Not') {
                 $scope.status = request.request_Status;
-                request.reject_comment = "Rejected Since :" ;
+                request.reject_comment = "Rejected Since :";
             } else {
                 $scope.status = changed;
             }
@@ -522,9 +525,84 @@ homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {
         });
     }]);
 homeCtrls.controller('edit_modeCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-        $http.get('js/data.json').success(function (data) {
+
+        $('#wait_moment').fadeOut('slow');
+
+        $scope.goBack = function () {
+            window.history.back();
+        };
+
+        $http.get('webapi/devices').success(function (data) {
             $scope.edit = data;
             $scope.edit_item = $routeParams.itemId;
         });
+
         $scope.some = "Requsted Devices";
+        $scope.changed = 'Not';
+        $scope.www = false;
+
+        $http.get('Fixed_Json/location.json').success(function (data) {
+            $scope.loc = data;
+        });
+        $http.get('Fixed_Json/type.json').success(function (data) {
+            $scope.typ = data;
+        });
+        $http.get('Fixed_Json/platform.json').success(function (data) {
+            $scope.plt = data;
+        });
+        $scope.update = function (request, changed) {
+            $('#wait_moment').fadeIn('slow');
+//            if (changed === 'Not') {
+//                $scope.status = request.request_Status;
+//                request.reject_comment = "Rejected Since :";
+//            } else {
+//                $scope.status = changed;
+//            }
+//            ;
+
+            var data = {
+                name: request.name,
+                type: request.type,
+                platform: request.platform,
+                OS: request.OS,
+                size: request.size,
+                resolution: request.resolution,
+                location: request.location,
+                sub_Product_Area_ID: request.sub_Product_Area_ID,
+                sub_Product_Area_name: request.sub_Product_Area_name,
+                transaction_Mode: request.transaction_Mode,
+                URL: request.URL
+                        //comment: request.comment,                
+//                count: request.count,
+//                image_no: request.image_no,
+//                device_ID: request.device_ID,
+//                model_ID: request.model_ID,
+//                transaction_ID: request.transaction_ID
+            };
+
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            var s = 'webapi/request/' + request.id;
+            var res = $http.put(s, data, config);
+            res.success(function (data, status, headers, config) {
+                $scope.PostDataResponse = data;
+                $('#wait_moment').fadeOut('slow');
+                $scope.msg = "Updated Successfully !!!";
+                $scope.waitt = "modal1";
+                $(".call_to_modal").click();
+
+            });
+            res.error(function (data, status, headers, config) {
+                $('#wait_moment').fadeOut('slow');
+                $scope.msg = "Update Unsuccessful ...";
+                $scope.waitt = "modal1";
+                alert("failure message: " + JSON.stringify({data: data}));
+                $(".call_to_modal").click();
+            });
+        };
+
     }]);

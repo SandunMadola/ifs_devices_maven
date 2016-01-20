@@ -7,7 +7,10 @@ and open the template in the editor.
     Created on : Dec 8, 2015, 11:17:29 AM
     Author     : sanmlk
 */
-
+input[type="search"] {
+    height: 2rem;
+    margin: 0;
+}
 
 .input-field .prefix.active {
      color: #000000;

@@ -1,15 +1,4 @@
 <link href="styles/requested.css" rel="stylesheet" type="text/css"/>
-<!--<script>
-            jQuery(document).ready(function ($) {
-
-// site preloader -- also uncomment the div in the header and the css style for #preloader
-            $(window).load(function () {                
-                $('#wait_moment').fadeOut('slow', function () {
-                    $(this).remove();                    
-                });
-            });            
-        });
-</script>-->
 <script>
     $(document).ready(function () {
         $('select').material_select();
@@ -27,7 +16,9 @@
                     <div class="circle"></div>
                 </div>
             </div>
-        </div></div>
+        </div>
+
+    </div>
     <div class="switch col s12 row" style="margin-bottom: 1px">
         <h5 class="col s5" style="text-align: right">Requested</h5>
         <label class="col s2">
@@ -70,11 +61,11 @@
             <input id="Custom_filter" type="text" class="validate" ng-model="custom_filter" >
             <label for="Custom_filter">Filter</label>
         </div> 
-        
+
         <div class="col s2 m1 l1" style="float: right; text-align: left">
             <a class="hoverable waves-effect waves-light" ng-click="showInputLabel = !showInputLabel"><i class="material-icons">filter_list</i></a>           
         </div>
-        
+
         <div class="col s12 m6 l6">
             <p class="col s4 m4 l4" ng-show="showInputLabel">
                 <input type="checkbox" id="c1" ng-model="spa"  ng-true-value="SPA" ng-false-value=""/>

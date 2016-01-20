@@ -13,7 +13,7 @@
             preview.setAttribute('src', 'placeholder.png');
         }
     }
-</script>
+</script>       
 <script>
     $(document).ready(function () {
         $('select').material_select();
@@ -23,104 +23,81 @@
 
 
 <section class="d">
+    <div id="wait_moment">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     {{some}}
     {{edit_item}}    
     {{edit[edit_item].name}}
 
     <div class="row">
-        <form action="#" class="col s12">
-         
+        <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+            <div class="row">
 
                 <div class="hoverable card-panel row">
-                    <div class="input-field col m6 col s12">
-                        <img id="preview" ng-src="images/{{edit[edit_item].shortname}}.jpg" height="100" width="100" />
-                        <input type="file" name="image" onchange="previewImage(this)" accept="image/*"/>
-                    </div>
 
-                    <div class="input-field col m6 col s12">
-                        <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="devicename" type="text" class="validate" ng-model="request.deviceName" required>
-                        <label for="devicename">{{edit[edit_item].name}}</label>
-                    </div>  
-                    <div >
-                        <input  type="search" ng-attr-placeholder="{{edit[edit_item].name}}" required>
+                    <!--<div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>For adding space-->
+                    <div class="input-field lll col  s12 m12 l12 row">
+                        <div class="lll s12 m6 l6"><img id="preview" class="hoverable" ng-src="images/{{edit[edit_item].image_no}}.jpg" max-height="100px" min-height="100px" width="100" /></div>
+                        <input class="lll col s12 m6 l6" type="file" name="image" onchange="previewImage(this)" accept="image/*"/>
                     </div>
-
-                    <div class="input-field col m6 col s12">
-                        <select ng-model="edit[edit_item].type">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="phone">Phone</option>
-                            <option value="tablet">Tablet</option>
-                            <option value="laptop">Laptop</option>
-                            <option value="desktop">Desktop</option> 
+                    <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>                
+                        <input ng-model="edit[edit_item].name" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].name}}">
+                    </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
+                        <input ng-model="edit[edit_item].sub_Product_Area_name"class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].sub_Product_Area_name}}">
+                    </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p>
+                        <input ng-model="edit[edit_item].resolution" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].resolution}}"/>
+                    </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">Size</p>
+                        <input ng-model="edit[edit_item].size" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].size}}"/>
+                    </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p>
+                        <input ng-model="edit[edit_item].OS" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].OS}}"/>
+                    </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">URL</p>
+                        <input ng-model="edit[edit_item].URL" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].URL}}"/>
+                    </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">Location</p>
+                        <!--<input ng-model="edit[edit_item].location" class="lll col s12 m2 l2" type="search" value="{{edit[edit_item].location}}"/>-->
+                        <select class="browser-default lll col s6 m5 l5" ng-model="edit[edit_item].location">
+                            <option ng-repeat="value in loc">{{value}}</option>
                         </select>
-                        <label>Type</label>
-                    </div> 
-                    <div class="input-field col m6 s12">
-                        <select ng-model="request.platform">
-                            <option value="{{edit.platform}}" disabled selected>Choose your option</option>
-                            <option value="android">Android</option>
-                            <option value="mac">MAC</option>
-                            <option value="ios">IOS</option>                     
-                            <option value="windows">Windows</option>
-                            <option value="windows_phone">Windows Phone</option> 
+                    </div>                          
+                    <div class="row"><p class="lll col s6 m6 l6 ">Type</p>
+                        <!--<input ng-model="edit[edit_item].type" class="lll  col s12 m6 l5" type="search" value="{{edit[edit_item].type}}"/>-->
+                        <select class="browser-default validate lll col s6 m5 l5" ng-model="edit[edit_item].type">
+                            <option ng-repeat="value in typ">{{value}}</option>
                         </select>
-                        <label>Platform</label>
-                    </div>  
-
-
-                    <div class="input-field col m6 col s12">
-                        <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="os" type="text" class="validate" ng-model="request.OS" required>
-                        <label for="os">Operating System</label>
-                    </div>
-
-                    <div class="input-field col m6 col s12">
-                        <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="spa" type="text" class="validate" ng-model="request.spa" required>
-                        <label for="spa">Sub-Product Area</label>
-                    </div>
-                    <div class="input-field col m6 col s12">
-                        <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="spa" type="text" class="validate" ng-model="request.spa" required>
-                        <label for="spa">Project</label>
-                    </div>
-                    <div class="input-field col m6 col s12">                    
-                        <input id="size" type="text" class="validate" ng-model="request.size">
-                        <label for="size">Size Inches</label>
-                    </div>
-
-                    <div class="input-field col m6 col s12">                    
-                        <input id="resolution" type="text" class="validate" ng-model="request.resolution">
-                        <label for="resolution">Display Resolution in pixels</label>
-                    </div>
-                    <div class="input-field col m6 s12">
-                        <select ng-model="request.location" >
-                            <option value="" disabled selected>Choose your option</option>                        
-                            <option value="cmb">CMB</option>
-                            <option value="lkp">LKP</option> 
+                    </div>                        
+                    <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>
+                        <!--<input ng-model="edit[edit_item].platform" class="lll col s12 m6 l5" type="search" value="{{edit[edit_item].platform}}"/>-->
+                        <select class="browser-default validate lll col s6 m5 l5" ng-model="edit[edit_item].platform">
+                            <option ng-repeat="value in plt">{{value}}</option>
                         </select>
-                        <label>Location</label>
+                    </div>                                    
+                    <div class="row lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
+                        <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="goBack()">
+                            <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                        </div>                   
+                        <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(edit[edit_item], changed)">
+                            <abbr title="Save"><i class="material-icons">save</i></abbr>
+                        </div>
                     </div>
-
-                    <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea" length="120" ng-model="request.comment"></textarea>
-                        <label for="textarea1">Comment</label>
-                    </div>
-                    <div class="input-field col m6 col s12">
-                        <!--<i class="material-icons prefix">devices</i>-->
-                        <input id="spa" type="text" class="validate" ng-model="request.spa" required>
-                        <label for="spa">Project</label>
-
-                    </div>
-                    <div class="input-field col m6 col s12">                    
-                        <input id="url" type="text" class="validate" ng-model="request.resolution">
-                        <label for="url">URL</label>
-                    </div>
-                    <button class="btn waves-effect waves-purple waves-light"  type="submit" name="action"><!--ng-click="ss()" -->
-                        Submit                
-                    </button>
-                </div>
+                </div></div>
+            <p>{{edit[edit_item]}}</p>
         </form>
     </div>
 

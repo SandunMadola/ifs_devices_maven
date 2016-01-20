@@ -22,15 +22,18 @@ public class Database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
+            return connection;
         } catch (SQLException e) {
             throw e;
         } catch (Exception e) {
             throw e;
         }
-//        finally {
-//            if (connection != null) connection.close();
+      
+                    
+//        }finally{
+//            connection.close();
 //        }
-        return connection;
+        
     }
 
 }
