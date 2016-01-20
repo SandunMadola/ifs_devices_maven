@@ -187,7 +187,33 @@ public class Query {
             throw e;
         }
     }
+    
+    public static ArrayList<BorrowDevice>  getBookedDates(String id, Connection connection) throws Exception {
+        System.out.println(" getBookedDate Query");
+       
+        ArrayList<BorrowDevice> bookreq  = new ArrayList<BorrowDevice>();
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT from_Date, to_Date FROM borrow_device WHERE device_ID ="+ id + " AND transaction_Mode = 'orange' AND from_Date >= CURDATE() <= to_Date");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                BorrowDevice bookedreq = new BorrowDevice();
+//               bookreq.setTransaction_ID(rs.getInt("transaction_ID"));
+//                bookreq.setTransaction_Mode(rs.getString("transaction_Mode"));
+//                bookreq.setTransaction_Type(rs.getString("transaction_Type"));
+//                bookreq.setUsername(rs.getString("username"));
+//                bookreq.setDevice_ID(rs.getString("device_ID"));
+                bookedreq.setFrom_Date(rs.getString("from_Date"));
+                bookedreq.setTo_Date(rs.getString("to_date"));
+//                borrowreq.setFrom_Date(rs.getDate(1) != null) ? rs.getDate(1).toLocalDate() : null;
+                bookreq.add(bookedreq);
 
+            }
+            return bookreq;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
     static ArrayList<DeviceList> GetAllDevices(Connection connection) throws Exception {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();

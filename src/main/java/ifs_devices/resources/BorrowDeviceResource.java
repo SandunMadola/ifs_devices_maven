@@ -42,5 +42,3 @@ public class BorrowDeviceResource {
         return borrowDeviceService.addBorrowRequest(borrowRequest);
     }
 }
-    
-

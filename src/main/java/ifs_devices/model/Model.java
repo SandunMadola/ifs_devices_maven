@@ -80,7 +80,7 @@ public class Model {
 
     public BorrowDevice GetBorrowRequest() {
         System.out.println("Inside the GetBorrowRequest() model");
-        System.out.println("Inside the GetBorrowRequest() model");
+        
         BorrowDevice borrowreq = null;
         try {
             Connection connection = Database.Get_Connection();
@@ -91,6 +91,19 @@ public class Model {
         return borrowreq;
     }
 
+    public ArrayList<BorrowDevice> GetbookedDates(String id) {
+        System.out.println("Inside the GetbookedDates() model");
+        ArrayList<BorrowDevice> bookreq = null;
+        
+        try {
+            Connection connection = Database.Get_Connection();
+            bookreq = Query.getBookedDates(id,connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+        return bookreq;
+    }
+    
     public ArrayList<DeviceList> GetAllDevices() throws Exception {
 
         ArrayList<DeviceList> allDevices = null;

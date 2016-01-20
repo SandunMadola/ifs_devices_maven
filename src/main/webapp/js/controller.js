@@ -50,6 +50,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.devices = data;
             $scope.whichItem = $routeParams.itemId;
         });
+
 //        $scope.loading=false;
 //        window.onload = function(){
 //            
@@ -188,6 +189,24 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 $scope.msg = "Book device later request unsuccessful";
                 alert("failure message: " + JSON.stringify({data: data}));
                 $(".call_to_modal").click();
+            });
+
+
+        };
+
+        $scope.ShowBooked = function () {
+                        var config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            $scope.deviceID = $("#getdeviceID").text();
+            var yy = 'webapi/bookedDates/"'+$("#getdeviceID").text()+'"'; ///webapi/bookedDates/"D002"
+            var res = $http.get(yy, config).success
+            (function (data) {
+                 
+                $scope.booked = data;
+//                alert($scope.booked);
             });
         };
 
