@@ -27,6 +27,9 @@ public class Database {
         } catch (Exception e) {
             throw e;
         }
+//        finally {
+//            if (connection != null) connection.close();
+//        }
         return connection;
     }
 

@@ -48,6 +48,25 @@
                         </div>
                     </form>                    
                     <!--<a class="right" href="#"><i class="material-icons">search</i></a>-->
+                    <script>
+            $('#search').keyup(function () {
+
+                var text = $('#search').val();
+                var data1 = {'text': text};
+                $.ajax({
+                    type: 'POST',
+                    data: data1,
+                    url: 'ifs_devices.resources/SearchResource.java',
+                    success: function (data) {
+                        $('#searchdetails').empty();
+                        $.each(data['names'], function (key, val) {
+                     
+                            $('#searchdetails').append("<label class='text' style='color:#863D8D'>" + val + "</label><br>");
+                        });
+                    }
+                });
+            });
+                    </script>
                 </div>
             </div>
         </nav>

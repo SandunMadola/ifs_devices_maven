@@ -13,6 +13,12 @@ homeCtrls.controller('homeCtrl', ['$scope', function ($scope) {
 
     }]);
 
+homeCtrls.controller('searchCtrl', ['$scope', function ($scope) {
+        $http.get('webapi/search').success(function (data) {
+            $scope.devices = data;
+        });
+    }]);
+
 homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) {
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
