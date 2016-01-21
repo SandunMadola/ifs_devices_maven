@@ -1,5 +1,5 @@
 <link href="styles/request_style.css" rel="stylesheet" type="text/css"/>
- 
+
 <section class="c">        
 
     <h4>{{some}}</h4>
@@ -18,7 +18,7 @@
     <div class="row">
         <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="row">
-
+ 
                 <div class="hoverable card-panel row">
 
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.device_name.$invalid && !userForm.device_name.$pristine}">                        
@@ -72,63 +72,89 @@
                         <label for="os" ng-show="userForm.OS.$invalid && !userForm.OS.$pristine" style="color: #b71c1c">Operating System is required.</label>
                         <label for="os" ng-hide="userForm.OS.$invalid && !userForm.OS.$pristine">Operating System</label>
                     </div>
-
-                    <div class="input-field col m6 s12">
-                        <select id="qw" ng-model="request.platform">
-                            <!--<option value=" " disabled selected>Choose your option</option>-->
-                            <option value="Android">Android</option>
-                            <option value="MAC">MAC</option>
-                            <option value="IOS">IOS</option>                     
-                            <option value="Windows">Windows</option>
-                            <option value="Windows Phone">Windows Phone</option> 
-                        </select>                        
-                        <label>Platform</label>
-                    </div>   
-
-                    <div class="input-field col m6 col s12">
-                        <select name="type" ng-model="request.type">
-                            <option value="" disabled selected >Choose your option</option>
-                            <option value="Phone">Phone</option>
-                            <option value="Tablet">Tablet</option>
-                            <option value="Laptop">Laptop</option>
-                            <option value="Desktop">Desktop</option> 
-                        </select>
-                        <!-- <label ng-show="userForm.type.$invalid && !userForm.type.$pristine" style="color: #b71c1c">Device type is required.</label>
-                        <label ng-hide="userForm.type.$invalid && !userForm.type.$pristine">Type</label>-->
-                        <label>Type</label>
-                    </div> 
-
-                    <div class="input-field col m6 s12">
-                        <select ng-model="request.priority">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                        <label>Priority</label>
-                    </div>  
-
-                    <div class="input-field col m6 s12" ng-class="{'has-error':userForm.type.$invalid && !userForm.type.$pristine}">
-                        <select ng-model="request.location" required>
-                            <option value="" disabled selected>Choose your option</option>                        
-                            <option value="CMB">CMB</option>
-                            <option value="LKP">LKP</option> 
-                        </select>
-                        <label>Location *</label>
-                    </div>
-<!--                    <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>                        
-                        <select class=" validate lll col s6 m6 l6" ng-model="request.location"  material-select watch>
+                    <!--                    <div class="input-field col m6 s12">
+                                            <select id="qw" ng-model="request.platform">
+                                                <option value=" " disabled selected>Choose your option</option>
+                                                <option value="Android">Android</option>
+                                                <option value="MAC">MAC</option>
+                                                <option value="IOS">IOS</option>                     
+                                                <option value="Windows">Windows</option>
+                                                <option value="Windows Phone">Windows Phone</option> 
+                                            </select>                        
+                                            <label>Platform</label>
+                                        </div>   -->
+                    <div class="col m6 s12"> 
+                        <label class="left" style="margin-top: 15px">Platform</label>
+                        <select class="browser-default validate" ng-model="request.platform">
                             <option value="" disabled selected>Choose your option</option>
                             <option ng-repeat="value in plt">{{value}}</option>
                         </select>
-                    </div>  -->
+                    </div>
+                    <!--                    <div class="input-field col m6 col s12">
+                                            <select name="type" ng-model="request.type">
+                                                <option value="" disabled selected >Choose your option</option>
+                                                <option value="Phone">Phone</option>
+                                                <option value="Tablet">Tablet</option>
+                                                <option value="Laptop">Laptop</option>
+                                                <option value="Desktop">Desktop</option> 
+                                            </select>
+                                             <label ng-show="userForm.type.$invalid && !userForm.type.$pristine" style="color: #b71c1c">Device type is required.</label>
+                                            <label ng-hide="userForm.type.$invalid && !userForm.type.$pristine">Type</label>
+                                            <label>Type</label>
+                                        </div> -->
+                    <div class="col m6 s12"> 
+                        <label class="left" style="margin-top: 15px">Type</label>
+                        <select class="browser-default" ng-model="request.type">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option ng-repeat="value in typ">{{value}}</option>
+                        </select>
+                    </div>   
+
+                    <!--                    <div class="input-field col m6 s12">
+                                            <select ng-model="request.priority">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                            <label>Priority</label>
+                                        </div> -->
+                    <div class="col m6 s12">
+                        <label class="left" style="margin-top: 15px">Priority</label>
+                        <select class="browser-default validate" ng-model="request.priority">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option ng-repeat="value in pri">{{value}}</option>
+                        </select>
+                    </div> 
+
+                    <!--                    <div class="input-field col m6 s12" ng-class="{'has-error':userForm.type.$invalid && !userForm.type.$pristine}">
+                                            <select ng-model="request.location" required>
+                                                <option value="" disabled selected>Choose your option</option>                        
+                                                <option value="CMB">CMB</option>
+                                                <option value="LKP">LKP</option> 
+                                            </select>
+                                            <label>Location *</label>
+                                        </div>-->
+                    <div class="col m6 s12">                        
+                        <label class="left" style="margin-top: 15px">Location *</label>
+                        <select class="browser-default" ng-model="request.location" required>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option ng-repeat="value in loc">{{value}}</option>
+                        </select>                        
+                    </div>
+                    <!--                    <div class="row"><p class="lll col s6 m6 l6 ">Platform</p>                        
+                                            <select class=" validate lll col s6 m6 l6" ng-model="request.location"  material-select watch>
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option ng-repeat="value in plt">{{value}}</option>
+                                            </select>
+                                        </div>  -->
                     <div class="input-field col s12">
                         <textarea id="textarea1" class="materialize-textarea" length="1000" ng-model="request.comment"></textarea>
                         <label for="textarea1">Comment</label>
                     </div>
 
-                </div>
+                </div>                
                 <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="SendData(request)">Submit</button>
                 <!--                <button class="btn waves-effect waves-purple waves-light"  type="submit" name="action">
                                     Submit                    
@@ -188,11 +214,11 @@
 <!--http://codepen.io/sevilayha/pen/xFcdI-->
 <!--<script src="js/materialize.min.js" type="text/javascript"></script>-->
 
-  
+
 <script>
-    $(document).ready(function () {
-        $('select').material_select();
-    });
+            $(document).ready(function () {
+                $('select').material_select();
+            });
 </script>
 
 

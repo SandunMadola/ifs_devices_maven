@@ -195,19 +195,19 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
         };
 
         $scope.ShowBooked = function () {
-                        var config = {
+            var config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             };
             $scope.deviceID = $("#getdeviceID").text();
-            var yy = 'webapi/bookedDates/"'+$("#getdeviceID").text()+'"'; ///webapi/bookedDates/"D002"
+            var yy = 'webapi/bookedDates/"' + $("#getdeviceID").text() + '"'; ///webapi/bookedDates/"D002"
             var res = $http.get(yy, config).success
-            (function (data) {
-                 
-                $scope.booked = data;
+                    (function (data) {
+
+                        $scope.booked = data;
 //                alert($scope.booked);
-            });
+                    });
         };
 
         $scope.SendData3 = function (returnDevice) {
@@ -320,10 +320,19 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
 homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http) {
         $('#wait_moment').fadeOut('slow');
+        $http.get('Fixed_Json/location.json').success(function (data) {
+            $scope.loc = data;
+        });
+        $http.get('Fixed_Json/type.json').success(function (data) {
+            $scope.typ = data;
+        });
         $http.get('Fixed_Json/platform.json').success(function (data) {
             $scope.plt = data;
         });
-       
+        $http.get('Fixed_Json/priority.json').success(function (data) {
+            $scope.pri = data;
+        });
+
         $scope.some = "Request a device";
         $scope.date = new Date();
         $scope.SendData = function (request) {
@@ -340,7 +349,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
                 location: request.location,
                 SPA: request.SPA,
                 project: request.project,
-                request_Status: "New",
+                request_Status: "Requested",
                 URL: request.URL,
                 userName: request.userName,
                 comment: request.comment,
@@ -356,17 +365,20 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
-                $scope.msg = "Request Sent Successfully !!!";
-                $scope.waitt = "modal1";
-                $(".call_to_modal").click();
-
+//                $scope.msg = "Request Sent Successfully !!!";
+//                $scope.waitt = "modal1";
+//                $(".call_to_modal").click();
+                $('#wait_moment').fadeOut('slow');
+                $('.toast_show').click(Materialize.toast('Request Successfully !!!', 2000));
             });
             res.error(function (data, status, headers, config) {
                 $('#wait_moment').fadeOut('slow');
-                $scope.msg = "Request Unsuccessful ...";
-                $scope.waitt = "modal1";
+//                $scope.msg = "Request Unsuccessful ...";
+//                $scope.waitt = "modal1";
                 alert("failure message: " + JSON.stringify({data: data}));
-                $(".call_to_modal").click();
+//                $(".call_to_modal").click();
+                $('#wait_moment').fadeOut('slow');
+                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
             });
         };
 
@@ -409,6 +421,9 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $http.get('Fixed_Json/priority.json').success(function (data) {
             $scope.pri = data;
         });
+        $http.get('Fixed_Json/orderBy.json').success(function (data) {
+            $scope.order = data;
+        });        
         $http.get('webapi/request').success(function (data) {
             $scope.request = data;
             $('#wait_moment').fadeOut('slow');
@@ -475,17 +490,15 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
-                $scope.msg = "Updated Successfully !!!";
-                $scope.waitt = "modal1";
-                $(".call_to_modal").click();
+                $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));
 
             });
             res.error(function (data, status, headers, config) {
                 $('#wait_moment').fadeOut('slow');
-                $scope.msg = "Update Unsuccessful ...";
-                $scope.waitt = "modal1";
                 alert("failure message: " + JSON.stringify({data: data}));
-                $(".call_to_modal").click();
+                $('#wait_moment').fadeOut('slow');
+                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
+
             });
         };
 
