@@ -20,8 +20,10 @@ homeCtrls.controller('searchCtrl', ['$scope', function ($scope) {
     }]);
 
 homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) {
+        
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
+            $('#wait_moment').fadeOut('slow');
         });
         $scope.popup = $(document).ready(function () {
             $('modal1').show();
