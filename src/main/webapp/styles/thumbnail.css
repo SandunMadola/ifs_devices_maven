@@ -26,6 +26,7 @@ div {
 
 .main_content {
     background-color: #E7E9EC;
+    height: 100%;
 }
 .sub_content {
     position: relative;
@@ -48,6 +49,11 @@ div {
 .b_2 .sub_content i{
     line-height: 1;
     margin-right: 5px;
+}
+
+.b_2 input.valid[type="text"], input.valid[type="text"]:focus, input.valid[type="password"], input.valid[type="password"]:focus, input.valid[type="email"], input.valid[type="email"]:focus, input.valid[type="url"], input.valid[type="url"]:focus, input.valid[type="time"], input.valid[type="time"]:focus, input.valid[type="date"], input.valid[type="date"]:focus, input.valid[type="datetime-local"], input.valid[type="datetime-local"]:focus, input.valid[type="tel"], input.valid[type="tel"]:focus, input.valid[type="number"], input.valid[type="number"]:focus, input.valid[type="search"], input.valid[type="search"]:focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus {
+    border-bottom: 0px solid transparent;
+    box-shadow: 0px 0px 0px 0px transparent;
 }
 
 .b_2 #wrap {
@@ -158,7 +164,7 @@ ul.grid li { position: relative; background: white; display: block; float: left;
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 .b_2 .clearfix  {
-    display: inline-block;
+/*    display: inline-block;*/
     clear: none;
     /* box-sizing: border-box; */
     /* max-width: 47.5%; */
