@@ -22,7 +22,7 @@
 .b_1 .sub_content{
     position: relative;
     width: 100%;
-    padding: 1px ;
+    /* padding: 1px ; */
     border-bottom: 1px solid #B6BDBE;
 }
 .b_1 .sub_content h3{
@@ -30,7 +30,7 @@
 
 }
 .b_1 .sub_content i{
-    line-height: 1;
+    line-height: 0.5;
     margin-right: 5px;
 }
 
@@ -93,9 +93,9 @@
 .b_1 .waves-effect  {
     color: #fff;
     background-color: #863d8d;
-    text-shadow: -1px 1px #863d8d;    
+    /* text-shadow: -1px 1px #863d8d; */
     text-align: center;
-    font-size: 15px;   
+    font-size: 15px;
 }
 
 .b_1 .Later waves-effect waves-light btn  {

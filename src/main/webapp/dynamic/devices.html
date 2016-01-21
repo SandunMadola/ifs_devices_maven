@@ -8,19 +8,42 @@
 
 
     <div class="main_content"> 
-        <div class ="sub_content"><!--sub_content-->
+        <div class ="sub_content show-on-medium-and-up hide-on-small-only "><!--sub_content-->
             <!--#wrap-->
 
                 <h3 class="left">All Devices </h3>
-                
+                 
                 <div class="right"> <!--list_style_buttons-->
-                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left"><i class="material-icons">grid_on</i></a>
+                    
+                    <a class=" waves-effect waves-light left" ng-click="showLabel = !showLabel" style="color: black; background-color: transparent"><i class="material-icons">filter_list</i></a>
+                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left" ><i class="material-icons">grid_on</i></a>
                     <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
 
                 </div>
+                <div class="input-field col m5 l5 right" ng-show="showLabel" style="margin-right: 50px">            
+                        <input id="Custom_filter2" type="text" class="validate" ng-model="custom_filter2" >
+                        <label for="Custom_filter2">Filter</label>
+                </div>
                 
-                
+            
+        </div>
+         <div class ="sub_content show-on-small-only hide-on-med-and-up col s12 "><!--sub_content-->
+            <!--#wrap-->
 
+                <h3 class="col s2 left" ng-show="!showLabel">All Devices </h3>
+                 
+                <div class="col s6 right"> <!--list_style_buttons-->
+                    
+                    <a class="right"  ng-click="showLabel = !showLabel"><i class="material-icons">filter_list</i></a>
+                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left" ><i class="material-icons">grid_on</i></a>
+                    <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+
+                </div>
+                <div class="input-field col s4 left" ng-show="showLabel" style="margin-left: 30px">            
+                        <input id="Custom_filter2" type="text" class="validate" ng-model="custom_filter2" >
+                        <label for="Custom_filter2">Filter</label>
+                </div>
+                
             
         </div>
         <div class="ignore"></div>     
@@ -28,8 +51,9 @@
 
             <center>
                 <ul class="devicelist">
+                    
                     <!--device cf--> 
-                    <li class = "hoverable card-panel row" ng-repeat="item in devices | orderBy: ['transaction_Mode'] "> 
+                    <li class = "hoverable card-panel row" ng-repeat="item in devices | orderBy: ['transaction_Mode'] | filter:custom_filter2"> 
                         <!--<div class="row">-->
                         <a href="#/details/{{devices.indexOf(item)}}">
                             

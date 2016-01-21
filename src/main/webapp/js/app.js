@@ -29,7 +29,11 @@ app.config(['$routeProvider', function ($routeProvider) {
                 when('/requested', {
                     templateUrl: 'dynamic/requested.html',
                     controller: 'requestedCtrl'
-                }).                        
+                }). 
+                when('/search', {
+                    templateUrl: 'dynamic/search.html',
+                    controller: 'searchCtrl'
+                }).
                 otherwise({
                     redirectTo: '/home'
                 });

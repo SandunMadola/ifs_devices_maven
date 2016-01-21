@@ -42,10 +42,9 @@ public class Model {
     public ArrayList<Request> GetRequest() {
         System.out.println("Inside the model get request");
         ArrayList<Request> req = null;
-        try {
-            Connection connection = Database.Get_Connection();
+        try (Connection connection = Database.Get_Connection();){           
             req = Query.getRequest(connection);
-            connection.close();
+            //connection.close();
         } catch (Exception e) {
             System.out.println("error" + e);
         }
@@ -116,6 +115,18 @@ public class Model {
         return allDevices;
     }
 
+    public ArrayList<DeviceList> GetAllSearchedDevices() throws Exception {
+
+        ArrayList<DeviceList> allSearchedDevices = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            allSearchedDevices = Query.GetAllSearchedDevices(connection);
+        } catch (Exception e) {
+            throw e;
+        }
+        return allSearchedDevices;
+    }
+    
     public String deleteTransaction(int id) throws Exception {
         System.out.println("Inside the model");
         String del = null;

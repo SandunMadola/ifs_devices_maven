@@ -247,6 +247,40 @@ public class Query {
         }
     }
 
+     static ArrayList<DeviceList> GetAllSearchedDevices(Connection connection) throws Exception {
+
+        ArrayList<DeviceList> Searcheddevicedata = new ArrayList<DeviceList>();
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"green\") AS `transaction_Mode`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DeviceList Searcheddevicels = new DeviceList();
+
+                Searcheddevicels.setName(rs.getString("name"));
+                Searcheddevicels.setType(rs.getString("type"));
+                Searcheddevicels.setPlatform(rs.getString("platform"));
+                Searcheddevicels.setImage_no(rs.getInt("image_no"));
+                Searcheddevicels.setOS(rs.getString("OS"));
+                Searcheddevicels.setSub_Product_Area_ID(rs.getString("sub_Product_Area_ID"));
+                Searcheddevicels.setSub_Product_Area_name(rs.getString("sub_Product_Area_name"));
+                Searcheddevicels.setDevice_ID(rs.getString("device_ID"));
+                Searcheddevicels.setUsername(rs.getString("username"));
+                Searcheddevicels.setSize(rs.getString("size"));
+                Searcheddevicels.setResolution(rs.getString("resolution"));
+                Searcheddevicels.setURL(rs.getString("URL"));
+                Searcheddevicels.setLocation(rs.getString("location"));
+                Searcheddevicels.setTransaction_Mode(rs.getString("transaction_Mode"));
+                Searcheddevicels.setTransaction_ID(rs.getInt("transaction_ID"));
+                Searcheddevicedata.add(Searcheddevicels);
+                
+            }
+            return Searcheddevicedata;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+     
     public static String deleteTransaction(int id, Connection connection) throws SQLException {
         System.out.println("Inside the Query");
         String query = "DELETE FROM borrow_device WHERE transaction_ID = " + id + "";

@@ -19,9 +19,14 @@ and open the template in the editor.
             <h3 class="left">All Devices </h3>
 
             <div class="right"> <!--list_style_buttons-->
+                <a class=" waves-effect waves-light left" ng-click="showLabel1 = !showLabel1" style="color: black; background-color: transparent; box-shadow: transparent"><i class="material-icons">filter_list</i></a>
                 <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left"><i class="material-icons">grid_on</i></a>
                 <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
 
+            </div>
+            <div class="input-field col m5 l5 right" ng-show="showLabel1" style="margin-right: 50px">            
+                        <input id="Custom_filter3" type="text" class="validate" ng-model="custom_filter3" >
+                        <label for="Custom_filter3">Filter</label>
             </div>
 
         </div>
@@ -30,7 +35,7 @@ and open the template in the editor.
 
             <center>
                 <ul id="deviceS" class="grid clearfix ">
-                    <li ng-animate="'animate'" class = "clearfix hoverable" ng-repeat="item in devices| orderBy: ['transaction_Mode']"> 
+                    <li ng-animate="'animate'" class = "clearfix hoverable" ng-repeat="item in devices| orderBy: ['transaction_Mode'] | filter:custom_filter3"> 
                         <a href="#/details/{{devices.indexOf(item)}}">
 <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%;width: 10px; background-color: red;float: left; " > </div>
                             <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 20%;width: 10px; background-color: orange;float: left; " > </div>
