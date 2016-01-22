@@ -23,7 +23,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!--<a class="toast_show"></a>-->
     <div class="switch col s12 row" style="margin-bottom: 1px">
@@ -110,7 +109,7 @@
         </div>
 
         <div id="test1" class="col s12 m12 l12">
-            <ul class="collapsible" data-collapsible="accordion" watch>        
+                <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Requested'} | filter:custom_filter | orderBy:dat ">
                     <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>

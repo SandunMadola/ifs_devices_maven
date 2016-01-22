@@ -46,6 +46,9 @@ body {
     text-align: center;
     float: left;
 }
+.n1{
+    /*text-align: left;*/
+}
 .n1 img{
     /*max-width: 2em;*/
     height: 3.25em;

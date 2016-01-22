@@ -1,6 +1,29 @@
 var homeCtrls = angular.module('homeCtrls', []);
 
-homeCtrls.controller('staticCtrl', ['$scope', function ($scope) {
+homeCtrls.service('shareVariable', function () {
+    var property = '';
+
+    return {
+        getProperty: function () {
+            return property;
+        },
+        setProperty: function (value) {
+            property = value;
+        }
+    };
+
+});
+
+homeCtrls.controller('staticCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
+        $http.get('Fixed_Json/type.json').success(function (data) {
+            $scope.typ = data;
+        });
+        $http.get('Fixed_Json/platform.json').success(function (data) {
+            $scope.plt = data;
+        });
+        $scope.filter_bar = function (value) {
+            shareVariable.dataObj = value;
+        };
         $scope.searching = "Type Here";
         $scope.search_bar = true;
         $scope.searched = function () {
@@ -19,8 +42,11 @@ homeCtrls.controller('searchCtrl', ['$scope', function ($scope) {
         });
     }]);
 
-homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) {
-        
+homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
+        $(document).ready(function () {
+            $scope.custom_filter2 = shareVariable.dataObj;
+        });
+
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
             $('#wait_moment').fadeOut('slow');
@@ -431,7 +457,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         });
         $http.get('Fixed_Json/orderBy.json').success(function (data) {
             $scope.order = data;
-        });        
+        });
         $http.get('webapi/request').success(function (data) {
             $scope.request = data;
             $('#wait_moment').fadeOut('slow');
