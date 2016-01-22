@@ -17,6 +17,7 @@ public class BorrowDevice {
     private int transaction_ID;
     private String transaction_Mode;
     private String transaction_Type;
+    private String color;
     private String username;
     private String device_ID;
     private String from_Date;
@@ -87,6 +88,14 @@ public class BorrowDevice {
 
     public void setReturned_Date(String returned_Date) {
         this.returned_Date = returned_Date;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     

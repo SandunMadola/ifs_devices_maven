@@ -27,10 +27,6 @@ homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) 
             $('modal1').show();
         });
 
-//        $(document).ready(function () {
-//            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-//            $('.modal-trigger').leanModal();
-//        });
         $('.modal-trigger').leanModal({
             dismissible: true, // Modal can be dismissed by clicking outside of the modal
             opacity: .5, // Opacity of modal background
@@ -54,55 +50,11 @@ homeCtrls.controller('deviceCtrl', ['$scope', '$http', function ($scope, $http) 
 homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
-            $scope.whichItem = $routeParams.itemId;
+            $scope.whichItem = $routeParams.itemId;            
+//            $('later_call').click();
+            
         });
-
-//        $scope.loading=false;
-//        window.onload = function(){
-//            
-//            $scope.c = $("#getcolor").text();
-//            alert($scope.c);
-//            
-//           $scope.$apply(function(){
-//               $scope.loading=true
-//              
-//            });
-//            if ($scope.c == 'red') {
-//                
-//               $scope.loading=true;
-//               alert($scope.c);
-//            
-//            } else {
-//                $scope.$apply(function(){
-//               $scope.loading=false;
-////               alert($scope.c);
-//            });
-//            }
-//             
-//        };
-
-//       
-//        $scope.isred = function(){
-//            $scope.c = $("#getcolor").text();
-////            alert($scope.c);
-////            alert("hiiii");
-//            if ($scope.c == 'red') {
-//                
-//               $scope.red= true;
-//               $scope.green= false;
-//               $scope.yellow= false;
-//
-//            
-//            } else {
-//                $scope.$apply(function(){
-//               $scope.loading=false;
-////               alert($scope.c);
-//            });
-//
-//        };
-//    };
-
-//        $scope.date = new Date();
+        
 
         $scope.date = new Date();
 //          alert($scope.date);
@@ -119,7 +71,8 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.d = $scope.toDate.getDate();
 
             var Nowdata = {
-                transaction_Mode: "red",
+                transaction_Mode: "unavailable",
+                color: "red",
                 transaction_Type: "return",
                 username: now.userName,
                 device_ID: $("#getdeviceID").text(),
@@ -171,7 +124,8 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.dd = $scope.lt.getDate();
 
             var Laterdata = {
-                transaction_Mode: "orange",
+                transaction_Mode: "booked",
+                color: "orange",
                 transaction_Type: "cancel",
                 username: later.userName,
                 device_ID: $("#getdeviceID").text(),

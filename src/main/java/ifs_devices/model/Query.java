@@ -143,6 +143,7 @@ public class Query {
         System.out.println("Inside the addBorrowRequest Query");
 
         String transaction_Mode = borrowRequest.getTransaction_Mode();
+        String color = borrowRequest.getColor();
         String transaction_Type = borrowRequest.getTransaction_Type();
         String username = borrowRequest.getUsername();
         String device_ID = borrowRequest.getDevice_ID();
@@ -150,8 +151,8 @@ public class Query {
         String to_Date = borrowRequest.getTo_Date();
 
         String query = "INSERT INTO borrow_device"
-                + " (transaction_Mode, transaction_Type, username, device_ID, from_Date, to_Date)"
-                + " VALUES ('" + transaction_Mode + "','" + transaction_Type + "','" + username + "','" + device_ID + "','" + from_Date + "','" + to_Date + "')";
+                + " (transaction_Mode, color, transaction_Type, username, device_ID, from_Date, to_Date)"
+                + " VALUES ('" + transaction_Mode + "','" + color + "','" + transaction_Type + "','" + username + "','" + device_ID + "','" + from_Date + "','" + to_Date + "')";
 
         //db set auto increment
         System.out.println(query);
@@ -174,6 +175,7 @@ public class Query {
             while (rs.next()) {
                 borrowreq.setTransaction_ID(rs.getInt("transaction_ID"));
                 borrowreq.setTransaction_Mode(rs.getString("transaction_Mode"));
+                borrowreq.setColor(rs.getString("color"));
                 borrowreq.setTransaction_Type(rs.getString("transaction_Type"));
                 borrowreq.setUsername(rs.getString("username"));
                 borrowreq.setDevice_ID(rs.getString("device_ID"));
@@ -193,14 +195,14 @@ public class Query {
        
         ArrayList<BorrowDevice> bookreq  = new ArrayList<BorrowDevice>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT from_Date, to_Date FROM borrow_device WHERE device_ID ="+ id + " AND transaction_Mode = 'orange' AND from_Date >= CURDATE() <= to_Date");
+            PreparedStatement ps = connection.prepareStatement("SELECT from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND transaction_Mode = 'booked' AND from_Date >= CURDATE() <= to_Date");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 BorrowDevice bookedreq = new BorrowDevice();
 //               bookreq.setTransaction_ID(rs.getInt("transaction_ID"));
 //                bookreq.setTransaction_Mode(rs.getString("transaction_Mode"));
 //                bookreq.setTransaction_Type(rs.getString("transaction_Type"));
-//                bookreq.setUsername(rs.getString("username"));
+                bookedreq.setUsername(rs.getString("username"));
 //                bookreq.setDevice_ID(rs.getString("device_ID"));
                 bookedreq.setFrom_Date(rs.getString("from_Date"));
                 bookedreq.setTo_Date(rs.getString("to_date"));
@@ -218,7 +220,7 @@ public class Query {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"green\") AS `transaction_Mode`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
+            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -238,6 +240,7 @@ public class Query {
                 devicels.setURL(rs.getString("URL"));
                 devicels.setLocation(rs.getString("location"));
                 devicels.setTransaction_Mode(rs.getString("transaction_Mode"));
+                devicels.setColor(rs.getString("color"));
                 devicedata.add(devicels);
                 devicels.setTransaction_ID(rs.getInt("transaction_ID"));
             }
@@ -251,7 +254,7 @@ public class Query {
 
         ArrayList<DeviceList> Searcheddevicedata = new ArrayList<DeviceList>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"green\") AS `transaction_Mode`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
+            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -271,6 +274,7 @@ public class Query {
                 Searcheddevicels.setURL(rs.getString("URL"));
                 Searcheddevicels.setLocation(rs.getString("location"));
                 Searcheddevicels.setTransaction_Mode(rs.getString("transaction_Mode"));
+                Searcheddevicels.setColor(rs.getString("color"));
                 Searcheddevicels.setTransaction_ID(rs.getInt("transaction_ID"));
                 Searcheddevicedata.add(Searcheddevicels);
                 
@@ -299,10 +303,11 @@ public class Query {
         System.out.println("Inside the Query");
         
         String transaction_Mode = updateDevice.getTransaction_Mode();
+        String color = updateDevice.getColor();
         String transaction_Type = updateDevice.getTransaction_Type();
         int transaction_ID = updateDevice.getTransaction_ID();
      
-        String query = "UPDATE borrow_device SET transaction_Mode = 'red', transaction_Type = 'return' WHERE transaction_ID = " + transaction_ID;
+        String query = "UPDATE borrow_device SET transaction_Mode = 'unavailable', color = 'red', transaction_Type = 'return' WHERE transaction_ID = " + transaction_ID;
         System.out.println(query);
         try {
             Statement statement = connection.createStatement();
@@ -317,7 +322,7 @@ public class Query {
    public static String returnDeviceTransaction(int id, Connection connection) throws SQLException {
         System.out.println("Inside the Query");
         
-        String query1 = "INSERT INTO returned_devices ( transaction_ID, transaction_Mode, transaction_Type, username, device_ID, from_Date, to_Date, returned_Date ) SELECT transaction_ID, transaction_Mode, transaction_Type, username, device_ID, from_Date, to_Date, CURDATE() FROM borrow_device WHERE transaction_ID = " + id + "";
+        String query1 = "INSERT INTO returned_devices ( transaction_ID, transaction_Mode, color, transaction_Type, username, device_ID, from_Date, to_Date, returned_Date ) SELECT transaction_ID, transaction_Mode, color, transaction_Type, username, device_ID, from_Date, to_Date, CURDATE() FROM borrow_device WHERE transaction_ID = " + id + "";
         String query2 = "DELETE FROM borrow_device WHERE transaction_ID = " + id + "";
         System.out.println(query1);
         System.out.println(query2);
