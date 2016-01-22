@@ -1,6 +1,6 @@
 {
-    "New": "New",
+    "Requested": "Requested",
     "In Progress":"In Progress",
-    "Completed":"Completed",
+    "Approved":"Approved",
     "Rejected":"Rejected"
 }

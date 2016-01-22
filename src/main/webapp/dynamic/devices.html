@@ -4,54 +4,66 @@
 
 <link href="styles/device_style.css" rel="stylesheet" type="text/css"/>
 <section class="b_1">
-
+    <div id="wait_moment">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="main_content"> 
         <div class ="sub_content show-on-medium-and-up hide-on-small-only "><!--sub_content-->
             <!--#wrap-->
 
-                <h3 class="left">All Devices </h3>
-                 
-                <div class="right"> <!--list_style_buttons-->
-                    
-                    <a class=" waves-effect waves-light left" ng-click="showLabel = !showLabel" style="color: black; background-color: transparent"><i class="material-icons">filter_list</i></a>
-                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left" ><i class="material-icons">grid_on</i></a>
-                    <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+            <h3 class="left">All Devices </h3>
 
-                </div>
-                <div class="input-field col m5 l5 right" ng-show="showLabel" style="margin-right: 50px">            
-                        <input id="Custom_filter2" type="text" class="validate" ng-model="custom_filter2" >
-                        <label for="Custom_filter2">Filter</label>
-                </div>
-                
-            
+            <div class="right"> <!--list_style_buttons-->
+
+                <a class=" waves-effect waves-light left" ng-click="showLabel = !showLabel" style="color: black; background-color: transparent"><i class="material-icons">filter_list</i></a>
+                <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left" ><i class="material-icons">grid_on</i></a>
+                <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+
+            </div>
+            <div class="input-field col m5 l5 right" ng-show="showLabel" style="margin-right: 50px">            
+                <input id="Custom_filter2" type="text" class="validate" ng-model="custom_filter2" >
+                <label for="Custom_filter2">Filter</label>
+            </div>
+
+
         </div>
-         <div class ="sub_content show-on-small-only hide-on-med-and-up col s12 "><!--sub_content-->
+        <div class ="sub_content show-on-small-only hide-on-med-and-up col s12 "><!--sub_content-->
             <!--#wrap-->
 
-                <h3 class="col s2 left" ng-show="!showLabel">All Devices </h3>
-                 
-                <div class="col s6 right"> <!--list_style_buttons-->
-                    
-                    <a class="right"  ng-click="showLabel = !showLabel"><i class="material-icons">filter_list</i></a>
-                    <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left" ><i class="material-icons">grid_on</i></a>
-                    <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+            <h3 class="col s2 left" ng-show="!showLabel">All Devices </h3>
 
-                </div>
-                <div class="input-field col s4 left" ng-show="showLabel" style="margin-left: 30px">            
-                        <input id="Custom_filter2" type="text" class="validate" ng-model="custom_filter2" >
-                        <label for="Custom_filter2">Filter</label>
-                </div>
-                
-            
+            <div class="col s6 right"> <!--list_style_buttons-->
+
+                <a class="right"  ng-click="showLabel = !showLabel"><i class="material-icons">filter_list</i></a>
+                <a href="#/thumbnail" id="gridview" class="switcher hide-on-small-only left" ><i class="material-icons">grid_on</i></a>
+                <a href="#/devices" id="listview" class="switcher active hide-on-small-only left"><i class="material-icons">view_list</i></a>
+
+            </div>
+            <div class="input-field col s4 left" ng-show="showLabel" style="margin-left: 30px">            
+                <input id="Custom_filter2" type="text" class="validate" ng-model="custom_filter2" >
+                <label for="Custom_filter2">Filter</label>
+            </div>
+
+
         </div>
         <div class="ignore"></div>     
         <div class="ifs_banner">
 
             <center>
                 <ul class="devicelist">
-                    
+
                     <!--device cf--> 
                     <li class = "hoverable card-panel row" ng-repeat="item in devices | orderBy: ['color'] | filter:custom_filter2"> 
                         <!--<div class="row">-->
@@ -65,6 +77,19 @@
 <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: red;float: left; " > </div>
                             <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: orange;float: left; " > </div>
                             <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>-->
+                    <li class = "hoverable card-panel row" ng-repeat="item in devices| orderBy: ['transaction_Mode'] | filter:custom_filter2"> 
+                        <!--<div class="row">-->
+                        
+                        <a href="#/details/{{devices.indexOf(item)}}">
+
+                            <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: red; float: left; " > </div>
+                                                        <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: orange; float: left; " > </div>
+                                                        <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: green; float: left; " > </div>-->
+                            <div class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: {{item.transaction_Mode}};float: left; " > </div>
+                            <div class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: {{item.transaction_Mode}};float: left; " > </div>
+                            <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: red;float: left; " > </div>
+                                                        <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: orange;float: left; " > </div>
+                                                        <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>-->
 
                             <div class="col s11 m3 l4 hide-on-med-and-up " style="float: none">
                                 <img style="width: 45%" ng-src="images/{{item.image_no}}.jpg">
@@ -89,6 +114,7 @@
 
 
                             <div class="buttonClass col s12 m2 l2" >
+<<<<<<< HEAD
                                 <button ng-hide="{{item.transaction_Mode == 'unavailable'}} || {{item.transaction_Mode == 'booked'}}"  style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Now </button>
                                  <p ng-hide="{{item.transaction_Mode == 'unavailable'}} || {{item.transaction_Mode == 'booked'}}" class="col s1 hide-on-med-and-up"> </p>
                                 <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
@@ -96,8 +122,17 @@
                                 <button ng-show="{{item.transaction_Mode == 'unavailable'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Return </button>
                                 <button ng-show="{{item.transaction_Mode == 'booked'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Get Now </button>
                                 <button ng-show="{{item.transaction_Mode == 'booked'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Cancel </button>
+=======
+                                <button ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}"  style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Now </button>
+                                <p ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="col s1 hide-on-med-and-up"> </p>
+                                <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
                                 <p class="col s1 hide-on-med-and-up"> </p>
-                                
+                                <button ng-show="{{item.transaction_Mode == 'red'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Return </button>
+                                <button ng-show="{{item.transaction_Mode == 'orange'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Get Now </button>
+                                <button ng-show="{{item.transaction_Mode == 'orange'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Cancel </button>
+>>>>>>> d5b0a53841501af3b8fab6b485568e23b0f18f46
+                                <p class="col s1 hide-on-med-and-up"> </p>
+
 
                             </div>
                         </a>

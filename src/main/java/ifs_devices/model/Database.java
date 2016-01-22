@@ -17,7 +17,7 @@ public class Database {
         String url;
         url = "jdbc:mysql://localhost:3306/ifs_devices";
         String user = "root";
-        String password = "root";
+        String password = "";
 //        String SQL= "SELECT CASE WHEN `date`!='0000-00-00' THEN `date` END new_date FROM  borrow_device";
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -27,15 +27,8 @@ public class Database {
             throw e;
         } catch (Exception e) {
             throw e;
-        }
-      
-                    
-//        }finally{
-//            connection.close();
-//        }
-        
+        }                                 
     }
-
 }
 
 //    public static void main(String[] args) {

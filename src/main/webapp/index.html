@@ -48,32 +48,32 @@
                         </div>
                     </form>                    
                     <!--<a class="right" href="#"><i class="material-icons">search</i></a>-->
-                    <script>
-            $('#search').keyup(function () {
-
-                var text = $('#search').val();
-                var data1 = {'text': text};
-                $.ajax({
-                    type: 'POST',
-                    data: data1,
-                    url: 'ifs_devices.resources/SearchResource.java',
-                    success: function (data) {
-                        $('#searchdetails').empty();
-                        $.each(data['names'], function (key, val) {
-                     
-                            $('#searchdetails').append("<label class='text' style='color:#863D8D'>" + val + "</label><br>");
-                        });
-                    }
-                });
-            });
-                    </script>
+                    <!--                    <script>
+                                                    $('#search').keyup(function () {
+                    
+                                                        var text = $('#search').val();
+                                                        var data1 = {'text': text};
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            data: data1,
+                                                            url: 'ifs_devices.resources/SearchResource.java',
+                                                            success: function (data) {
+                                                                $('#searchdetails').empty();
+                                                                $.each(data['names'], function (key, val) {
+                    
+                                                                    $('#searchdetails').append("<label class='text' style='color:#863D8D'>" + val + "</label><br>");
+                                                                });
+                                                            }
+                                                        });
+                                                    });
+                                        </script>-->
                 </div>
             </div>
         </nav>
 
         <div class="ignore"></div>
 
-        <ul class="side-nav collapsible" id="mobile-demo" data-collapsible="expandable">
+        <ul style="text-align: left;" class="side-nav collapsible" id="mobile-demo" data-collapsible="expandable">
             <li style="height: 1.25em;"></li>
 
             <li>
@@ -130,7 +130,7 @@
         </ul>
 
         <!-- n1 -->
-        <div class="n1">
+        <div style="text-align: left;" class="n1">
             <ul class="f_height collapsible hide-on-med-and-down" data-collapsible="expandable" style="margin: 0px; height: 100%;">
                 <!--                <li style="height: 1.25em;"></li>-->
                 <li>
@@ -155,34 +155,57 @@
                         </ul>                 
                     </div>
                 </li>
+                <!--                <li>
+                                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
+                                    <div class="collapsible-body">
+                                        <ul>
+                                            <li><div class="collapsible-header">Phone</div></li>
+                                            <li><div class="collapsible-header">Tablet</div></li>
+                                            <li><div class="collapsible-header">Notebook</div></li>
+                                            <li><div class="collapsible-header">Laptop</div></li>
+                                            <li><div class="collapsible-header">Desktop</div></li>                  
+                                        </ul>
+                                    </div>
+                                </li>-->
                 <li>
                     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
                     <div class="collapsible-body">
-                        <ul>
-                            <li><div class="collapsible-header">Phone</div></li>
-                            <li><div class="collapsible-header">Tablet</div></li>
-                            <li><div class="collapsible-header">Notebook</div></li>
-                            <li><div class="collapsible-header">Laptop</div></li>
-                            <li><div class="collapsible-header">Desktop</div></li>                  
+                        <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                            <li ng-repeat="value in typ">
+                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header">{{value}}</div></a>
+                                <!--<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                            </li>
                         </ul>
-                    </div>
+                    </div>                   
                 </li>
+
+                <!--                <li>
+                                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
+                                    <div class="collapsible-body">
+                                        <ul>
+                                            <li><div class="collapsible-header">Android</div></li>
+                                            <li><div class="collapsible-header">IOS</div></li>
+                                            <li><div class="collapsible-header">MAC</div></li>
+                                            <li><div class="collapsible-header">Windows</div></li>                                                               
+                                        </ul>                    
+                                    </div>
+                                </li>-->
                 <li>
                     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
                     <div class="collapsible-body">
-                        <ul>
-                            <li><div class="collapsible-header">Android</div></li>
-                            <li><div class="collapsible-header">IOS</div></li>
-                            <li><div class="collapsible-header">MAC</div></li>
-                            <li><div class="collapsible-header">Windows</div></li>                                                               
-                        </ul>                    
-                    </div>
+                        <ul  class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                            <li ng-repeat="value in plt">
+                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header filter_bar">{{value}}</div></a>
+                                <!--ng-click="filter_bar(value)"<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                            </li>
+                        </ul>
+                    </div>                   
                 </li>
                 <li>
                     <a href="#/requested">
                         <div class="collapsible-header"><i class="material-icons">event_note</i>Requested Devices</div>
                     </a>                    
-                </li>
+                </li>                
             </ul>
 
 

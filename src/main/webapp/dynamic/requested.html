@@ -4,6 +4,12 @@
         $('select').material_select();
     });
 </script>
+<style>
+
+    .btn:focus{
+        background-color: #A870B9;
+    }
+</style>
 <section class="requested"> 
     <div id="wait_moment">
         <div class="preloader-wrapper big active">
@@ -17,17 +23,20 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <!--<a class="toast_show"></a>-->
     <div class="switch col s12 row" style="margin-bottom: 1px">
-        <h5 class="col s5" style="text-align: right">Requested</h5>
-        <label class="col s2">
-            <!--Requested-->
-            <input type="checkbox" ng-model="checked" ng-init="checked = false">
-            <span class="lever"></span>
-            <!--Complete-->
-        </label>
-        <h5 class="col s5" style="text-align: left">Completed</h5>
+        <!--        <h5 class="col s5" style="text-align: right">Requested</h5>
+                <label class="col s2">
+                    Requested
+                    <input type="checkbox" ng-model="checked" ng-init="checked = false">
+                    <span class="lever"></span>
+                    Complete
+                </label>
+                <h5 class="col s5" style="text-align: left">Completed</h5>-->
+        <p class="col s12"><!--For adding space-->
+        <div class="col s6 "><button class="btn right" ng-click="checked = false" ng-init="checked = false">Requested</button></div>
+        <div class="col s6 "><button class="btn left" ng-click="checked = true" >Complete</button></div>
     </div>
 
     <div class="row show-on-medium-and-up hide-on-small-only" style="margin-bottom: 1px">
@@ -51,9 +60,16 @@
                 <label for="c3">Date</label>            
             </p>
         </div>
+        <!--        <div class="col s12 m6 l6" ng-show="showInputLabel"> 
+                    <select class="input-field browser-default validate" ng-model="dat">
+                        <option value="" disabled selected>Order By</option>
+                        <option ng-repeat="dat in order">{{dat}}</option>
+                    </select>
+                </div>-->
         <div class="col s2 m1 l1" style="float: right; text-align: left">
             <a class="hoverable waves-effect waves-light" ng-click="showInputLabel = !showInputLabel"><i class="material-icons">filter_list</i></a>           
         </div>
+
     </div>
     <div class="row show-on-small-only hide-on-med-and-up" style="margin-bottom: 1px">
 
@@ -90,12 +106,12 @@
                 <li class="tab col s6 col l3"><a href="#test1">Requested</a></li>
                 <li class="tab col s6 col l3"><a href="#test2">In progress</a></li>                              
             </ul>
-        </div>  
+        </div>
 
         <div id="test1" class="col s12 m12 l12">
-            <ul class="collapsible" data-collapsible="accordion" watch>        
+                <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
-                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'New'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Requested'} | filter:custom_filter | orderBy:dat ">
                     <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
                     <div class="collapsible-body" ng-hide="_edit1"> <!--View Mode-->             
 
@@ -198,7 +214,7 @@
                     </div>                    
                 </li>
 
-                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'New'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'Requested'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
                     <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8" style="text-align: left;">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>                    
                     <div class="collapsible-body" ng-hide="_edit1"> <!--View Mode-->             
 
@@ -521,14 +537,14 @@
     <div class="row" id="tab2" ng-show="checked">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s6 col l3"><a href="#test3">Completed</a></li>
+                <li class="tab col s6 col l3"><a href="#test3">Approved</a></li>
                 <li class="tab col s6 col l3"><a href="#test4">Rejected</a></li>                               
             </ul>
         </div>
         <div id="test3" class="col s12 m12 l12">
             <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
-                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Completed'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Approved'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
                     <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
                     <div class="collapsible-body" ng-hide="_edit3"> <!--View Mode-->             
 
@@ -631,7 +647,7 @@
                     </div>                    
                 </li>
 
-                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'Completed'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
+                <li class="show-on-small-only hide-on-med-and-up" ng-repeat="req in request| filter:{request_Status:'Approved'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
                     <div class="collapsible-header col s12"><i class="col s1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col s8" style="text-align: left;">{{req.device_name}} - <b>{{req.SPA}}</b></div>  <i class=" col s1 material-icons right for_expand">more_vert</i></div>                    
                     <div class="collapsible-body" ng-hide="_edit3"> <!--View Mode-->             
 
