@@ -65,6 +65,7 @@
                 <ul class="devicelist">
 
                     <!--device cf--> 
+
                     <li class = "hoverable card-panel row" ng-repeat="item in devices | orderBy: ['color'] | filter:custom_filter2"> 
                         <!--<div class="row">-->
                         <a href="#/details/{{devices.indexOf(item)}}">
@@ -77,19 +78,7 @@
 <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: red;float: left; " > </div>
                             <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: orange;float: left; " > </div>
                             <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>-->
-                    <li class = "hoverable card-panel row" ng-repeat="item in devices| orderBy: ['transaction_Mode'] | filter:custom_filter2"> 
-                        <!--<div class="row">-->
-                        
-                        <a href="#/details/{{devices.indexOf(item)}}">
 
-                            <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: red; float: left; " > </div>
-                                                        <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: orange; float: left; " > </div>
-                                                        <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: green; float: left; " > </div>-->
-                            <div class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: {{item.transaction_Mode}};float: left; " > </div>
-                            <div class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: {{item.transaction_Mode}};float: left; " > </div>
-                            <!--                            <div ng-show="{{item.transaction_Mode == 'red'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: red;float: left; " > </div>
-                                                        <div ng-show="{{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: orange;float: left; " > </div>
-                                                        <div ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: green;float: left; " > </div>-->
 
                             <div class="col s11 m3 l4 hide-on-med-and-up " style="float: none">
                                 <img style="width: 45%" ng-src="images/{{item.image_no}}.jpg">
@@ -114,7 +103,7 @@
 
 
                             <div class="buttonClass col s12 m2 l2" >
-<<<<<<< HEAD
+
                                 <button ng-hide="{{item.transaction_Mode == 'unavailable'}} || {{item.transaction_Mode == 'booked'}}"  style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Now </button>
                                  <p ng-hide="{{item.transaction_Mode == 'unavailable'}} || {{item.transaction_Mode == 'booked'}}" class="col s1 hide-on-med-and-up"> </p>
                                 <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
@@ -122,15 +111,6 @@
                                 <button ng-show="{{item.transaction_Mode == 'unavailable'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Return </button>
                                 <button ng-show="{{item.transaction_Mode == 'booked'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Get Now </button>
                                 <button ng-show="{{item.transaction_Mode == 'booked'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Cancel </button>
-=======
-                                <button ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}"  style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Now </button>
-                                <p ng-hide="{{item.transaction_Mode == 'red'}} || {{item.transaction_Mode == 'orange'}}" class="col s1 hide-on-med-and-up"> </p>
-                                <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
-                                <p class="col s1 hide-on-med-and-up"> </p>
-                                <button ng-show="{{item.transaction_Mode == 'red'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Return </button>
-                                <button ng-show="{{item.transaction_Mode == 'orange'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Get Now </button>
-                                <button ng-show="{{item.transaction_Mode == 'orange'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Cancel </button>
->>>>>>> d5b0a53841501af3b8fab6b485568e23b0f18f46
                                 <p class="col s1 hide-on-med-and-up"> </p>
 
 
