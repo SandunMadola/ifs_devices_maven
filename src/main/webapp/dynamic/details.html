@@ -6,7 +6,7 @@
 </script>
 
 <section class="b_3">
-    <div class="deviceinfo">
+    <div class="deviceinfo" >
 <!--        main_content-->
         
         <div class="">
@@ -15,7 +15,7 @@
 <!--                Show on large only-->
                 <div class=" row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%"> 
                     <div  style="width: 30%; float: left"> 
-                        <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div> 
+<!--                        <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div> -->
                         <h3  style="text-align: left"> <b>{{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b> </h3>
                     </div>
                 
@@ -49,7 +49,7 @@
                 <div id="nnn" class="buttonClass row show-on-medium-and-down hide-on-large-only" style="position: fixed;margin-left: -50%;
                      width: 100% ">
                     <div  style=" width: 100%; float: left; "> 
-                        <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div>     
+<!--                        <div class="col s1 m1 l1 vertical-line" style="height: 100%;width: 10px; background-color: {{devices[whichItem].transaction_Mode}};float: left; " > </div>     -->
                         <h3> <b> {{devices[whichItem].name}} - [id  {{devices[whichItem].device_ID}}] </b></h3>
                     </div>
 
@@ -85,6 +85,17 @@
                     </a>
 
                 </div>
+                <div class="col s12 m3 l4 hide-on-med-and-down">
+                <label style="margin-top:  75px; width: 17%; float: left; height: 36px; background-color: {{devices[whichItem].color}}; color: white; font-size: 1.5em; padding: 5px;" >{{devices[whichItem].transaction_Mode}}</label>
+                </div>
+
+                <div class="col s12 m3 l4 show-on-small-only hide-on-med-and-up">
+                <label style=" margin-top:  170px; width: 30%; float: left; height: 36px; background-color: {{devices[whichItem].color}}; color: white; font-size: 1.5em; padding: 3px;">{{devices[whichItem].transaction_Mode}}</label>
+                </div>
+
+                <div class="col s12 m3 l4 hide-on-large-only hide-on-small-only">
+                <label style=" margin-top:  170px; width: 25%; float: left; height: 36px; background-color: {{devices[whichItem].color}}; color: white; font-size: 1.5em; padding: 3px;">{{devices[whichItem].transaction_Mode}}</label>
+                </div>
 
                 <div class="device cf" ng-model="devices">
 
@@ -109,17 +120,40 @@
                         <h3> Resolution : {{devices[whichItem].resolution}} inches</h3>
                         <h3> Location : {{devices[whichItem].location}}</h3>
                         <h3> URL : {{devices[whichItem].URL}}</h3>
-                                               
+                                          
                     </div>
+                    <button ng-click="ShowBooked()"  style="margin-left: 10px; padding: 5px; float: left; height: 46px; text-align: left;" type="button" class="later_call waves-effect waves-light btn col s12 m3 l4 hide-on-med-and-down">See Booked Dates</button>
+                    <button ng-click="ShowBooked()" style="margin-left: 10px; padding: 5px; float: left; height: 46px; text-align: left;" type="button" class="later_call waves-effect waves-light btn col s12 m3 l4 hide-on-large-only hide-on-small-only">See Booked Dates</button>
+                    <button ng-click="ShowBooked()" style="margin-left: 5px; padding: 5px; float: left; height: 36px; text-align: left; font-size: 1em;" type="button" class="later_call waves-effect waves-light btn col s12 m3 l4 show-on-small-only hide-on-med-and-up"> See Booked Dates</button>
+                    <table class="striped">
+                    <thead>
+                        <tr>
+                            <th data-field="from">Booked From</th>
+                            <th data-field="till">Booked Till</th>
+                            <th data-field="by">Booked by</th>
+               
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr ng-repeat="x in booked" watch>
+                            <td>{{x.from_Date}}</td>
+                            <td>{{x.to_Date}}</td>
+                            <td>{{x.username}}</td>
+                        </tr>
+                     
+                    </tbody>
+                </table>
 
                 </div>
                 
+       
                 <!--To get data to the controller from the front-end-->
                 <div ng-hide="true" > 
                     <p id="getTransID" >{{devices[whichItem].transaction_ID}}</p>
                 </div>
                 <div ng-hide="true" > 
-                    <p id="getcolor" >{{devices[whichItem].transaction_Mode}}</p>
+                    <p id="getcolor" >{{devices[whichItem].color}}</p>
                 </div>
                 <div ng-hide="true" > 
                     <p id="getun" >{{devices[whichItem].username}}</p>

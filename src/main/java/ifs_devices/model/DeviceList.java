@@ -27,6 +27,7 @@ public class DeviceList {
     private String username;
     private String location;
     private String transaction_Mode;
+    private String color;
     private int transaction_ID;
     
 
@@ -165,6 +166,14 @@ public class DeviceList {
 
     public void setTransaction_ID(int transaction_ID) {
         this.transaction_ID = transaction_ID;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
     
 }
