@@ -43,14 +43,24 @@ homeCtrls.controller('searchCtrl', ['$scope', function ($scope) {
     }]);
 
 homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
-        $(document).ready(function () {
-            $scope.custom_filter2 = shareVariable.dataObj;
-        });
 
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
             $('#wait_moment').fadeOut('slow');
         });
+        
+//        window.setInterval(function () {
+//            $scope.custom_filter2 = shareVariable.dataObj;
+//        }, 500);
+
+        function setFilter() {
+            $("#Custom_filter2").each(function () {
+                $scope.custom_filter2 = shareVariable.dataObj;
+            });
+            window.setTimeout(setFilter, 10); // calls itself again in one second            
+        }
+        setFilter();// ...initiate self-repeating function
+
         $scope.popup = $(document).ready(function () {
             $('modal1').show();
         });
