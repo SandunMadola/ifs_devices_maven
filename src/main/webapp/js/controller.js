@@ -54,9 +54,9 @@ homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function
 //        }, 500);
 
         function setFilter() {
-            $("#Custom_filter2").each(function () {
-                $scope.custom_filter2 = shareVariable.dataObj;
-            });
+//            $("#Custom_filter2").each(function () {
+                $scope.custom_filter2 = shareVariable.getProperty();
+//            });
             window.setTimeout(setFilter, 10); // calls itself again in one second            
         }
         setFilter();// ...initiate self-repeating function
@@ -345,6 +345,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
                 size: request.size,
                 resolution: request.resolution,
                 location: request.location,
+                PA: request.PA,
                 SPA: request.SPA,
                 project: request.project,
                 request_Status: "Requested",
