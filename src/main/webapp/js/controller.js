@@ -48,14 +48,14 @@ homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function
             $scope.devices = data;
             $('#wait_moment').fadeOut('slow');
         });
-        
+
 //        window.setInterval(function () {
 //            $scope.custom_filter2 = shareVariable.dataObj;
 //        }, 500);
 
         function setFilter() {
 //            $("#Custom_filter2").each(function () {
-                $scope.custom_filter2 = shareVariable.getProperty();
+            $scope.custom_filter2 = shareVariable.getProperty();
 //            });
             window.setTimeout(setFilter, 10); // calls itself again in one second            
         }
@@ -88,11 +88,11 @@ homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function
 homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
-            $scope.whichItem = $routeParams.itemId;            
+            $scope.whichItem = $routeParams.itemId;
 //            $('later_call').click();
-            
+
         });
-        
+
 
         $scope.date = new Date();
 //          alert($scope.date);
@@ -428,6 +428,14 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             $('#wait_moment').fadeOut('slow');
         });
 
+        $('#toast_holder').hide();
+        $scope.show = function () {
+            $('#toast_holder').show();
+        };
+        $scope.set = function (id) {
+            $('#toast_holder').hide();
+        };
+        
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
@@ -458,7 +466,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
                 $scope.status = changed;
             }
             ;
-
+//            alert($scope.status);
             var data = {
                 device_name: request.device_name,
                 type: request.type,
@@ -475,6 +483,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
                 userName: request.userName,
                 comment: request.comment,
                 date: request.date,
+                device_ID: request.device_ID,
                 reject_comment: request.reject_comment
             };
 
@@ -500,10 +509,6 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
 
             });
         };
-
-//        $(document).ready(function () {
-//            $('.tooltipped').tooltip({delay: 50});
-//        });
 
     }]);
 homeCtrls.controller('thumbnailCtrl', ['$scope', function ($scope) {

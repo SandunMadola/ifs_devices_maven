@@ -97,6 +97,14 @@ a {
 #search{/*search field*/
     background-color: #863d7d;
 }
+.side-nav a {
+    color: #444;
+    display: block;
+    font-size: 1rem;
+    height: auto;
+    line-height: 64px;
+    /*padding: 0px 15px;*/
+}
 @media screen and (max-width: 480px)
 {
 

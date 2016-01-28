@@ -50,6 +50,30 @@ and open the template in the editor.
     background-color: transparent;
     text-decoration: underline;
 }
+.toast {
+    border-radius: 2px;
+    top: 0px;
+    width: auto;
+    clear: both;
+    margin-top: 10px;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    line-height: auto;
+    background-color: #676767;
+    padding: 0px 25px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#toast_holder{
+    display: block;
+    position: fixed;
+    margin-top: -100%;
+}
 @media only screen and (max-width : 600px) {
     #toast-container {
         min-width: 8%;
