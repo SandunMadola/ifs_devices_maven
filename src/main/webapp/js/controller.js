@@ -8,8 +8,8 @@ homeCtrls.service('shareVariable', function () {
             return property;
         },
         setProperty: function (value) {
-            property = value;
-        }
+                property = value;
+            }  
     };
 
 });
@@ -24,7 +24,7 @@ homeCtrls.controller('staticCtrl', ['$scope', 'shareVariable', '$http', function
         $scope.filter_bar = function (value) {
             shareVariable.dataObj = value;
         };
-        $scope.searching = "Type Here";
+        $scope.searching = "Search for devices";
         $scope.search_bar = true;
         $scope.searched = function () {
             $scope.search_bar = !$scope.search_bar;
@@ -83,7 +83,12 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             
         });
         
-
+         $(document).ready(function () {
+            $('.collapsible').collapsible({
+                accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+            });
+        });
+  
         $scope.date = new Date();
 //          alert($scope.date);
 
@@ -194,7 +199,6 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                     (function (data) {
 
                         $scope.booked = data;
-//                alert($scope.booked);
                     });
         };
 

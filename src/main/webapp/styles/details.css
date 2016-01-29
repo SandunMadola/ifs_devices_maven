@@ -7,12 +7,6 @@
     width: 70%;
 }*/
 
-.b_3 .deviceinfo .row {
-    margin-bottom: 10px;
-    background-color: #fafafa;
-    height: 75px;
-    width: 70%;
-}
 
 .b_3 .deviceinfo {
     font-size: 0.9em;
@@ -27,7 +21,7 @@
 
 .b_3 .deviceinfo img {
     border-radius: 10px;
-    margin-top: 90px;
+    margin-top: 20px;
 }
 
 .b_3 .deviceinfo h2{
@@ -35,7 +29,7 @@
 }
 
 .b_3 .deviceinfo h3{
-    font-size: 1.56rem;
+    font-size: 1.06rem;
 }
 
 .b_3 .deviceinfo h1 {
@@ -82,6 +76,31 @@
 .b_3 ng-show ng-hide {
     display: none;
 }
+
+.b_3 table, tbody, td, th, thead, tr {
+    z-index: 9999;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+     border-spacing: 0px;
+    
+/*    border: 1px solid black;*/
+}
+.b_3 table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    
+}
+.b_3 th {
+    padding:0px;
+}
+.b_3 td {
+    padding:0px;
+}
+
 
 /*.b_3 input[type=text] {
     

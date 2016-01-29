@@ -26,7 +26,7 @@ div {
 
 .main_content {
     background-color: #E7E9EC;
-    height: 100%;
+    height: auto;
 }
 .sub_content {
     position: relative;
@@ -152,7 +152,7 @@ ul.list li { display: block;  padding: 10px 15px; background-color: #FBFBFB;widt
 
 /** grid view **/
 ul.grid { list-style: none; margin: 0 0; padding-left: 20px; padding-right: 20px;/* background: white; */}
-ul.grid li { position: relative; background: white; display: block; float: left;width: 250px;max-width: 47.5%;height: 470px; /* border-right: 1px solid #696B6B; */ padding: 5px 22px;margin-bottom: 20px; margin-right: 20px;box-sizing: border-box; box-sizing: border-box;      /* max-height: 80.5%; */-moz-box-sizing: border-box; -webkit-box-sizing: border-box;}
+ul.grid li { position: relative; background: white; display: block; float: left;width: 250px;max-width: 47.5%;height: auto; /* border-right: 1px solid #696B6B; */ padding: 5px 22px;margin-bottom: 20px; margin-right: 20px;box-sizing: border-box; box-sizing: border-box;      /* max-height: 80.5%; */-moz-box-sizing: border-box; -webkit-box-sizing: border-box;}
 
 
 

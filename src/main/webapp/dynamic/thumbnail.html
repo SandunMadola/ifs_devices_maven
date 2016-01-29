@@ -47,7 +47,7 @@ and open the template in the editor.
 
                                 <h4> {{item.type}} </h4>
                                 <h4> {{item.OS}} </h4>
-                                <h4> Owned by : {{item.sub_Product_Area_name}} </h4>
+                                <h4> Owned by : {{item.product_Area_name}} {{item.sub_Product_Area_name}} </h4>
 
                             </div>
 
@@ -62,76 +62,6 @@ and open the template in the editor.
                                
                             </div>
                         </a>
-<!--                        <form>
-        now button start
-
-         Modal Structure 
-        <div id="modal1" class="modal" style="width: 100%; max-height: 100%; height: 100%;" >
-            <div class="modal-content">
-                <h4>Borrow Now</h4>
-
-                <div class="input-field">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="un" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
-                    <label for="un">Username</label>
-                </div>
-
-
-                <div class="input-field ">
-                    <i class="material-icons " style="alignment-adjust: before-edge">timelapse</i>
-                    <select ng-model="now.to">
-                        <option value="" disabled selected>Duration </option>
-                        <option value="1day">1 day</option>
-                        <option value="2day">2 days</option>
-                        <option value="3day">3 days</option>                     
-
-
-                    </select>
-
-                                        <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
-                </div>
-
-                <p>{{now}}</p>
-            </div>
-            <div class="modal-footer">
-                <a  class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
-            </div>
-        </div>   
-        now button end
-        later button start
-        <div id="modal2" class="modal" style="width: 100%; height: 100%; max-height: 100%;">
-            <div class="modal-content">
-                <h4>Borrow Later</h4>
-                <div class="input-field">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="un2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
-                    <label for="un2">User Name</label>
-                </div>
-                <div class="input-field">
-                    <i class="material-icons prefix">today</i>
-                    <input id="calender" type="text" class="datepicker" ng-model="later.from" required>type="date"
-                    <label for="calender">From</label>
-                </div>
-                <div class="input-field">
-                    <i class="material-icons">timelapse</i>
-                    <select ng-model="later.to" required>
-                        <option value="" disabled selected>Duration</option>
-                        <option value="1day">1 day</option>
-                        <option value="2day">2 days</option>
-                        <option value="3day">3 days</option>                     
-
-
-                    </select>              
-                </div> 
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
-            </div>
-            <p>{{later}}</p>
-        </div>
-
-        later button end
-    </form>-->
                     </li>
 
                 </ul>

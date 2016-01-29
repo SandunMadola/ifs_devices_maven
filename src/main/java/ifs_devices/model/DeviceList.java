@@ -23,6 +23,7 @@ public class DeviceList {
     private String URL;
     private String sub_Product_Area_ID;
     private String sub_Product_Area_name;
+    private String product_Area_name;
     private String device_ID;
     private String username;
     private String location;
@@ -174,6 +175,14 @@ public class DeviceList {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getProduct_Area_name() {
+        return product_Area_name;
+    }
+
+    public void setProduct_Area_name(String product_Area_name) {
+        this.product_Area_name = product_Area_name;
     }
     
 }

@@ -195,7 +195,7 @@ public class Query {
        
         ArrayList<BorrowDevice> bookreq  = new ArrayList<BorrowDevice>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND transaction_Mode = 'booked' AND from_Date >= CURDATE() <= to_Date");
+            PreparedStatement ps = connection.prepareStatement("SELECT from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND transaction_Mode = 'booked' AND to_date >= CURDATE() ORDER BY from_Date ASC");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 BorrowDevice bookedreq = new BorrowDevice();
@@ -220,7 +220,7 @@ public class Query {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
+            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date`,e.product_Area_Name FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN product_area e ON (b.product_Area_ID = e.product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -233,6 +233,7 @@ public class Query {
                 devicels.setOS(rs.getString("OS"));
                 devicels.setSub_Product_Area_ID(rs.getString("sub_Product_Area_ID"));
                 devicels.setSub_Product_Area_name(rs.getString("sub_Product_Area_name"));
+                devicels.setProduct_Area_name(rs.getString("product_Area_name"));
                 devicels.setDevice_ID(rs.getString("device_ID"));
                 devicels.setUsername(rs.getString("username"));
                 devicels.setSize(rs.getString("size"));

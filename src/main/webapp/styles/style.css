@@ -97,6 +97,18 @@ a {
 #search{/*search field*/
     background-color: #863d7d;
 }
+.input-field input[type=search]:focus {
+   
+    border: 0;
+    box-shadow: none;
+    color: #fff;
+}
+.input-field input[type=search]:focus + label i, .input-field input[type=search]:focus ~ .mdi-navigation-close, .input-field input[type=search]:focus ~ .material-icons {
+    color: #fff;
+}
+/*input[type="text"]:focus:not ([readonly])+label {
+    color: black;
+}*/
 @media screen and (max-width: 480px)
 {
 

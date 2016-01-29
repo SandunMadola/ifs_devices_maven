@@ -41,7 +41,7 @@
                     </form>
                     <form class="hide-on-small-only right col s12" ng-hide="search_bar">
                         <div class="input-field">
-                            <input id="search" type="search" ng-attr-placeholder="{{searching}}" required>
+                            <input id="search" type="search" ng-attr-placeholder="{{searching}}" required ng-model="globalSearch.$">
                             <label for="search">
                                 <i class="material-icons" ng-click="searched()">close</i>                                
                             </label>
