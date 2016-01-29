@@ -646,7 +646,7 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
             <!--Show on large only-->
                 <div class="top row hide-on-med-and-down" style="position: fixed;width: 100%; padding-right: 19.4444%;height: 100px;background-color: #FAFAFA;"> 
                     <div  style="width: 40%; float: left; margin-left: 20px;padding-right: 2px;margin-right: 80px;"> 
-                        <h1  style="text-align: left"> <b>{{devices[whichItem].name}} </b> </h1>
+                        <h1  style="text-align: left"> <b>{{devices[whichItem].device_Name}} </b> </h1>
                         <h3  style="text-align: left; margin-top: 0rem;">  Device id - {{devices[whichItem].device_ID}}  </h3>
                     </div>
                 
@@ -671,7 +671,7 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                      width: 100% ">
                     <div  style=" width: 100%; "> 
                         <!--<h1 style=" text-align: center;"> <b> {{devices[whichItem].name}} - Device id:{{devices[whichItem].device_ID}} </b></h1>-->
-                         <h2  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;"> <b>{{devices[whichItem].name}} </b> </h2>
+                         <h2  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;"> <b>{{devices[whichItem].device_Name}} </b> </h2>
                         <h3  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;">  Device id - {{devices[whichItem].device_ID}}  </h3>
                     </div>
 
@@ -695,7 +695,7 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                      width: 100% ">
                     <div  style=" width: 100%; background-color: #fafafa; "> 
 
-                        <h2  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;"> <b>{{devices[whichItem].name}} </b> </h2>
+                        <h2  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;"> <b>{{devices[whichItem].device_Name}} </b> </h2>
                         <h3  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;">  Device id - {{devices[whichItem].device_ID}}  </h3>
                 </div>
 
@@ -760,21 +760,21 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         <table class="striped" cellspacing="0" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> OS </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].OS}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].os}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
                             <table cellspacing="0" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> Product Area </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].product_Area_name}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].product_Area}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
                         <table cellspacing="0" class="striped" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> Sub Product Area </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].sub_Product_Area_name}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].sub_Product_Area}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
@@ -802,7 +802,7 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         <table cellspacing="0" class="striped" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> URL </h3></th>
-                                    <td style = "width: auto"><h3><b>{{devices[whichItem].URL}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b>{{devices[whichItem].url}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
@@ -840,21 +840,21 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         <table class="striped" cellspacing="0" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> OS </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].OS}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].os}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
                             <table cellspacing="0" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> Product Area </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].product_Area_name}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].product_Area}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
                         <table cellspacing="0" class="striped" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> Sub Product Area </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].sub_Product_Area_name}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].sub_Product_Area}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
@@ -882,7 +882,7 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         <table cellspacing="0" class="striped" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> URL </h3></th>
-                                    <td style = "width: auto"><h3><b>{{devices[whichItem].URL}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b>{{devices[whichItem].url}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
@@ -920,21 +920,21 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         <table class="striped" cellspacing="0" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> OS </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].OS}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].os}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
                             <table cellspacing="0" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> Product Area </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].product_Area_name}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].product_Area}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
                         <table cellspacing="0" class="striped" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> Sub Product Area </h3></th>
-                                    <td style = "width: auto"><h3><b> {{devices[whichItem].sub_Product_Area_name}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b> {{devices[whichItem].sub_Product_Area}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
@@ -962,7 +962,7 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         <table cellspacing="0" class="striped" style = "height: 24px;">
                             <tbody><tr>
                                     <th rowspan="5" style = "width: 38%;padding-left: 5px;"><h3> URL </h3></th>
-                                    <td style = "width: auto"><h3><b>{{devices[whichItem].URL}} </b></h3></td>
+                                    <td style = "width: auto"><h3><b>{{devices[whichItem].url}} </b></h3></td>
                                     
                                 </tr>
                             </tbody></table>
@@ -1264,38 +1264,6 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                     
                 </div>
 
-<!--                                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
-                                    <h4>Borrow Now</h4>
-                
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="un" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
-                                        <label for="un">Username</label>
-                                    </div>
-                
-                                    <div class="input-field">
-                                        <i class="material-icons " style="alignment-adjust: before-edge">timelapse</i>
-                                        <select ng-model="now.to">
-                                            <option value="" disabled selected>Duration </option>
-                                            <option value="1day">1 day</option>
-                                            <option value="2day">2 days</option>
-                                            <option value="3day">3 days</option>                     
-                                            <option value="4day">4 days</option>
-                                            <option value="5day">5 days</option> 
-                                            <option value="6day">6 days</option> 
-                                            <option value="1week">1 week</option> 
-                                            <option value="2week">2 weeks</option> 
-                                            <option value="3week">3 weeks</option> 
-                                            <option value="1month">1 month</option> 
-                
-                                        </select>
-                
-                                                            <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
-                                    </div> 
-                                    <br> <br> <br> <br>
-                                    <p>{{now}}</p>
-                                </div>-->
-
                 <div class="modal-footer">
                     <a  ng-click="SendData(now)" type="submit" name="action" class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
                 </div>
@@ -1333,37 +1301,6 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
                         </select>              
                     </div> 
                 </div>
-
-<!--                                <div class="modal-content show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;">
-                                    <h4>Borrow Later</h4>
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="un2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
-                                        <label for="un2">User Name</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">today</i>
-                                        <input id="calender" type="text" class="datepicker" ng-model="later.from" required>type="date"
-                                        <label for="calender">From</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <i class="material-icons">timelapse</i>
-                                        <select ng-model="later.to" required>
-                                            <option value="" disabled selected>Duration</option>
-                                            <option value="1day">1 day</option>
-                                            <option value="2day">2 days</option>
-                                            <option value="3day">3 days</option>                     
-                                            <option value="4day">4 days</option>
-                                            <option value="5day">5 days</option> 
-                                            <option value="6day">6 days</option> 
-                                            <option value="1week">1 week</option> 
-                                            <option value="2week">2 weeks</option> 
-                                            <option value="3week">3 weeks</option> 
-                                            <option value="1month">1 month</option> 
-                
-                                        </select>              
-                                    </div> 
-                                </div>-->
 
                 <div class="modal-footer">
                     <button ng-click="SendData2(later)" name="action" type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
@@ -1427,96 +1364,6 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
 
         </form>
 
-<!--            show on small-->
-
-<!--            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-            <button data-target="modal11" class="btn modal-trigger show-on-small-only hide-on-med-and-up">Now</button>
-            <button data-target="modal22" class="btn modal-trigger show-on-small-only hide-on-med-and-up">Later</button>-->
-<!--             Modal Structure -->
-
-<!--                <form class="show-on-small-only">
-                            now button start
-        
-                             Modal Structure 
-                    <div id="modal11" class="modal show-on-small-only hide-on-med-and-up" style="width: 100%; max-height: 100%; height: 100%;" >
-                        <div class="modal-content">
-                            <h4>Borrow Now</h4>
-        
-                            <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="un" type="text" class="validate" maxlength="6" ng-model="now.userName" length="6" required>
-                                <label for="un">Username</label>
-                            </div>
-        
-        
-                            <div class="input-field ">
-                                <i class="material-icons " style="alignment-adjust: before-edge">timelapse</i>
-                                <select ng-model="now.to">
-                                    <option value="" disabled selected>Duration </option>
-                                    <option value="1day">1 day</option>
-                                    <option value="2day">2 days</option>
-                                    <option value="3day">3 days</option>                     
-                                    <option value="4day">4 days</option>
-                                    <option value="5day">5 days</option> 
-                                    <option value="6day">6 days</option> 
-                                    <option value="1week">1 week</option> 
-                                    <option value="2week">2 weeks</option> 
-                                    <option value="3week">3 weeks</option> 
-                                    <option value="1month">1 month</option> 
-        
-                                </select>
-        
-                                                                        <label style="alignment-adjust: middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Duration</label>
-                            </div>
-        
-                            <p>{{now}}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a  class=" modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none; text-align: center">Submit</a>
-                        </div>
-                    </div>   
-                            now button end
-                            later button start
-                    <div id="modal22" class="modal show-on-small-only hide-on-med-and-up" style="width: 100%; height: 100%; max-height: 100%;">
-                        <div class="modal-content">
-                            <h4>Borrow Later</h4>
-                            <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="un2" type="text" class="validate" ng-model="later.userName" required maxlength="6" length="6">
-                                <label for="un2">User Name</label>
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">today</i>
-                                <input id="calender" type="text" class="datepicker" ng-model="later.from" required>type="date"
-                                <label for="calender">From</label>
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons">timelapse</i>
-                                <select ng-model="later.to" required>
-                                    <option value="" disabled selected>Duration</option>
-                                    <option value="1day">1 day</option>
-                                    <option value="2day">2 days</option>
-                                    <option value="3day">3 days</option>                     
-                                    <option value="4day">4 days</option>
-                                    <option value="5day">5 days</option> 
-                                    <option value="6day">6 days</option> 
-                                    <option value="1week">1 week</option> 
-                                    <option value="2week">2 weeks</option> 
-                                    <option value="3week">3 weeks</option> 
-                                    <option value="1month">1 month</option> 
-        
-                                </select>              
-                            </div> 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="modal-action modal-close btn waves-effect waves-purple waves-light" style="float: none">Submit</button>
-                        </div>
-                        <p>{{later}}</p>
-                    </div>
-        
-                            later button end
-                </form>-->
-
 
     </div>
     <a class="call_to_modal waves-effect waves-light modal-trigger" data-target="modal65"></a>
@@ -1529,15 +1376,6 @@ margin-top: 160px<img  style="width: 40%; margin-top: 190px" ng-src="images/{{de
         <div> <p> </p> </div>
     </div>
 
-<!--        <a class="call_to_modal waves-effect waves-light modal-trigger hide-on-small-only show-on-medium-and-up" data-target="modal655"></a>
-        <div id="modal655" class="modal card-panel" style="width: 55%; height: auto;">
-            <div class="modal-content">
-    
-                <h4>{{msg}}</h4>
-            </div>
-            <button class="btn modal-action modal-close waves-effect waves-purple waves-light">OK</button>
-            <div> <p> </p> </div>
-        </div>-->
 </section>
  
 

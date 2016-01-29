@@ -173,7 +173,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 username: later.userName,
                 device_ID: $("#getdeviceID").text(),
                 from_Date: later.from,
-                to_Date: $scope.yy + '-' + $scope.mm + '-' + $scope.dd
+                to_Date: $scope.yy + '-' + ($scope.mm+1)  + '-' + $scope.dd
             };
 
             var config = {
@@ -280,8 +280,9 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
             $scope.username = $("#getun").text();
             $scope.transactionID = $("#getTransID").text();
+            $scope.color = $("#getcolor").text();
 
-            if (get.userName == $scope.username) {
+            if (get.userName == $scope.username && $scope.color=='orange') {
 //                $scope.msg = "Request granted!";
 //                $(".call_to_modal").click();
                 var config = {

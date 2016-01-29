@@ -11,19 +11,21 @@ package ifs_devices.model;
  */
 public class DeviceList {
     
-    private int model_ID;
-    private String name;
+//    private int model_ID;
+    private String device_Name;
     private String type;
     private String platform;
     private int image_no;
-    private String OS;
+    private String os;
     private String size;
     private String resolution;
-    private int count;
-    private String URL;
-    private String sub_Product_Area_ID;
-    private String sub_Product_Area_name;
-    private String product_Area_name;
+//    private int count;
+    private String url;
+//    private String sub_Product_Area_ID;
+//    private String sub_Product_Area_name;
+    private String sub_Product_Area;
+//    private String product_Area_name;
+    private String product_Area;
     private String device_ID;
     private String username;
     private String location;
@@ -31,10 +33,10 @@ public class DeviceList {
     private String color;
     private int transaction_ID;
     
-
-    public String getName() {
-        return name;
-    }
+//
+//    public String getName() {
+//        return name;
+//    }
 
     public String getType() {
         return type;
@@ -44,9 +46,9 @@ public class DeviceList {
         return platform;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public void setType(String type) {
         this.type = type;
@@ -56,14 +58,14 @@ public class DeviceList {
         this.platform = platform;
     }
 
-   
-    public int getModel_ID() {
-        return model_ID;
-    }
-
-    public String getOS() {
-        return OS;
-    }
+//   
+//    public int getModel_ID() {
+//        return model_ID;
+//    }
+//
+//    public String getOS() {
+//        return OS;
+//    }
 
     public String getSize() {
         return size;
@@ -73,21 +75,21 @@ public class DeviceList {
         return resolution;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public String getURL() {
-        return URL;
-    }
-
-    public void setModel_ID(int model_ID) {
-        this.model_ID = model_ID;
-    }
-
-    public void setOS(String OS) {
-        this.OS = OS;
-    }
+//    public int getCount() {
+//        return count;
+//    }
+//
+//    public String getURL() {
+//        return URL;
+//    }
+//
+//    public void setModel_ID(int model_ID) {
+//        this.model_ID = model_ID;
+//    }
+//
+//    public void setOS(String OS) {
+//        this.OS = OS;
+//    }
 
     public void setSize(String size) {
         this.size = size;
@@ -97,29 +99,29 @@ public class DeviceList {
         this.resolution = resolution;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public void setURL(String URL) {
-        this.URL = URL;
-    }
-
-    public String getSub_Product_Area_ID() {
-        return sub_Product_Area_ID;
-    }
-
-    public void setSub_Product_Area_ID(String sub_Product_Area_ID) {
-        this.sub_Product_Area_ID = sub_Product_Area_ID;
-    }
-
-    public String getSub_Product_Area_name() {
-        return sub_Product_Area_name;
-    }
-
-    public void setSub_Product_Area_name(String sub_Product_Area_name) {
-        this.sub_Product_Area_name = sub_Product_Area_name;
-    }
+//    public void setCount(int count) {
+//        this.count = count;
+//    }
+//
+//    public void setURL(String URL) {
+//        this.URL = URL;
+//    }
+//
+//    public String getSub_Product_Area_ID() {
+//        return sub_Product_Area_ID;
+//    }
+//
+//    public void setSub_Product_Area_ID(String sub_Product_Area_ID) {
+//        this.sub_Product_Area_ID = sub_Product_Area_ID;
+//    }
+//
+//    public String getSub_Product_Area_name() {
+//        return sub_Product_Area_name;
+//    }
+//
+//    public void setSub_Product_Area_name(String sub_Product_Area_name) {
+//        this.sub_Product_Area_name = sub_Product_Area_name;
+//    }
 
     public int getImage_no() {
         return image_no;
@@ -177,12 +179,52 @@ public class DeviceList {
         this.color = color;
     }
 
-    public String getProduct_Area_name() {
-        return product_Area_name;
+//    public String getProduct_Area_name() {
+//        return product_Area_name;
+//    }
+//
+//    public void setProduct_Area_name(String product_Area_name) {
+//        this.product_Area_name = product_Area_name;
+//    }
+
+    public String getDevice_Name() {
+        return device_Name;
     }
 
-    public void setProduct_Area_name(String product_Area_name) {
-        this.product_Area_name = product_Area_name;
+    public void setDevice_Name(String device_Name) {
+        this.device_Name = device_Name;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getSub_Product_Area() {
+        return sub_Product_Area;
+    }
+
+    public void setSub_Product_Area(String sub_Product_Area) {
+        this.sub_Product_Area = sub_Product_Area;
+    }
+
+    public String getProduct_Area() {
+        return product_Area;
+    }
+
+    public void setProduct_Area(String product_Area) {
+        this.product_Area = product_Area;
     }
     
 }

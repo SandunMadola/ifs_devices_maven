@@ -20,12 +20,12 @@ import javax.ws.rs.core.MediaType;
 @Path("/search")
 public class SearchResource {
     
-    SearchService searchService = new SearchService();
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<DeviceList> getSearchDevices() {  
-        return searchService.getAll();
-    }
+//    SearchService searchService = new SearchService();
+//    
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<DeviceList> getSearchDevices() {  
+//        return searchService.getAll();
+//    }
     
 }
