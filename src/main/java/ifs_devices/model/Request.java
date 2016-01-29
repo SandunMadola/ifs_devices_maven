@@ -21,6 +21,7 @@ public class Request {
     private String Resolution;
     private String Location;
     private String SPA;
+    private String PA;
     private String Request_Status;
     private String Project;
     private String URL;
@@ -28,6 +29,14 @@ public class Request {
     private String Comment;
     private String Date;
     private String Reject_comment;
+
+    public String getPA() {
+        return PA;
+    }
+
+    public void setPA(String PA) {
+        this.PA = PA;
+    }
 
     public String getReject_comment() {
         return Reject_comment;

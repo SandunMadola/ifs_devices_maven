@@ -98,7 +98,7 @@
                     </ul>                 
                 </div>
             </li>
-            <li>
+<!--            <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
                 <div class="collapsible-body">
                     <ul>
@@ -109,8 +109,19 @@
                         <li><div class="collapsible-header">Desktop</div></li>                  
                     </ul>
                 </div>
-            </li>
-            <li>
+            </li>-->
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
+                    <div class="collapsible-body">
+                        <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                            <li ng-repeat="value in typ">
+                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header">{{value}}</div></a>
+                                <!--<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                            </li>
+                        </ul>
+                    </div>                   
+                </li>            
+<!--            <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
                 <div class="collapsible-body">
                     <ul>
@@ -120,7 +131,18 @@
                         <li><div class="collapsible-header">Windows</div></li>                                                               
                     </ul>                    
                 </div>
-            </li>
+            </li>-->
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
+                    <div class="collapsible-body">
+                        <ul  class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                            <li ng-repeat="value in plt">
+                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header filter_bar">{{value}}</div></a>
+                                <!--ng-click="filter_bar(value)"<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                            </li>
+                        </ul>
+                    </div>                   
+                </li>            
             <li>
                 <a href="#/requested">
                     <div class="collapsible-header"><i class="material-icons">event_note</i>Requested Devices</div>

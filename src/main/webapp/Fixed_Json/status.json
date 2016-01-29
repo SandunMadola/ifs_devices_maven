@@ -1,6 +1,6 @@
 {
     "Requested": "Requested",
     "In Progress":"In Progress",
-    "Approved":"Approved",
+    "Confirmed":"Confirmed",
     "Rejected":"Rejected"
 }

@@ -48,6 +48,7 @@ public class Query {
         String Resolution = request.getResolution();
         String Location = request.getLocation();
         String SPA = request.getSPA();
+        String PA = request.getPA();
         String Request_Status = request.getRequest_Status();
         String Project = request.getProject();
         String URL = request.getURL();
@@ -56,9 +57,9 @@ public class Query {
         String Date = request.getDate();
         String R_Comment = request.getReject_comment();
 
-        String query = "INSERT INTO add_request"
-                + " (device_Name, type, platform, OS, size, resolution, username, sub_Product_Area, request_Status, priority, location, comments, url, project, date, reject_comment)"
-                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "','"+ R_Comment +"')";
+        String query = "INSERT INTO device"
+                + " (device_Name, type, platform, os, size, resolution, username, sub_Product_Area, product_Area, request_Status, priority, location, comments, url, project, requested_Date, reject_comment)"
+                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + PA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "','"+ R_Comment +"')";
         //db set auto increment
         System.out.println(query);
         try {
@@ -91,8 +92,8 @@ public class Query {
         String Date = request.getDate();
         String R_Comment = request.getReject_comment();
         
-        String query = "UPDATE add_request SET"
-                + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '"+ Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', date = '" + Date + "', reject_comment = '"+ R_Comment +"' WHERE request_ID = " +Id ;  
+        String query = "UPDATE device SET"
+                + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '"+ Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', requested_Date = '" + Date + "', reject_comment = '"+ R_Comment +"' WHERE request_ID = " +Id ;  
 //                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "')";
         //db set auto increment
         System.out.println(query);
@@ -110,7 +111,7 @@ public class Query {
         System.out.println("Query");
         ArrayList<Request> requests = new ArrayList<Request>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM add_request");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM device where request_Status != 'Available'");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Request req = new Request();
@@ -118,10 +119,11 @@ public class Query {
                 req.setDevice_name(rs.getString("device_Name"));
                 req.setType(rs.getString("type"));
                 req.setPlatform(rs.getString("platform"));
-                req.setOS(rs.getString("OS"));
+                req.setOS(rs.getString("os"));
                 req.setSize(rs.getString("size"));
                 req.setResolution(rs.getString("resolution"));
                 req.setUserName(rs.getString("username"));
+                req.setPA(rs.getString("product_Area"));
                 req.setSPA(rs.getString("sub_Product_Area"));
                 req.setRequest_Status(rs.getString("request_Status"));
                 req.setPriority(rs.getString("priority"));
@@ -129,7 +131,7 @@ public class Query {
                 req.setComment(rs.getString("comments"));
                 req.setURL(rs.getString("url"));
                 req.setProject(rs.getString("project"));
-                req.setDate(rs.getString("date"));
+                req.setDate(rs.getString("requested_Date"));
                 req.setReject_comment(rs.getString("reject_comment"));
                 requests.add(req);
             }
@@ -220,6 +222,9 @@ public class Query {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
         try {
+
+//            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date`,e.product_Area_Name FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN product_area e ON (b.product_Area_ID = e.product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
+
             PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date`,e.product_Area_Name FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN product_area e ON (b.product_Area_ID = e.product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
 
             ResultSet rs = ps.executeQuery();

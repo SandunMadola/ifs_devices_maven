@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2016 at 12:07 PM
+-- Generation Time: Jan 25, 2016 at 12:48 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -47,24 +47,31 @@ CREATE TABLE IF NOT EXISTS `add_request` (
   PRIMARY KEY (`request_ID`),
   UNIQUE KEY `request_ID` (`request_ID`),
   KEY `Emp_id` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `add_request`
 --
 
 INSERT INTO `add_request` (`request_ID`, `device_Name`, `type`, `platform`, `OS`, `size`, `resolution`, `username`, `sub_Product_Area`, `request_Status`, `priority`, `location`, `comments`, `url`, `project`, `date`, `reject_comment`) VALUES
-(1, 'Samsung Samsung', 'Phone', 'Android', 'Android 5.1.1 LLBB', '', '25', 'sanmlk', 'Trainee', 'Rejected', '3', 'CMB', 'Rear camera: 16MP with F1.8 Aperture/OIS 2.0', 'www.androidcentral.com/lg-v1055', 'Trainee-Andro', '2015-12-01', ''),
-(2, 'The Samsung Gear 3', 'Wearables', 'MAC', 'lolipop', '1.6-inche', '320x320 pixellllsss', 'sanmlk', 'Mass', 'In Progress', '1', 'CMB', 'Latest', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Test', '2015-12-10', ''),
+(1, 'Samsung Samsung', 'Phone', 'Android', 'Android 5.1.1 LLBB', '', '25', 'sanmlk', 'Trainee', 'Rejected', '3', 'CMB', 'Rear camera: 16MP with F1.8 Aperture/OIS 2.0', 'www.androidcentral.com/lg-v1055', 'Trainee-Andro', '2015-12-01', 'Device available.'),
+(2, 'The Samsung Gear 3', 'Wearables', 'MAC', 'lolipop', '1.6-inche', '320x320 pixellllsss', 'sanmlk', 'Mass', 'In Progress', '2', 'CMB', 'Latest', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Test', '2015-12-10', 'Rejected Since :'),
 (3, 'D450', 'Tablet', 'Windows Phone', 'Kitkat', '1.8', '320x320', 'nedilk', 'Client', 'In Progress', '1', 'LKP', 'Upcoming', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Drac', '2015-12-15', ''),
-(4, 'Lenova bird', 'Laptop', 'Windows', 'Windows 8.1', '32', '640x640', 'sunflk', 'Mass', 'In Progress', '1', 'LKP', 'Bird for Chum', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Chum', '2015-12-16', ''),
-(5, 'Dell Bigbang', 'Laptop', 'Windows', 'Windows 10', '32', '640x640', 'kashlk', 'Mass', 'Completed', '1', 'LKP', 'Solar enabled', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Sola project', '2015-12-17', ''),
+(4, 'Lenova bird', 'Laptop', 'Windows', 'Windows 8.1', '32', '640x640', 'sunflk', 'Mass', 'In Progress', '1', 'LKP', 'Bird for Chum', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Chum', '2015-12-16', 'Rejected Since :'),
+(5, 'Dell Bigbang', 'Laptop', 'Windows', 'Windows 10', '32', '640x640', 'kashlk', 'Mass', 'In Progress', '1', 'LKP', 'Solar enabled', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Sola project', '2015-12-17', ''),
 (6, 'HP 210 Workstaion', 'Workstation', 'Linux', 'Linux', '32', '640x640', 'kashlk', 'Mass', 'Complete', '1', 'LKP', 'Linux for begin', 'http://www.androidcentral.com/samsung-gear-2-gear-2-neo-and-gear-fit-review', 'Linux project', '2015-12-18', ''),
-(52, 'Samsung GT-100', 'phone', 'android', 'Gingerbread', '32 x 32', '16', 'yoyolk', 'Trainee', 'New', '4', 'cmb', 'Testing purposes', 'www.google.lk', 'IFS_DEVICES', '2015-12-28', ''),
-(53, 'Apple SS', 'phone', 'mac', 'IOS', '25', '69', 'kkkklk', 'Mass', 'New', '2', 'lkp', 'Test', 'test.lk', 'Test', '2015-12-29', ''),
-(54, 'Toshiba', 'laptop', 'windows', 'win 10', '35', '38', 'ssmmlk', 'Mass', 'New', '4', 'lkp', 'test', 'www.test.com', 'Test', '2015-12-29', ''),
-(55, 'Oska', 'laptop', 'mac', 'OSS', '11', '12', 'kkkklk', 'Mass', 'New', '3', 'cmb', 'test', 'test.lk', 'Test', '2015-12-29', ''),
-(60, 'MegaBox1', 'Laptop', 'Android', 'Gingerbread', '34', '34', 'sanmlk', 'Trainee', 'Rejected', '1', 'LKP', 'Test', 'San.lk', 'Devices', '2015-12-30', 'Details Less');
+(52, 'Samsung GT-100', 'Desktop', 'IOS', 'Gingerbread', '32 x 32', '16', 'yoyolk', 'Trainee', 'Approved', '2', 'LKP', 'Testing purposes', 'www.google.lk', 'IFS_DEVICES', '2015-12-28', 'Available'),
+(53, 'Apple SS', 'Laptop', 'Android', 'IOS', '25', '69', 'kkkklk', 'Mass', 'Requested', '2', 'LKP', 'Test', 'test.lk', 'Test', '2015-12-29', 'Rejected Since :'),
+(54, 'Toshiba', 'laptop', 'windows', 'win 10', '35', '38', 'ssmmlk', 'Mass', 'Approved', '4', 'lkp', 'test', 'www.test.com', 'Test', '2015-12-29', ''),
+(55, 'Oska', 'laptop', 'mac', 'OSS', '11', '12', 'kkkklk', 'Mass', 'Approved', '3', 'CMB', 'test', 'test.lk', 'Test', '2015-12-29', 'Rejected Since :'),
+(60, 'MegaBox1', 'Laptop', 'Android', 'Gingerbread', '34', '34', 'sanmlk', 'Trainee', 'Rejected', '1', 'LKP', 'Test', 'San.lk', 'Devices', '2015-12-30', 'Details Less. Check again and fill.'),
+(61, 'Megabox', 'Laptop', 'Windows', 'ios', '98', '56 x 55', 'lucklk', 'Trainee', 'Approved', '4', 'CMB', 'TEST', 'htttp://sandunarts.blogspot.com', 'Fly on Device', '2016-01-12', 'null'),
+(62, 'Samsung Duos 2', 'Phone', 'Android', 'Lolipop', '32', '56', 'kashlk', 'Tools', 'Requested', '2', 'CMB', 'Slasscom urgent', 'null', 'SLASSCOM', '2016-01-21', 'null'),
+(63, 'Lenova SG', 'Laptop', 'Windows', 'Windows 10', '16', '56', 'Prvilk', 'Client', 'Requested', '2', 'CMB', 'Test', 'null', 'Trainee', '2016-01-21', 'Rejected Since :'),
+(64, 'Lenova SG', 'Laptop', 'Windows', 'Windows 10', '16', '56', 'Prvilk', 'Client', 'Requested', '1', 'CMB', 'Test', 'null', 'Trainee', '2016-01-21', 'Rejected Since :'),
+(65, 'Lenova SG', 'Laptop', 'Windows', 'Windows 10', '16', '56', 'Prvilk', 'Client', 'Requested', '4', 'CMB', 'Test', 'null', 'Trainee', '2016-01-21', 'Rejected Since :'),
+(66, 'Samsung S6', 'Phone', 'Android', 'null', 'null', 'null', 'kemilk', 'Tools', 'Requested', 'null', 'CMB', 'null', 'null', 'Test', '2016-01-22', 'null'),
+(67, 'qsdds', 'Laptop', 'Android', 'q', 'q', 'q', 'q', 'q', 'Rejected', 'null', 'CMB', 'dsdsd', 'q', 'q', '2016-01-22', 'Rejected Since : Details unclear');
 
 -- --------------------------------------------------------
 
@@ -75,6 +82,7 @@ INSERT INTO `add_request` (`request_ID`, `device_Name`, `type`, `platform`, `OS`
 CREATE TABLE IF NOT EXISTS `borrow_device` (
   `transaction_ID` int(20) NOT NULL AUTO_INCREMENT,
   `transaction_Mode` varchar(20) NOT NULL DEFAULT 'green',
+  `color` varchar(15) NOT NULL,
   `transaction_Type` varchar(20) NOT NULL,
   `username` varchar(10) NOT NULL,
   `device_ID` varchar(40) NOT NULL,
@@ -83,30 +91,25 @@ CREATE TABLE IF NOT EXISTS `borrow_device` (
   PRIMARY KEY (`transaction_ID`),
   KEY `username` (`username`),
   KEY `device_ID` (`device_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=141 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=151 ;
 
 --
 -- Dumping data for table `borrow_device`
 --
 
-INSERT INTO `borrow_device` (`transaction_ID`, `transaction_Mode`, `transaction_Type`, `username`, `device_ID`, `from_Date`, `to_Date`) VALUES
-(6, 'red', 'return', 'damalk', 'D005', '2015-12-31', '2016-01-05'),
-(7, 'orange', 'cancel', 'pudhilk', 'D006', '2016-01-01', '2016-01-18'),
-(10, 'red', 'return', 'ismalk', 'D009', '2016-01-01', '2016-01-07'),
-(12, 'red', 'return', 'nedilk', 'D008', '2015-12-31', '2016-01-04'),
-(74, 'red', 'return', 'dimalk', 'D007', '2015-12-30', '2016-01-11'),
-(76, 'red', 'return', 'asdfgh', 'D003', '2015-12-28', '2015-12-31'),
-(77, 'red', 'return', 'samalk', 'D010', '2016-01-04', '2016-02-29'),
-(87, 'orange', 'cancel', 'sanmlk', 'D002', '2016-01-18', '2016-01-28'),
-(128, 'red', 'return', 'nedilk', 'D001', '2015-12-29', '2016-01-01'),
-(131, 'orange', 'cancel', 'nedilk', 'D002', '2016-01-25', '2016-01-26'),
-(132, 'red', 'return', 'sufelk', 'D003', '2016-01-08', '2016-01-14'),
-(135, 'orange', 'cancel', 'nedilk', 'D001', '2016-01-08', '2016-01-10'),
-(136, 'orange', 'cancel', 'sufelk', 'D003', '2016-01-08', '2016-01-11'),
-(137, 'orange', 'cancel', 'nedilk', 'D001', '2016-01-11', '2016-01-12'),
-(138, 'orange', 'cancel', 'qwerty', 'D005', '2016-01-18', '2016-01-20'),
-(139, 'orange', 'cancel', 'chhelk', 'D005', '2016-01-21', '2016-01-22'),
-(140, 'orange', 'cancel', 'chhelk', 'D005', '2016-01-08', '2016-01-13');
+INSERT INTO `borrow_device` (`transaction_ID`, `transaction_Mode`, `color`, `transaction_Type`, `username`, `device_ID`, `from_Date`, `to_Date`) VALUES
+(7, 'booked', 'orange', 'cancel', 'pudhilk', 'D006', '2016-01-18', '2016-01-25'),
+(77, 'unavailable', 'red', 'return', 'samalk', 'D010', '2016-01-04', '2016-02-29'),
+(87, 'booked', 'orange', 'cancel', 'sanmlk', 'D002', '2016-01-18', '2016-01-24'),
+(131, 'booked', 'orange', 'cancel', 'rugulk', 'D002', '2016-01-28', '2016-01-29'),
+(136, 'booked', 'orange', 'cancel', 'sufelk', 'D003', '2016-01-21', '2016-01-25'),
+(137, 'booked', 'orange', 'cancel', 'nedilk', 'D001', '2016-01-26', '2016-01-29'),
+(139, 'booked', 'orange', 'cancel', 'chhelk', 'D005', '2016-01-21', '2016-01-22'),
+(140, 'booked', 'orange', 'cancel', 'chhelk', 'D005', '2016-01-29', '2016-02-05'),
+(146, 'booked', 'orange', 'cancel', 'prpelk', 'D005', '2016-01-28', '2016-02-18'),
+(147, 'booked', 'orange', 'cancel', 'nedilk', 'D002', '2016-01-25', '2016-01-26'),
+(149, 'unavailable', 'red', 'return', 'sufelk', 'D003', '2016-01-25', '2016-01-29'),
+(150, 'booked', 'orange', 'cancel', 'rufelk', 'D002', '2016-01-20', '2016-01-22');
 
 -- --------------------------------------------------------
 
@@ -234,6 +237,7 @@ INSERT INTO `product_area` (`product_Area_ID`, `product_Area_Name`) VALUES
 CREATE TABLE IF NOT EXISTS `returned_devices` (
   `transaction_ID` int(20) NOT NULL,
   `transaction_Mode` varchar(20) NOT NULL,
+  `color` varchar(15) NOT NULL,
   `transaction_Type` varchar(20) NOT NULL,
   `username` varchar(10) NOT NULL,
   `device_ID` varchar(40) NOT NULL,
@@ -247,11 +251,11 @@ CREATE TABLE IF NOT EXISTS `returned_devices` (
 -- Dumping data for table `returned_devices`
 --
 
-INSERT INTO `returned_devices` (`transaction_ID`, `transaction_Mode`, `transaction_Type`, `username`, `device_ID`, `from_Date`, `to_Date`, `returned_Date`) VALUES
-(75, 'red', 'return', 'nedilk', 'D010', '2015-12-29', '2016-01-08', '2016-01-07'),
-(78, 'red', 'return', 'chwilk', 'D011', '2015-12-31', '2016-01-13', '2016-01-12'),
-(129, 'red', 'return', 'nedilk', 'D002', '2016-01-07', '2016-01-19', '2016-01-08'),
-(134, 'red', 'return', 'sanmlk', 'D001', '2016-01-07', '2016-01-08', '2016-01-08');
+INSERT INTO `returned_devices` (`transaction_ID`, `transaction_Mode`, `color`, `transaction_Type`, `username`, `device_ID`, `from_Date`, `to_Date`, `returned_Date`) VALUES
+(75, 'unavailable', 'red', 'return', 'nedilk', 'D010', '2015-12-29', '2016-01-08', '2016-01-07'),
+(78, 'unavailable', 'red', 'return', 'chwilk', 'D011', '2015-12-31', '2016-01-13', '2016-01-12'),
+(129, 'unavailable', 'red', 'return', 'nedilk', 'D002', '2016-01-07', '2016-01-19', '2016-01-08'),
+(134, 'unavailable', 'red', 'return', 'sanmlk', 'D001', '2016-01-07', '2016-01-08', '2016-01-08');
 
 -- --------------------------------------------------------
 
