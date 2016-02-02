@@ -5,6 +5,7 @@
  */
 package ifs_devices.service;
 
+import ifs_devices.model.Edit_Mode;
 import ifs_devices.model.Model;
 import ifs_devices.model.Request;
 import java.util.List;
@@ -41,7 +42,7 @@ public class RequestService {
 
         return req;
     }
-    
+
     public Request updateRequest(Request request) {
         System.out.println("EmployeeService Update");
         Request req = null;
@@ -53,5 +54,18 @@ public class RequestService {
         }
 
         return req;
-    }    
+    }
+
+    public Edit_Mode editDetails(Edit_Mode edit_Mode) {
+        System.out.println("Edit mode Service");
+        Edit_Mode edit_Mode1 = null;
+        try {
+            Model model = new Model();
+            edit_Mode1 = model.editDetails(edit_Mode);
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+        return edit_Mode1;
+    }
 }

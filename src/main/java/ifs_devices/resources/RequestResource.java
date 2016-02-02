@@ -5,6 +5,7 @@
  */
 package ifs_devices.resources;
 
+import ifs_devices.model.Edit_Mode;
 import ifs_devices.model.Request;
 import ifs_devices.service.RequestService;
 import java.util.List;
@@ -39,11 +40,18 @@ public class RequestResource {
         System.out.println("/request call");
         return requestService.addRequest(request);
     }
-    
+
     @PUT
     @Path("/{reqID}")
     public Request updateEmployee(@PathParam("reqID") int id, Request request) {
         request.setId(id);
         return requestService.updateRequest(request);
+    }
+    
+    @PUT
+    @Path("/edit/{reqID}")
+    public Edit_Mode editDetails(@PathParam("reqID") int id, Edit_Mode edit_Mode) {
+        edit_Mode.setRequest_ID(id);
+        return requestService.editDetails(edit_Mode);
     }
 }

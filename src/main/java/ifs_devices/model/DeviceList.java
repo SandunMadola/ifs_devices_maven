@@ -32,6 +32,15 @@ public class DeviceList {
     private String transaction_Mode;
     private String color;
     private int transaction_ID;
+    private int request_ID;
+
+    public int getRequest_ID() {
+        return request_ID;
+    }
+
+    public void setRequest_ID(int request_ID) {
+        this.request_ID = request_ID;
+    }
     
 //
 //    public String getName() {

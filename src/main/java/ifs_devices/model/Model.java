@@ -63,7 +63,18 @@ public class Model {
 
         return req;
     }
+    public Edit_Mode editDetails(Edit_Mode edit_Mode) throws Exception {
+        System.out.println("Inside the model");
+        Edit_Mode edi = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            edi = Query.editDetails(edit_Mode, connection);
+        } catch (Exception e) {
+            System.out.println("erro" + e);
+        }
 
+        return edi;
+    }
     public BorrowDevice addBorrowRequest(BorrowDevice borrowRequest) throws Exception {
         System.out.println("Inside the model");
         BorrowDevice borrowreq = null;

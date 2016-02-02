@@ -23,3 +23,27 @@ input[type="search"] {
     display: block;
     padding: 1rem 1rem;
 }
+
+@media only screen and (max-width : 600px) {
+    #toast-container {
+        min-width: 8%;
+        left: 20%;
+        top: 30%;
+    }  
+}
+@media only screen and (min-width : 601px) and (max-width : 992px) {
+    #toast-container {
+        min-width: 30%;
+        left: 35%;
+        top: 30%;
+        z-index: 0;
+    } 
+}
+@media only screen and (min-width : 993px) {
+    #toast-container {
+        min-width: 8%;
+        right: 35%;
+        top: 30%; 
+        z-index: 0;
+    } 
+}

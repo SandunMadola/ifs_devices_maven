@@ -109,7 +109,7 @@
         </div>
 
         <div id="test1" class="col s12 m12 l12">
-                <ul class="collapsible" data-collapsible="accordion" watch>        
+            <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Requested'} | filter:custom_filter | orderBy:dat ">
                     <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
@@ -643,7 +643,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row col s12 m12 l12"><button class="s10 m10 l10" ng-click="show()">Make It Available<i class="material-icons right">send</i></button></div>                            
+                            <!--<div class="row col s12 m12 l12"><button class="s10 m10 l10" ng-click="show(req)">Make It Available<i class="material-icons right">send</i></button></div>-->                            
+                            <button class="btn waves-effect waves-light" ng-click="show(req)" type="submit" name="action">Make It Available
+                                <i ng-click="show(req)" style="line-height: inherit;padding: 0;" class="material-icons right">send</i>
+                            </button>
                         </form><!--update(req,'Available')-->
                     </div>                    
                 </li>
@@ -747,7 +750,7 @@
                                 <div class="btn-small waves-effect waves-light left col s4 m6 l6" ng-click="update(req, changed)" ng-show="_edit3">
                                     <abbr title="Save"><i class="material-icons">save</i></abbr>
                                 </div>
-                                <div class="btn-small waves-effect waves-light left col s4 m6 l6" ng-click="update(req,'Available')" ng-show="_edit3">
+                                <div class="btn-small waves-effect waves-light left col s4 m6 l6" ng-click="show(req)" ng-show="_edit3">
                                     <abbr title="Make it Available"><i class="material-icons">send</i></abbr>
                                 </div>                                                                
                             </div>
@@ -971,13 +974,19 @@
             </ul>    
         </div>      
     </div>
-        <div id="toast_holder" class="col s12 l12 m12 row">            
-            <div class="toast" style="height: 100px;top: 0px; opacity: 1;">
-                <p class="row col s12 m12 l12">Device ID </p>
-                <input class="row col s12" type="search" ng-model="request.device_ID">
-                <button class="row btn" ng-click="set(request)">set</button>
+    <div id="toast_holder" style="display: none;" class="col s12 l12 m12 row">            
+        <div class="toast_1 col s12 l12 m12" style="top: 0px; opacity: 1;">
+            <div class="row" style="padding-top: 20px;">
+                <h6 class="col s6 m6 l6">Device ID </h6>
+                <input class="col s6 m6 l6" style="height: 3rem;" type="search" ng-model="req.device_ID">
             </div>
+            <div class="row col s12 m12 l12">
+                <div class="col s6"><button class=" btn" ng-click="update(req, 'Available')">set</button></div>
+                <div class="col s6"><button class=" btn" ng-click="set()">cancel</button></div>
+            </div>
+            <!--                {{req}}-->
         </div>
+    </div>
     <div id="modal1" class="modal card-panel">
         <div class="modal-content">
             <h4>ss</h4>           

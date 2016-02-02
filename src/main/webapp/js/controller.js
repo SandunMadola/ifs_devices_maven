@@ -8,8 +8,8 @@ homeCtrls.service('shareVariable', function () {
             return property;
         },
         setProperty: function (value) {
-                property = value;
-            }  
+            property = value;
+        }
     };
 
 });
@@ -92,8 +92,8 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 //            $('later_call').click();
 
         });
-        
-         $(document).ready(function () {
+
+        $(document).ready(function () {
             $('.collapsible').collapsible({
                 accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
             });
@@ -173,7 +173,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 username: later.userName,
                 device_ID: $("#getdeviceID").text(),
                 from_Date: later.from,
-                to_Date: $scope.yy + '-' + ($scope.mm+1)  + '-' + $scope.dd
+                to_Date: $scope.yy + '-' + ($scope.mm + 1) + '-' + $scope.dd
             };
 
             var config = {
@@ -282,7 +282,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.transactionID = $("#getTransID").text();
             $scope.color = $("#getcolor").text();
 
-            if (get.userName == $scope.username && $scope.color=='orange') {
+            if (get.userName == $scope.username && $scope.color == 'orange') {
 //                $scope.msg = "Request granted!";
 //                $(".call_to_modal").click();
                 var config = {
@@ -434,13 +434,15 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         });
 
         $('#toast_holder').hide();
-        $scope.show = function () {
+        $scope.show = function (reqs) {
+            $scope.req = reqs;
             $('#toast_holder').show();
         };
-        $scope.set = function (id) {
+        $scope.set = function () {
+//            $scope.update(id,'Available');
             $('#toast_holder').hide();
         };
-        
+
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
@@ -463,6 +465,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         };
 
         $scope.update = function (request, changed) {
+            $('#toast_holder').hide();
             $('#wait_moment').fadeIn('slow');
             if (changed === 'Not') {
                 $scope.status = request.request_Status;
@@ -503,14 +506,14 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
-                $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));
+                $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));                
 
             });
             res.error(function (data, status, headers, config) {
                 $('#wait_moment').fadeOut('slow');
                 alert("failure message: " + JSON.stringify({data: data}));
                 $('#wait_moment').fadeOut('slow');
-                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
+                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));                
 
             });
         };
@@ -566,58 +569,40 @@ homeCtrls.controller('edit_modeCtrl', ['$scope', '$http', '$routeParams', functi
         $http.get('Fixed_Json/platform.json').success(function (data) {
             $scope.plt = data;
         });
-        $scope.update = function (request, changed) {
-            $('#wait_moment').fadeIn('slow');
-//            if (changed === 'Not') {
-//                $scope.status = request.request_Status;
-//                request.reject_comment = "Rejected Since :";
-//            } else {
-//                $scope.status = changed;
-//            }
-//            ;
-
+        $scope.update = function (edit) {
+            $('#wait_moment').fadeIn('slow');      
             var data = {
-                name: request.name,
-                type: request.type,
-                platform: request.platform,
-                OS: request.OS,
-                size: request.size,
-                resolution: request.resolution,
-                location: request.location,
-                sub_Product_Area_ID: request.sub_Product_Area_ID,
-                sub_Product_Area_name: request.sub_Product_Area_name,
-                transaction_Mode: request.transaction_Mode,
-                URL: request.URL
-                        //comment: request.comment,                
-//                count: request.count,
-//                image_no: request.image_no,
-//                device_ID: request.device_ID,
-//                model_ID: request.model_ID,
-//                transaction_ID: request.transaction_ID
+                device_ID:edit.device_ID,
+                device_Name:edit.device_Name,
+                product_Area:edit.product_Area,
+                sub_Product_Area:edit.sub_Product_Area,
+                resolution:edit.resolution,
+                size:edit.size,
+                os:edit.os,
+                url:edit.url,
+                location:edit.location,
+                type:edit.type,
+                platform:edit.platform
             };
-
-
             var config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             };
-            var s = 'webapi/request/' + request.id;
+            var s = 'webapi/request/edit/' + edit.request_ID;
             var res = $http.put(s, data, config);
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
-                $scope.msg = "Updated Successfully !!!";
-                $scope.waitt = "modal1";
-                $(".call_to_modal").click();
+                $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));
 
             });
             res.error(function (data, status, headers, config) {
                 $('#wait_moment').fadeOut('slow');
-                $scope.msg = "Update Unsuccessful ...";
-                $scope.waitt = "modal1";
                 alert("failure message: " + JSON.stringify({data: data}));
-                $(".call_to_modal").click();
+                $('#wait_moment').fadeOut('slow');
+                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
+
             });
         };
 
