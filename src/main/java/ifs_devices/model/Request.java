@@ -29,6 +29,15 @@ public class Request {
     private String Comment;
     private String Date;
     private String Reject_comment;
+    private String device_ID;
+
+    public String getDevice_ID() {
+        return device_ID;
+    }
+
+    public void setDevice_ID(String device_ID) {
+        this.device_ID = device_ID;
+    }
 
     public String getPA() {
         return PA;

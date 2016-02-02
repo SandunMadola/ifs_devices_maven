@@ -15,30 +15,8 @@ import java.util.List;
 
 public class Query {
 
-    static ArrayList<Employee> GetFeeds(Connection connection) throws Exception {
-        System.out.println("Query");
-        ArrayList<Employee> empdata = new ArrayList<Employee>();
-        try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM employee");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Employee emp = new Employee();
-//                emp.setId(rs.getInt("id"));
-//                emp.setName(rs.getString("name"));
-//                emp.setAge(rs.getInt("age"));
-                emp.setUsername(rs.getString("username"));
-                emp.setPid(rs.getString("product_Area_ID"));
-                emp.setSubpid(rs.getString("sub_Product_Area_ID"));
-                empdata.add(emp);
-            }
-            return empdata;
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
     public static Request addRequest(Request request, Connection connection) throws SQLException {
-        System.out.println("Inside the Query");
+        System.out.println("Query - for add a new request");
         String Device_name = request.getDevice_name();
         String Type = request.getType();
         String Platform = request.getPlatform();
@@ -59,7 +37,7 @@ public class Query {
 
         String query = "INSERT INTO device"
                 + " (device_Name, type, platform, os, size, resolution, username, sub_Product_Area, product_Area, request_Status, priority, location, comments, url, project, requested_Date, reject_comment)"
-                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + PA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "','"+ R_Comment +"')";
+                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + PA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "','" + R_Comment + "')";
         //db set auto increment
         System.out.println(query);
         try {
@@ -73,7 +51,7 @@ public class Query {
     }
 
     public static Request updateRequest(Request request, Connection connection) throws SQLException {
-        System.out.println("Inside the Query");
+        System.out.println("Query - for update a request");
         int Id = request.getId();
         String Device_name = request.getDevice_name();
         String Type = request.getType();
@@ -91,11 +69,11 @@ public class Query {
         String Comment = request.getComment();
         String Date = request.getDate();
         String R_Comment = request.getReject_comment();
-        
+        String device_ID = request.getDevice_ID();
+
         String query = "UPDATE device SET"
-                + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '"+ Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', requested_Date = '" + Date + "', reject_comment = '"+ R_Comment +"' WHERE request_ID = " +Id ;  
-//                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "')";
-        //db set auto increment
+                + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '" + Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', requested_Date = '" + Date + "',device_ID = '" + device_ID + "', reject_comment = '" + R_Comment + "' WHERE request_ID = " + Id;
+
         System.out.println(query);
         try {
             Statement statement = connection.createStatement();
@@ -107,8 +85,38 @@ public class Query {
         return request;
     }
 
+    public static Edit_Mode editDetails(Edit_Mode edit_Mode, Connection connection) throws SQLException {
+        System.out.println("Query - for edit details of available device");
+        String device_ID = edit_Mode.getDevice_ID();
+        String device_Name = edit_Mode.getDevice_Name();
+        String product_Area = edit_Mode.getProduct_Area();
+        String sub_Product_Area = edit_Mode.getSub_Product_Area();
+        String resolution = edit_Mode.getResolution();
+        String size = edit_Mode.getSize();
+        String os = edit_Mode.getOs();
+        String url = edit_Mode.getUrl();
+        String location = edit_Mode.getLocation();
+        String type = edit_Mode.getType();
+        String platform = edit_Mode.getPlatform();
+        int request_ID = edit_Mode.getRequest_ID();
+
+        String query = "UPDATE device SET"
+                + " device_ID = '" + device_ID + "', device_Name = '" + device_Name + "', product_Area = '" + product_Area + "', sub_Product_Area = '" + sub_Product_Area + "', resolution = '" + resolution + "',"+ " size = '" + size + "', os = '" + os + "', url = '" + url + "', location = '" + location + "', type = '" + type + "',"+ " platform = '" + platform + "' WHERE request_ID = " + request_ID;
+
+        System.out.println(query);
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+
+        return edit_Mode;
+    }
+
     public static ArrayList<Request> getRequest(Connection connection) throws Exception {
-        System.out.println("Query");
+        System.out.println("Query - for get all requests");
         ArrayList<Request> requests = new ArrayList<Request>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM device where request_Status != 'Available'");
@@ -191,13 +199,15 @@ public class Query {
             throw e;
         }
     }
-    
-    public static ArrayList<BorrowDevice>  getBookedDates(String id, Connection connection) throws Exception {
+
+    public static ArrayList<BorrowDevice> getBookedDates(String id, Connection connection) throws Exception {
         System.out.println(" getBookedDate Query");
-       
-        ArrayList<BorrowDevice> bookreq  = new ArrayList<BorrowDevice>();
+
+        ArrayList<BorrowDevice> bookreq = new ArrayList<BorrowDevice>();
         try {
+
             PreparedStatement ps = connection.prepareStatement("SELECT transaction_Mode, from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND ((transaction_Mode = 'booked' AND to_date >= CURDATE()) OR (transaction_Mode = 'unavailable' AND to_date >= CURDATE())) ORDER BY from_Date ASC");
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 BorrowDevice bookedreq = new BorrowDevice();
@@ -217,16 +227,15 @@ public class Query {
             throw e;
         }
     }
-    
+
     static ArrayList<DeviceList> GetAllDevices(Connection connection) throws Exception {
 
         ArrayList<DeviceList> devicedata = new ArrayList<DeviceList>();
         try {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`sub_Product_Area`,b.`product_Area`,b.location,b.comments,b.`device_Name`,b.image_no,b.`type`,b.platform,b.`os`,b.`size`,b.resolution,b.`url`,b.`request_Status`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) WHERE b.`request_Status`='Available' GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC ");
+            PreparedStatement ps = connection.prepareStatement("SELECT b.`request_ID`,b.`device_ID`,b.`sub_Product_Area`,b.`product_Area`,b.location,b.comments,b.`device_Name`,b.image_no,b.`type`,b.platform,b.`os`,b.`size`,b.resolution,b.`url`,b.`request_Status`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) WHERE b.`request_Status`='Available' GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC ");
 
 //            PreparedStatement ps = connection.prepareStatement("SELECT a.device_ID,a.sub_Product_Area,a.product_Area,a.location,a.comments,a.device_Name,a.image_no,a.type,a.platform,a.os,a.size,a.resolution,a.url,b.`transaction_ID`,IFNULL(b.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(b.`color`,\"green\") AS `color`,b.`transaction_Type`,b.username,b.`device_ID`,b.`from_Date`,b.`to_Date` FROM device a LEFT JOIN borrow_device b ON (a.device_ID = b.device_ID and CURDATE() between from_Date and to_Date) GROUP BY a.`device_ID` ORDER BY b.`transaction_Mode` DESC");
-
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 DeviceList devicels = new DeviceList();
@@ -252,8 +261,9 @@ public class Query {
                 devicels.setLocation(rs.getString("location"));
                 devicels.setTransaction_Mode(rs.getString("transaction_Mode"));
                 devicels.setColor(rs.getString("color"));
-              
+
                 devicels.setTransaction_ID(rs.getInt("transaction_ID"));
+                devicels.setRequest_ID(rs.getInt("request_ID"));
                 devicedata.add(devicels);
             }
             return devicedata;
@@ -272,6 +282,7 @@ public class Query {
                 DeviceList Searcheddevicels = new DeviceList();
 
 //                Searcheddevicels.setName(rs.getString("name"));
+
                 Searcheddevicels.setDevice_Name(rs.getString("device_Name"));
                 Searcheddevicels.setType(rs.getString("type"));
                 Searcheddevicels.setPlatform(rs.getString("platform"));
@@ -313,15 +324,15 @@ public class Query {
 
         return "SUCCESS!!!";
     }
-    
+
     public static BorrowDevice updateDevice(BorrowDevice updateDevice, Connection connection) throws SQLException {
         System.out.println("Inside the Query");
-        
+
         String transaction_Mode = updateDevice.getTransaction_Mode();
         String color = updateDevice.getColor();
         String transaction_Type = updateDevice.getTransaction_Type();
         int transaction_ID = updateDevice.getTransaction_ID();
-     
+
         String query = "UPDATE borrow_device SET transaction_Mode = 'unavailable', color = 'red', transaction_Type = 'return' WHERE transaction_ID = " + transaction_ID;
         System.out.println(query);
         try {
@@ -333,10 +344,10 @@ public class Query {
 
         return updateDevice;
     }
-    
-   public static String returnDeviceTransaction(int id, Connection connection) throws SQLException {
+
+    public static String returnDeviceTransaction(int id, Connection connection) throws SQLException {
         System.out.println("Inside the Query");
-        
+
         String query1 = "INSERT INTO returned_devices ( transaction_ID, transaction_Mode, color, transaction_Type, username, device_ID, from_Date, to_Date, returned_Date ) SELECT transaction_ID, transaction_Mode, color, transaction_Type, username, device_ID, from_Date, to_Date, CURDATE() FROM borrow_device WHERE transaction_ID = " + id + "";
         String query2 = "DELETE FROM borrow_device WHERE transaction_ID = " + id + "";
         System.out.println(query1);
@@ -351,5 +362,5 @@ public class Query {
 
         return "SUCCESS!!!";
     }
-    
+
 }

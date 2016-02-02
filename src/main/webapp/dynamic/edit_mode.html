@@ -37,9 +37,9 @@
         </div>
 
     </div>
-    {{some}}
+<!--    {{some}}
     {{edit_item}}    
-    {{edit[edit_item].name}}
+    {{edit[edit_item].name}}-->
 
     <div class="row">
         <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
@@ -52,12 +52,18 @@
                         <div class="lll s12 m6 l6"><img id="preview" class="hoverable" ng-src="images/{{edit[edit_item].image_no}}.jpg" max-height="100px" min-height="100px" width="100" /></div>
                         <input class="lll col s12 m6 l6" type="file" name="image" onchange="previewImage(this)" accept="image/*"/>
                     </div>
+                    <div class="row" ><p class="lll col s6 m6 l6 ">Device ID</p>                
+                        <input ng-model="edit[edit_item].device_ID" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].device_ID}}">
+                    </div>                    
                     <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>                
-                        <input ng-model="edit[edit_item].name" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].name}}">
+                        <input ng-model="edit[edit_item].device_Name" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].device_Name}}">
                     </div>
+                    <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p>
+                        <input ng-model="edit[edit_item].product_Area"class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].product_Area}}">
+                    </div>                      
                     <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
-                        <input ng-model="edit[edit_item].sub_Product_Area_name"class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].sub_Product_Area_name}}">
-                    </div>
+                        <input ng-model="edit[edit_item].sub_Product_Area"class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].sub_Product_Area}}">
+                    </div>                  
                     <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p>
                         <input ng-model="edit[edit_item].resolution" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].resolution}}"/>
                     </div>
@@ -65,10 +71,10 @@
                         <input ng-model="edit[edit_item].size" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].size}}"/>
                     </div>
                     <div class="row"><p class="lll col s6 m6 l6 ">Operating System</p>
-                        <input ng-model="edit[edit_item].OS" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].OS}}"/>
+                        <input ng-model="edit[edit_item].os" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].os}}"/>
                     </div>
                     <div class="row"><p class="lll col s6 m6 l6 ">URL</p>
-                        <input ng-model="edit[edit_item].URL" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].URL}}"/>
+                        <input ng-model="edit[edit_item].url" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].url}}"/>
                     </div>
                     <div class="row"><p class="lll col s6 m6 l6 ">Location</p>
                         <!--<input ng-model="edit[edit_item].location" class="lll col s12 m2 l2" type="search" value="{{edit[edit_item].location}}"/>-->
@@ -88,30 +94,17 @@
                             <option ng-repeat="value in plt">{{value}}</option>
                         </select>
                     </div>                                    
-                    <div class="row lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
+                    <div class="row lll col s12 m12 l6 right">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
                         <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="goBack()">
                             <abbr title="Back"><i class="material-icons">undo</i> </abbr>
                         </div>                   
-                        <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(edit[edit_item], changed)">
+                        <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(edit[edit_item])">
                             <abbr title="Save"><i class="material-icons">save</i></abbr>
                         </div>
                     </div>
                 </div></div>
-            <p>{{edit[edit_item]}}</p>
+            <!--<p>{{edit[edit_item]}}</p>-->
         </form>
     </div>
 
-    <!--    image
-        device
-        type
-        platform
-        os
-        belongs to(spa)
-        project 
-        size
-        resolution
-        loctaion
-        comments
-        url
-    -->
 </section>

@@ -35,6 +35,15 @@ public class DeviceList {
     private String request_Status;
     private String from_Date; 
     private String to_Date;
+    private int request_ID;
+
+    public int getRequest_ID() {
+        return request_ID;
+    }
+
+    public void setRequest_ID(int request_ID) {
+        this.request_ID = request_ID;
+    }
     
 //
 //    public String getName() {

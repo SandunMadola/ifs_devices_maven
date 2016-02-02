@@ -5,6 +5,7 @@
  */
 package ifs_devices.service;
 
+import ifs_devices.model.Edit_Mode;
 import ifs_devices.model.Model;
 import ifs_devices.model.Request;
 import java.util.List;
@@ -16,12 +17,11 @@ import java.util.List;
 public class RequestService {
 
     public List<Request> getRequest() {
-        System.out.println("RequestService call");
+        System.out.println("RequestService call for get requested devices");
         List<Request> req = null;
         try {
             Model model = new Model();
             req = model.GetRequest();
-            //System.out.println("sandun");
         } catch (Exception e) {
             System.out.println("error");
         }
@@ -30,7 +30,7 @@ public class RequestService {
     }
 
     public Request addRequest(Request request) {
-        System.out.println("RequestService call");
+        System.out.println("RequestService call for insert a new request");
         Request req = null;
         try {
             Model model = new Model();
@@ -41,9 +41,9 @@ public class RequestService {
 
         return req;
     }
-    
+
     public Request updateRequest(Request request) {
-        System.out.println("EmployeeService Update");
+        System.out.println("RequestService call for update a request");
         Request req = null;
         try {
             Model model = new Model();
@@ -53,5 +53,18 @@ public class RequestService {
         }
 
         return req;
-    }    
+    }
+
+    public Edit_Mode editDetails(Edit_Mode edit_Mode) {
+        System.out.println("RequestService call for update a available device details");
+        Edit_Mode edit_Mode1 = null;
+        try {
+            Model model = new Model();
+            edit_Mode1 = model.editDetails(edit_Mode);
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+        return edit_Mode1;
+    }
 }

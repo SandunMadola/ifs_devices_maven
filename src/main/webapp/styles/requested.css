@@ -50,7 +50,7 @@ and open the template in the editor.
     background-color: transparent;
     text-decoration: underline;
 }
-.toast {
+.toast_1 {
     border-radius: 2px;
     top: 0px;
     width: auto;
@@ -65,30 +65,58 @@ and open the template in the editor.
     font-size: 1.1rem;
     font-weight: 300;
     color: #FFF;
-    display: flex;
+    display: block;//flex
     align-items: center;
     justify-content: space-between;
 }
-#toast_holder{
-    display: block;
-    position: fixed;
-    margin-top: -100%;
+.toast_1 .btn{
+    margin: 0;
 }
+
 @media only screen and (max-width : 600px) {
     #toast-container {
         min-width: 8%;
         left: 20%;
-        top: 30%;} 
+        top: 30%;
+    } 
+    #toast_holder{       
+        display: block;
+        width: 90%;
+        display: block;
+        position: fixed;
+        margin-top: -1200px;
+        margin-left: 5%;
+    }
 }
 @media only screen and (min-width : 601px) and (max-width : 992px) {
     #toast-container {
         min-width: 30%;
         left: 35%;
-        top: 30%;} 
+        top: 30%;
+        z-index: 0;
+    } 
+    #toast_holder{
+        display: block;
+        width: 90%;
+        position: fixed;
+        margin-top: -1100px;
+        margin-left: 5%;
+    }
 }
+
 @media only screen and (min-width : 993px) {
     #toast-container {
         min-width: 8%;
         right: 35%;
-        top: 30%; } 
+        top: 30%; 
+        z-index: 0;
+    } 
+    #toast_holder{
+        display: block;
+        width:40%;
+        display: block;
+        position: fixed;
+        margin-top: -1100px;
+        margin-left: 15%;
+    }
 }
