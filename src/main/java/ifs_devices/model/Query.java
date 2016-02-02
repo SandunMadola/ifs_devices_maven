@@ -62,6 +62,7 @@ public class Query {
         String Resolution = request.getResolution();
         String Location = request.getLocation();
         String SPA = request.getSPA();
+        String PA = request.getPA();
         String Request_Status = request.getRequest_Status();
         String Project = request.getProject();
         String URL = request.getURL();
@@ -72,7 +73,7 @@ public class Query {
         String device_ID = request.getDevice_ID();
 
         String query = "UPDATE device SET"
-                + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '" + Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', requested_Date = '" + Date + "',device_ID = '" + device_ID + "', reject_comment = '" + R_Comment + "' WHERE request_ID = " + Id;
+                + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', product_Area = '" + PA + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '" + Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', requested_Date = '" + Date + "',device_ID = '" + device_ID + "', reject_comment = '" + R_Comment + "' WHERE request_ID = " + Id;
 
         System.out.println(query);
         try {

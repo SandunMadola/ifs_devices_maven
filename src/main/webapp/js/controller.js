@@ -469,6 +469,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
                 resolution: request.resolution,
                 location: request.location,
                 SPA: request.SPA,
+                PA:request.PA,
                 project: request.project,
                 request_Status: $scope.status,
                 URL: request.URL,

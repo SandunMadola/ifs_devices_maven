@@ -112,7 +112,7 @@
             <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Requested'} | filter:custom_filter | orderBy:dat ">
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m5 l5" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m4 l4" style="text-align: left;padding-left: 55px">{{req.PA}} - {{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
                     <div class="collapsible-body" ng-hide="_edit1"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
@@ -139,6 +139,9 @@
                             <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
                             <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
+                            </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s12 m6 l5" type="search" value="{{req.PA}}">
                             </div>
                             <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
@@ -219,7 +222,8 @@
                     <div class="collapsible-body" ng-hide="_edit1"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p><p class="lll col s6 m6 l6">{{req.PA}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
@@ -244,6 +248,9 @@
                             <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s6 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                      
                             <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
@@ -324,7 +331,7 @@
             <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'In progress'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m5 l5" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m4 l4" style="text-align: left;padding-left: 55px">{{req.PA}} - {{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
                     <div class="collapsible-body" ng-hide="_edit2"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
@@ -352,6 +359,9 @@
                             <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s12 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                            
                             <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
@@ -431,7 +441,8 @@
                     <div class="collapsible-body" ng-hide="_edit2"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p><p class="lll col s6 m6 l6">{{req.PA}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
@@ -456,6 +467,9 @@
                             <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s6 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                          
                             <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
@@ -545,7 +559,7 @@
             <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Confirmed'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m5 l5" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m4 l4" style="text-align: left;padding-left: 55px">{{req.PA}} - {{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
                     <div class="collapsible-body" ng-hide="_edit3"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
@@ -573,6 +587,9 @@
                             <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s12 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                            
                             <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
@@ -656,7 +673,8 @@
                     <div class="collapsible-body" ng-hide="_edit3"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
-                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p><p class="lll col s6 m6 l6">{{req.PA}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
@@ -681,6 +699,9 @@
                             <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s6 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                            
                             <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
@@ -764,7 +785,7 @@
             <ul class="collapsible" data-collapsible="accordion" watch>        
                 <!--Large and Medium devices-->
                 <li class="show-on-medium-and-up hide-on-small-only" ng-repeat="req in request| filter:{request_Status:'Rejected'} | filter:custom_filter | orderBy:[dat]:reverse | orderBy:[spa, prio] | orderBy:[spa, dat] | orderBy:[prio]">
-                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m6 l6" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m3 l3" style="text-align: left;padding-left: 55px">{{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
+                    <div class="collapsible-header col s12 m12 l12"><i class="col m1 l1 material-icons for_view" style="width: 2rem;">important_devices</i><div class="col m5 l5" style="text-align: left;padding-left: 55px">{{req.device_name}}</div> <div class="col m4 l4" style="text-align: left;padding-left: 55px">{{req.PA}} - {{req.SPA}}</div> <i class=" col m1 l1 material-icons right for_expand">more_vert</i></div>
                     <div class="collapsible-body" ng-hide="_edit4"> <!--View Mode-->             
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div><!--For adding space-->
@@ -793,6 +814,9 @@
                             <div class="row" ><p class="lll col s12 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s12 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s12 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s12 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                            
                             <div class="row"><p class="lll col s12 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s12 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
@@ -873,7 +897,8 @@
 
                         <div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>
                         <div class="row" style="color: red"><p class="lll col s6 m6 l6 ">Rejected :</p><p class="lll col s6 m6 l6">{{req.reject_comment}}</p></div>                        
-                        <div class="row"><p class="lll col s6 m6 l6">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p><p class="lll col s6 m6 l6">{{req.PA}}</p></div>
+                        <div class="row"><p class="lll col s6 m6 l6 ">Priority</p><p class="lll col s6 m6 l6">{{req.priority}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Project</p><p class="lll col s6 m6 l6">{{req.project}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Request Status</p><p class="lll col s6 m6 l6">{{req.request_Status}}</p></div>
                         <div class="row"><p class="lll col s6 m6 l6 ">Resolution</p><p class="lll col s6 m6 l6">{{req.resolution}}</p></div>
@@ -898,6 +923,9 @@
                             <div class="row" ><p class="lll col s6 m6 l6 ">Device Name</p>
                                 <input ng-model="req.device_name"class="validate lll col s6 m6 l5" type="search" value="{{req.device_name}}">
                             </div>
+                            <div class="row"><p class="lll col s6 m6 l6 ">Product Area</p>
+                                <input ng-model="req.PA"class="validate lll col s6 m6 l5" type="search" value="{{req.PA}}">
+                            </div>                            
                             <div class="row"><p class="lll col s6 m6 l6 ">Sub Product Area</p>
                                 <input ng-model="req.SPA"class="validate lll col s6 m6 l5" type="search" value="{{req.SPA}}">
                             </div>
