@@ -1,29 +1,35 @@
 var homeCtrls = angular.module('homeCtrls', []);
 
-homeCtrls.service('shareVariable', function () {
-    var property = '';
+homeCtrls.factory('shareVariable', function () {
+    var data = {Filter_By: ''};
 
     return {
-        getProperty: function () {
-            return property;
+        getFilter_By: function () {
+            return data.Filter_By;
         },
-        setProperty: function (value) {
-            property = value;
+        setFilter_By: function (Filter_value) {
+            data.Filter_By = Filter_value;
         }
     };
-
 });
 
 homeCtrls.controller('staticCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
+       
         $http.get('Fixed_Json/type.json').success(function (data) {
             $scope.typ = data;
         });
         $http.get('Fixed_Json/platform.json').success(function (data) {
             $scope.plt = data;
         });
+
         $scope.filter_bar = function (value) {
-            shareVariable.dataObj = value;
+            $scope.Filter_value = value;
         };
+
+        $scope.$watch('Filter_value', function (newValue, oldValue) {
+            if (newValue !== oldValue)
+                shareVariable.setFilter_By(newValue);
+        });
         $scope.searching = "Search for devices";
         $scope.search_bar = true;
         $scope.searched = function () {
@@ -44,22 +50,17 @@ homeCtrls.controller('searchCtrl', ['$scope', function ($scope) {
 
 homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
 
+        $scope.$watch(function () {
+            return shareVariable.getFilter_By();
+        }, function (newValue, oldValue) {
+            if (newValue !== oldValue)
+                $scope.custom_filter2 = newValue;
+        });
+
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
             $('#wait_moment').fadeOut('slow');
         });
-
-//        window.setInterval(function () {
-//            $scope.custom_filter2 = shareVariable.dataObj;
-//        }, 500);
-
-        function setFilter() {
-//            $("#Custom_filter2").each(function () {
-            $scope.custom_filter2 = shareVariable.getProperty();
-//            });
-            window.setTimeout(setFilter, 10); // calls itself again in one second            
-        }
-        setFilter();// ...initiate self-repeating function
 
         $scope.popup = $(document).ready(function () {
             $('modal1').show();
@@ -142,14 +143,6 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             });
 
         };
-//        $scope.mo = true;
-//        $scope.popup = function () {
-//            if ($scope.mo == false) {
-//                $scope.mo = true;
-//            } else {
-//                $scope.mo = false;
-//            }
-//        };
 
         $('.datepicker').pickadate({
             format: 'yyyy-mm-dd',
@@ -369,18 +362,12 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
-//                $scope.msg = "Request Sent Successfully !!!";
-//                $scope.waitt = "modal1";
-//                $(".call_to_modal").click();
                 $('#wait_moment').fadeOut('slow');
                 $('.toast_show').click(Materialize.toast('Request Successfully !!!', 2000));
             });
             res.error(function (data, status, headers, config) {
                 $('#wait_moment').fadeOut('slow');
-//                $scope.msg = "Request Unsuccessful ...";
-//                $scope.waitt = "modal1";
                 alert("failure message: " + JSON.stringify({data: data}));
-//                $(".call_to_modal").click();
                 $('#wait_moment').fadeOut('slow');
                 $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
             });
@@ -439,7 +426,6 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             $('#toast_holder').show();
         };
         $scope.set = function () {
-//            $scope.update(id,'Available');
             $('#toast_holder').hide();
         };
 
@@ -453,9 +439,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         });
 
         $scope.bb = function (changed) {
-//             alert("awa");
             if (changed === 'Rejected') {
-//                alert("awa");
                 $(".ssss").show();
                 $scope.www = true;
             } else {
@@ -506,14 +490,14 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
             res.success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
-                $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));                
+                $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));
 
             });
             res.error(function (data, status, headers, config) {
                 $('#wait_moment').fadeOut('slow');
                 alert("failure message: " + JSON.stringify({data: data}));
                 $('#wait_moment').fadeOut('slow');
-                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));                
+                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
 
             });
         };
@@ -570,19 +554,19 @@ homeCtrls.controller('edit_modeCtrl', ['$scope', '$http', '$routeParams', functi
             $scope.plt = data;
         });
         $scope.update = function (edit) {
-            $('#wait_moment').fadeIn('slow');      
+            $('#wait_moment').fadeIn('slow');
             var data = {
-                device_ID:edit.device_ID,
-                device_Name:edit.device_Name,
-                product_Area:edit.product_Area,
-                sub_Product_Area:edit.sub_Product_Area,
-                resolution:edit.resolution,
-                size:edit.size,
-                os:edit.os,
-                url:edit.url,
-                location:edit.location,
-                type:edit.type,
-                platform:edit.platform
+                device_ID: edit.device_ID,
+                device_Name: edit.device_Name,
+                product_Area: edit.product_Area,
+                sub_Product_Area: edit.sub_Product_Area,
+                resolution: edit.resolution,
+                size: edit.size,
+                os: edit.os,
+                url: edit.url,
+                location: edit.location,
+                type: edit.type,
+                platform: edit.platform
             };
             var config = {
                 headers: {
