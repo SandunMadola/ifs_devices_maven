@@ -76,73 +76,93 @@
         <ul style="text-align: left;" class="side-nav collapsible" id="mobile-demo" data-collapsible="expandable">
             <li style="height: 1.25em;"></li>
 
+            <!--            <li>
+                            <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Product Area</div>
+                            <div class="collapsible-body">
+                                <ul class="f_height collapsible" data-collapsible="expandable">
+                                <ul>
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Technology</div>
+                                        <div class="collapsible-body">                        
+                                            <ul>
+                                                <li><div class="collapsible-header">Mass</div></li>
+                                                <li><div class="collapsible-header">Tools</div></li>
+                                                <li><div class="collapsible-header">Server</div></li>
+                                                <li><div class="collapsible-header">Client</div></li>                                       
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><div class="collapsible-header">R&D</div></li>
+                                    <li><div class="collapsible-header">Trainee</div></li>
+                                    <li><div class="collapsible-header">HR</div></li>
+                                </ul>                 
+                            </div>
+                        </li>-->
             <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Product Area</div>
                 <div class="collapsible-body">
-                    <!--<ul class="f_height collapsible" data-collapsible="expandable">-->
-                    <ul>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Technology</div>
-                            <div class="collapsible-body">                        
+                    <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                        <li ng-repeat="value in pro" watch>
+                            <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header">{{value}}</div></a>
+                            <!--[
+                            {
+                            "Mass": "Mass",
+                                    "Tool": "Tool",
+                                    "Client":"Client",
+                                    "SPA":"SPA",
+                                    "Server":"Server"
+                            }
+                            ]-->
+                            <!--<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                        </li>
+                    </ul>
+                </div>                   
+            </li> 
+            <!--            <li>
+                            <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
+                            <div class="collapsible-body">
                                 <ul>
-                                    <li><div class="collapsible-header">Mass</div></li>
-                                    <li><div class="collapsible-header">Tools</div></li>
-                                    <li><div class="collapsible-header">Server</div></li>
-                                    <li><div class="collapsible-header">Client</div></li>                                       
+                                    <li><div class="collapsible-header">Phone</div></li>
+                                    <li><div class="collapsible-header">Tablet</div></li>
+                                    <li><div class="collapsible-header">Notebook</div></li>
+                                    <li><div class="collapsible-header">Laptop</div></li>
+                                    <li><div class="collapsible-header">Desktop</div></li>                  
                                 </ul>
                             </div>
-                        </li>
-                        <li><div class="collapsible-header">R&D</div></li>
-                        <li><div class="collapsible-header">Trainee</div></li>
-                        <li><div class="collapsible-header">HR</div></li>
-                    </ul>                 
-                </div>
-            </li>
-<!--            <li>
+                        </li>-->
+            <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
                 <div class="collapsible-body">
-                    <ul>
-                        <li><div class="collapsible-header">Phone</div></li>
-                        <li><div class="collapsible-header">Tablet</div></li>
-                        <li><div class="collapsible-header">Notebook</div></li>
-                        <li><div class="collapsible-header">Laptop</div></li>
-                        <li><div class="collapsible-header">Desktop</div></li>                  
+                    <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                        <li ng-repeat="value in typ">
+                            <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header">{{value}}</div></a>
+                            <!--<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                        </li>
                     </ul>
-                </div>
-            </li>-->
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
-                    <div class="collapsible-body">
-                        <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
-                            <li ng-repeat="value in typ">
-                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header">{{value}}</div></a>
-                                <!--<div class="collapsible-body"><p>{{single.content}}</p></div>-->
-                            </li>
-                        </ul>
-                    </div>                   
-                </li>            
-<!--            <li>
+                </div>                   
+            </li>            
+            <!--            <li>
+                            <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><div class="collapsible-header">Android</div></li>
+                                    <li><div class="collapsible-header">IOS</div></li>
+                                    <li><div class="collapsible-header">MAC</div></li>
+                                    <li><div class="collapsible-header">Windows</div></li>                                                               
+                                </ul>                    
+                            </div>
+                        </li>-->
+            <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
                 <div class="collapsible-body">
-                    <ul>
-                        <li><div class="collapsible-header">Android</div></li>
-                        <li><div class="collapsible-header">IOS</div></li>
-                        <li><div class="collapsible-header">MAC</div></li>
-                        <li><div class="collapsible-header">Windows</div></li>                                                               
-                    </ul>                    
-                </div>
-            </li>-->
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Platform</div>
-                    <div class="collapsible-body">
-                        <ul  class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
-                            <li ng-repeat="value in plt">
-                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header filter_bar">{{value}}</div></a>
-                                <!--ng-click="filter_bar(value)"<div class="collapsible-body"><p>{{single.content}}</p></div>-->
-                            </li>
-                        </ul>
-                    </div>                   
-                </li>            
+                    <ul  class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                        <li ng-repeat="value in plt">
+                            <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header filter_bar">{{value}}</div></a>
+                            <!--ng-click="filter_bar(value)"<div class="collapsible-body"><p>{{single.content}}</p></div>-->
+                        </li>
+                    </ul>
+                </div>                   
+            </li>            
             <li>
                 <a href="#/requested">
                     <div class="collapsible-header"><i class="material-icons">event_note</i>Requested Devices</div>
@@ -155,10 +175,10 @@
         <div style="text-align: left;" class="n1">
             <ul class="f_height collapsible hide-on-med-and-down" data-collapsible="expandable" style="margin: 0px; height: 100%;">
                 <!--                <li style="height: 1.25em;"></li>-->
-                <li>
+<!--                <li>
                     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Product Area</div>
                     <div class="collapsible-body">
-                        <!--<ul class="f_height collapsible" data-collapsible="expandable">-->
+                        <ul class="f_height collapsible" data-collapsible="expandable">
                         <ul>
                             <li>
                                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Technology</div>
@@ -176,6 +196,17 @@
                             <li><div class="collapsible-header">HR</div></li>
                         </ul>                 
                     </div>
+                </li>-->
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Product Area</div>
+                    <div class="collapsible-body">
+                        <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
+                            <li ng-repeat="value in pro">
+                                <a href="#/devices"><div ng-click="filter_bar(value)" style="padding-left: 60px" class="collapsible-header">{{value}}</div></a>
+<!--                                <div class="collapsible-body"><p>sa</p></div>-->
+                            </li>
+                        </ul>
+                    </div>                   
                 </li>
                 <!--                <li>
                                     <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Device Type</div>
@@ -194,7 +225,7 @@
                     <div class="collapsible-body">
                         <ul class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
                             <li ng-repeat="value in typ">
-                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header">{{value}}</div></a>
+                                <a href="#/devices"><div ng-click="filter_bar(value)" style="padding-left: 60px" class="collapsible-header">{{value}}</div></a>
                                 <!--<div class="collapsible-body"><p>{{single.content}}</p></div>-->
                             </li>
                         </ul>
@@ -217,7 +248,7 @@
                     <div class="collapsible-body">
                         <ul  class="collapsible" style="margin: 0px;box-shadow: none;border: none;" data-collapsible="accordion" watch>
                             <li ng-repeat="value in plt">
-                                <a href="#/devices"><div ng-click="filter_bar(value)" class="collapsible-header filter_bar">{{value}}</div></a>
+                                <a href="#/devices"><div ng-click="filter_bar(value)" style="padding-left: 60px" class="collapsible-header filter_bar">{{value}}</div></a>
                                 <!--ng-click="filter_bar(value)"<div class="collapsible-body"><p>{{single.content}}</p></div>-->
                             </li>
                         </ul>

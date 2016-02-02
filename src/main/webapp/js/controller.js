@@ -14,7 +14,10 @@ homeCtrls.factory('shareVariable', function () {
 });
 
 homeCtrls.controller('staticCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
-       
+        
+        $http.get('Fixed_Json/productArea.json').success(function (data) {
+            $scope.pro = data;
+        });       
         $http.get('Fixed_Json/type.json').success(function (data) {
             $scope.typ = data;
         });
@@ -332,7 +335,7 @@ homeCtrls.controller('requestCtrl', ['$scope', '$http', function ($scope, $http)
             $scope.pri = data;
         });
 
-        $scope.some = "Request a device";
+        $scope.some = "Request a New Device";
         $scope.date = new Date();
         $scope.SendData = function (request) {
             $('#wait_moment').fadeIn('slow');

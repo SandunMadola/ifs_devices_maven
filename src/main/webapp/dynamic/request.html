@@ -18,7 +18,7 @@
     <div class="row">
         <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="row">
- 
+
                 <div class="hoverable card-panel row">
 
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.device_name.$invalid && !userForm.device_name.$pristine}">                        
@@ -33,14 +33,14 @@
                         <label for="icon_prefix" ng-hide="userForm.username.$invalid && !userForm.username.$pristine">User Name *</label>
                         <!--<label for="icon_prefix">User Name</label>-->
                     </div>
-                    
+
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.Pa.$invalid && !userForm.Pa.$pristine}">
                         <input id="Pa1" name="Pa" type="text" class="validate" ng-model="request.PA" required>
                         <label for="Pa1" ng-show="userForm.Pa.$invalid && !userForm.Pa.$pristine" style="color: #b71c1c">Product Area is required.</label>
                         <label for="Pa1" ng-hide="userForm.Pa.$invalid && !userForm.Pa.$pristine">Product Area *</label>
                         <!--<label for="spa">Sub Product Area *</label>-->
                     </div>
-                    
+
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.Spa.$invalid && !userForm.Spa.$pristine}">
                         <input id="spa" name="Spa" type="text" class="validate" ng-model="request.SPA" required>
                         <label for="spa" ng-show="userForm.Spa.$invalid && !userForm.Spa.$pristine" style="color: #b71c1c">Sub Product Area is required.</label>
@@ -79,7 +79,7 @@
                         <label for="os" ng-show="userForm.OS.$invalid && !userForm.OS.$pristine" style="color: #b71c1c">Operating System is required.</label>
                         <label for="os" ng-hide="userForm.OS.$invalid && !userForm.OS.$pristine">Operating System</label>
                     </div>
-                    
+
                     <div class="input-field col m6 col s12" ng-class="{'has-error':userForm.comment1.$invalid && !userForm.comment1.$pristine}">                        
                         <input id="comment2" type="text" name="comment1" class="validate" ng-model="request.comment">
                         <label for="comment2" ng-show="userForm.comment1.$invalid && !userForm.comment1.$pristine" style="color: #b71c1c">Comment is required.</label>
@@ -162,12 +162,19 @@
                                                 <option ng-repeat="value in plt">{{value}}</option>
                                             </select>
                                         </div>  -->
-                    
-                    <div class="col m12 s12" style="height: 20px"></div>
-                    <div class="col m12 s12"><h6 style="color: gray" ng-show="userForm.$invalid">To submit fill the required fields (*).</h6></div>
-                </div>                
-                <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="SendData(request)">Submit</button>
 
+                    <div class="col m12 s12" style="height: 20px"></div>
+                    <div class="col m12 s12"><h6 style="color: gray" ng-show="userForm.$invalid">To submit the from fill the required fields (*).</h6></div>
+                    <button style="padding-right: 1px" type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="SendData(request)">Submit<i style="padding: 0.9em;float: right;" class="material-icons">send</i></button>
+                </div>                
+                
+                <div class="hoverable card-panel row">
+                    <div class="col m6 s12"><h6 style="color: gray" ng-show="userForm.$invalid">View requested devices</h6></div>                   
+                    <a href="#/requested" style="background-color: gray" class="btn waves-effect">
+                        <!--<i style="padding: 0.9em;color:gray" class="material-icons">event_note</i>-->
+                        <i style="padding: 0.9em" class="material-icons">event_note</i>Requested Devices
+                    </a>
+                </div>
             </div>
 
             <a class="call_to_modal waves-effect waves-light modal-trigger" data-target="modal1"></a>

@@ -18,7 +18,7 @@ public class Database {
         url = "jdbc:mysql://localhost:3306/devices_ifs";
         String user = "root";
         String password = "root";
-        
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
