@@ -32,6 +32,9 @@ public class DeviceList {
     private String transaction_Mode;
     private String color;
     private int transaction_ID;
+    private String request_Status;
+    private String from_Date; 
+    private String to_Date;
     private int request_ID;
 
     public int getRequest_ID() {
@@ -235,5 +238,31 @@ public class DeviceList {
     public void setProduct_Area(String product_Area) {
         this.product_Area = product_Area;
     }
+
+    public String getRequest_Status() {
+        return request_Status;
+    }
+
+    public void setRequest_Status(String request_Status) {
+        this.request_Status = request_Status;
+    }
+
+    public String getFrom_Date() {
+        return from_Date;
+    }
+
+    public void setFrom_Date(String from_Date) {
+        this.from_Date = from_Date;
+    }
+
+    public String getTo_Date() {
+        return to_Date;
+    }
+
+    public void setTo_Date(String to_Date) {
+        this.to_Date = to_Date;
+    }
+
+
     
 }

@@ -42,10 +42,11 @@ homeCtrls.controller('homeCtrl', ['$scope', function ($scope) {
 
     }]);
 
-homeCtrls.controller('searchCtrl', ['$scope', function ($scope) {
+homeCtrls.controller('searchCtrl', ['$scope', '$http',function ($scope, $http) {
         $http.get('webapi/search').success(function (data) {
             $scope.devices = data;
         });
+        
     }]);
 
 homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
@@ -209,8 +210,9 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
             $scope.username = $("#getun").text();
             $scope.transactionID = $("#getTransID").text();
+            $scope.color = $("#getcolor").text();
 
-            if (returnDevice.userName == $scope.username) {
+            if (returnDevice.userName == $scope.username && $scope.color=='red') {
 //                $scope.msg = "Request granted!";
 //                $(".call_to_modal").click();
                 var config = {
@@ -241,8 +243,9 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
 
             $scope.username = $("#getun").text();
             $scope.transactionID = $("#getTransID").text();
+            $scope.color = $("#getcolor").text();
 
-            if (cancel.userName == $scope.username) {
+            if (cancel.userName == $scope.username && $scope.color=='orange') {
 //                $scope.msg = "Request granted!";
 //                $(".call_to_modal").click();
                 var config = {
