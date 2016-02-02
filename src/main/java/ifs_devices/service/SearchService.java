@@ -15,17 +15,17 @@ import java.util.List;
  */
 public class SearchService {
     
-//    public List<DeviceList> getAll() {
-//       
-//        List<DeviceList> searcheddevicels = null;
-//        try {
-//            Model model = new Model();
-//            searcheddevicels = model.GetAllSearchedDevices();            
-//        } catch (Exception e) {
-//            System.out.println("service error (DB)");
-//        }
-//
-//        return searcheddevicels;
-//    }
+    public List<DeviceList> getAll(String val) {
+        System.out.println("SearchService call");
+        List<DeviceList> searcheddevicels = null;
+        try {
+            Model model = new Model();
+            searcheddevicels = model.GetAllSearchedDevices(val);            
+        } catch (Exception e) {
+            System.out.println("service error (DB)");
+        }
+
+        return searcheddevicels;
+    }
     
 }

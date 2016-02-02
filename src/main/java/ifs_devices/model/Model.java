@@ -115,17 +115,17 @@ public class Model {
         return allDevices;
     }
 
-//    public ArrayList<DeviceList> GetAllSearchedDevices() throws Exception {
-//
-//        ArrayList<DeviceList> allSearchedDevices = null;
-//        try {
-//            Connection connection = Database.Get_Connection();
-//            allSearchedDevices = Query.GetAllSearchedDevices(connection);
-//        } catch (Exception e) {
-//            throw e;
-//        }
-//        return allSearchedDevices;
-//    }
+    public ArrayList<DeviceList> GetAllSearchedDevices(String val) throws Exception {
+        System.out.println("Inside the model");
+        ArrayList<DeviceList> allSearchedDevices = null;
+        try {
+            Connection connection = Database.Get_Connection();
+            allSearchedDevices = Query.GetAllSearchedDevices(val,connection);
+        } catch (Exception e) {
+            throw e;
+        }
+        return allSearchedDevices;
+    }
     
     public String deleteTransaction(int id) throws Exception {
         System.out.println("Inside the model");

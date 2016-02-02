@@ -169,7 +169,7 @@ public class Query {
     }
 
     public static BorrowDevice getBorrowRequest(Connection connection) throws Exception {
-        System.out.println(" GetBorrowDevice Query");
+        System.out.println("GetBorrowDevice Query");
         BorrowDevice borrowreq = new BorrowDevice();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM borrow_device");
@@ -197,12 +197,12 @@ public class Query {
        
         ArrayList<BorrowDevice> bookreq  = new ArrayList<BorrowDevice>();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND transaction_Mode = 'booked' AND to_date >= CURDATE() ORDER BY from_Date ASC");
+            PreparedStatement ps = connection.prepareStatement("SELECT transaction_Mode, from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND ((transaction_Mode = 'booked' AND to_date >= CURDATE()) OR (transaction_Mode = 'unavailable' AND to_date >= CURDATE())) ORDER BY from_Date ASC");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 BorrowDevice bookedreq = new BorrowDevice();
 //               bookreq.setTransaction_ID(rs.getInt("transaction_ID"));
-//                bookreq.setTransaction_Mode(rs.getString("transaction_Mode"));
+                bookedreq.setTransaction_Mode(rs.getString("transaction_Mode"));
 //                bookreq.setTransaction_Type(rs.getString("transaction_Type"));
                 bookedreq.setUsername(rs.getString("username"));
 //                bookreq.setDevice_ID(rs.getString("device_ID"));
@@ -261,41 +261,44 @@ public class Query {
             throw e;
         }
     }
-//     ADJUST TO THE NEW DB
-//     static ArrayList<DeviceList> GetAllSearchedDevices(Connection connection) throws Exception {
-//
-//        ArrayList<DeviceList> Searcheddevicedata = new ArrayList<DeviceList>();
-//        try {
-//            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`model_ID`,b.`sub_Product_Area_ID`,b.`product_Area_ID`,b.location,b.comments,a.`model_ID`,a.`name`,a.image_no,a.`type`,a.platform,a.`OS`,a.`size`,a.resolution,a.`count`,a.`URL`,c.`sub_Product_Area_ID`,c.`sub_Product_Area_name`,c.`product_Area_ID`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN device_model a ON (b.`model_ID`=a.`model_ID`) LEFT JOIN sub_product_area c ON (b.sub_Product_Area_ID = c.sub_Product_Area_ID) LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() between from_Date and to_Date) GROUP BY b.`device_ID` ORDER BY d.`transaction_Mode` DESC");
-//
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                DeviceList Searcheddevicels = new DeviceList();
-//
+     static ArrayList<DeviceList> GetAllSearchedDevices(String val,Connection connection) throws Exception {
+        System.out.println("Inside the Query");
+        ArrayList<DeviceList> Searcheddevicedata = new ArrayList<DeviceList>();
+        try {
+//            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`sub_Product_Area`,b.`product_Area`,b.location,b.comments,b.`device_Name`,b.image_no,b.`type`,b.platform,b.`os`,b.`size`,b.resolution,b.`url`,b.`request_Status`,d.`transaction_ID`,IFNULL(d.`transaction_Mode`,\"available\") AS `transaction_Mode`,IFNULL(d.`color`,\"green\") AS `color`,d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT JOIN borrow_device d ON (b.device_ID = d.device_ID and to_Date >= CURDATE()) WHERE b.`sub_Product_Area` LIKE" + val +  "OR b.`product_Area`LIKE" + val + "OR b.location LIKE" + val + "OR b.`device_Name`LIKE" + val + "OR b.`type`LIKE" + val + "OR b.platform LIKE" + val + "OR b.`os` LIKE" + val + "OR b.`request_Status` LIKE" + val + "OR b.`device_ID` LIKE" + val + "ORDER BY d.`transaction_Mode` DESC");
+            PreparedStatement ps = connection.prepareStatement("SELECT b.`device_ID`,b.`sub_Product_Area`,b.`product_Area`,b.location,b.comments,b.`device_Name`,b.image_no,b.`type`,b.platform,b.`os`,b.`size`,b.resolution,b.`url`,b.`request_Status`,d.`transaction_ID`, IF(b.`request_Status` = 'Confirmed', \"Not available\", IF(b.`request_Status` = 'In Progress', \"Not available\", IF(b.`request_Status` = 'Rejected', \"Not available\", IF(b.`request_Status` = 'Requested', \"Not available\", IFNULL(d.`transaction_Mode`,\"available\"))))) AS `transaction_Mode`, IF(b.`request_Status` = 'Confirmed', \"white\", IF(b.`request_Status` = 'In Progress', \"white\", IF(b.`request_Status` = 'Rejected', \"white\", IF(b.`request_Status` = 'Requested', \"white\", IFNULL(d.`color`,\"green\"))))) AS `color`, d.`transaction_Type`,d.username,d.`device_ID`,d.`from_Date`,d.`to_Date` FROM device b LEFT OUTER JOIN borrow_device d ON (b.device_ID = d.device_ID and CURDATE() <= to_Date) WHERE b.`sub_Product_Area` LIKE ('%'" + val + "'%') OR b.`product_Area`LIKE ('%'" + val + "'%') OR b.location LIKE ('%'" + val + "'%') OR b.`device_Name`LIKE ('%'" + val + "'%')OR b.`type`LIKE ('%'" + val + "'%') OR b.platform LIKE ('%'" + val + "'%') OR b.`os` LIKE ('%'" + val + "'%') OR b.`request_Status` LIKE ('%'" + val + "'%') OR b.`device_ID` LIKE ('%'" + val + "'%') ORDER BY d.`transaction_Mode` DESC");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DeviceList Searcheddevicels = new DeviceList();
+
 //                Searcheddevicels.setName(rs.getString("name"));
-//                Searcheddevicels.setType(rs.getString("type"));
-//                Searcheddevicels.setPlatform(rs.getString("platform"));
-//                Searcheddevicels.setImage_no(rs.getInt("image_no"));
-//                Searcheddevicels.setOS(rs.getString("OS"));
-//                Searcheddevicels.setSub_Product_Area_ID(rs.getString("sub_Product_Area_ID"));
-//                Searcheddevicels.setSub_Product_Area_name(rs.getString("sub_Product_Area_name"));
-//                Searcheddevicels.setDevice_ID(rs.getString("device_ID"));
-//                Searcheddevicels.setUsername(rs.getString("username"));
-//                Searcheddevicels.setSize(rs.getString("size"));
-//                Searcheddevicels.setResolution(rs.getString("resolution"));
-//                Searcheddevicels.setURL(rs.getString("URL"));
-//                Searcheddevicels.setLocation(rs.getString("location"));
-//                Searcheddevicels.setTransaction_Mode(rs.getString("transaction_Mode"));
-//                Searcheddevicels.setColor(rs.getString("color"));
-//                Searcheddevicels.setTransaction_ID(rs.getInt("transaction_ID"));
-//                Searcheddevicedata.add(Searcheddevicels);
-//                
-//            }
-//            return Searcheddevicedata;
-//        } catch (Exception e) {
-//            throw e;
-//        }
-//    }
+                Searcheddevicels.setDevice_Name(rs.getString("device_Name"));
+                Searcheddevicels.setType(rs.getString("type"));
+                Searcheddevicels.setPlatform(rs.getString("platform"));
+                Searcheddevicels.setImage_no(rs.getInt("image_no"));
+                Searcheddevicels.setOs(rs.getString("os"));
+                Searcheddevicels.setSub_Product_Area(rs.getString("sub_Product_Area"));
+                Searcheddevicels.setProduct_Area(rs.getString("product_Area"));
+                Searcheddevicels.setDevice_ID(rs.getString("device_ID"));
+                Searcheddevicels.setUsername(rs.getString("username"));
+                Searcheddevicels.setSize(rs.getString("size"));
+                Searcheddevicels.setResolution(rs.getString("resolution"));
+                Searcheddevicels.setUrl(rs.getString("url"));
+                Searcheddevicels.setLocation(rs.getString("location"));
+                Searcheddevicels.setTransaction_Mode(rs.getString("transaction_Mode"));
+                Searcheddevicels.setColor(rs.getString("color"));
+                Searcheddevicels.setTransaction_ID(rs.getInt("transaction_ID"));
+                Searcheddevicels.setRequest_Status(rs.getString("request_Status"));
+                Searcheddevicels.setFrom_Date(rs.getString("from_Date"));
+                Searcheddevicels.setTo_Date(rs.getString("to_date"));
+                Searcheddevicedata.add(Searcheddevicels);
+                
+            }
+            return Searcheddevicedata;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
      
     public static String deleteTransaction(int id, Connection connection) throws SQLException {
         System.out.println("Inside the Query");
