@@ -9,28 +9,10 @@ import java.util.ArrayList;
  */
 public class Model {
 
-    public ArrayList<Employee> GetFeeds() throws Exception {
-        System.out.println("Inside the Model");
-        ArrayList<Employee> feeds = null;
-        try {
-            //Database database = new Database();
-            //Connection connection = database.Get_Connection();
-            Connection connection = Database.Get_Connection();
-            //Query select_sql = new Query();
-            //feeds = select_sql.GetFeeds(connection);
-            feeds = Query.GetFeeds(connection);
-
-        } catch (Exception e) {
-            throw e;
-        }
-        return feeds;
-    }
-
     public Request addRequest(Request request) throws Exception {
-        System.out.println("Inside the model");
+        System.out.println("Model - for add new request");
         Request req = null;
-        try {
-            Connection connection = Database.Get_Connection();
+        try (Connection connection = Database.Get_Connection();) {
             req = Query.addRequest(request, connection);
         } catch (Exception e) {
             System.out.println("error" + e);
@@ -40,11 +22,10 @@ public class Model {
     }
 
     public ArrayList<Request> GetRequest() {
-        System.out.println("Inside the model get request");
+        System.out.println("Model - for get all new requests");
         ArrayList<Request> req = null;
-        try (Connection connection = Database.Get_Connection();){           
-            req = Query.getRequest(connection);
-            //connection.close();
+        try (Connection connection = Database.Get_Connection();) {
+            req = Query.getRequest(connection);            
         } catch (Exception e) {
             System.out.println("error" + e);
         }
@@ -52,10 +33,9 @@ public class Model {
     }
 
     public Request updateRequest(Request request) throws Exception {
-        System.out.println("Inside the model");
+        System.out.println("Model - for update a new request");
         Request req = null;
-        try {
-            Connection connection = Database.Get_Connection();
+        try (Connection connection = Database.Get_Connection();){            
             req = Query.updateRequest(request, connection);
         } catch (Exception e) {
             System.out.println("erro" + e);
@@ -63,11 +43,11 @@ public class Model {
 
         return req;
     }
+
     public Edit_Mode editDetails(Edit_Mode edit_Mode) throws Exception {
-        System.out.println("Inside the model");
+        System.out.println("Model - for update a available device");
         Edit_Mode edi = null;
-        try {
-            Connection connection = Database.Get_Connection();
+        try (Connection connection = Database.Get_Connection();){            
             edi = Query.editDetails(edit_Mode, connection);
         } catch (Exception e) {
             System.out.println("erro" + e);
@@ -75,6 +55,7 @@ public class Model {
 
         return edi;
     }
+
     public BorrowDevice addBorrowRequest(BorrowDevice borrowRequest) throws Exception {
         System.out.println("Inside the model");
         BorrowDevice borrowreq = null;
@@ -90,7 +71,7 @@ public class Model {
 
     public BorrowDevice GetBorrowRequest() {
         System.out.println("Inside the GetBorrowRequest() model");
-        
+
         BorrowDevice borrowreq = null;
         try {
             Connection connection = Database.Get_Connection();
@@ -104,16 +85,16 @@ public class Model {
     public ArrayList<BorrowDevice> GetbookedDates(String id) {
         System.out.println("Inside the GetbookedDates() model");
         ArrayList<BorrowDevice> bookreq = null;
-        
+
         try {
             Connection connection = Database.Get_Connection();
-            bookreq = Query.getBookedDates(id,connection);
+            bookreq = Query.getBookedDates(id, connection);
         } catch (Exception e) {
             System.out.println("error" + e);
         }
         return bookreq;
     }
-    
+
     public ArrayList<DeviceList> GetAllDevices() throws Exception {
 
         ArrayList<DeviceList> allDevices = null;
@@ -137,7 +118,6 @@ public class Model {
 //        }
 //        return allSearchedDevices;
 //    }
-    
     public String deleteTransaction(int id) throws Exception {
         System.out.println("Inside the model");
         String del = null;
@@ -150,7 +130,7 @@ public class Model {
 
         return del;
     }
-    
+
     public BorrowDevice updateDevice(BorrowDevice updateDevice) throws Exception {
         System.out.println("Inside the model");
         BorrowDevice update = null;
@@ -164,7 +144,7 @@ public class Model {
         return update;
     }
 
-  public String returnDeviceTransaction(int id) throws Exception {
+    public String returnDeviceTransaction(int id) throws Exception {
         System.out.println("Inside the model");
         String ret = null;
         try {
@@ -176,5 +156,5 @@ public class Model {
 
         return ret;
     }
-    
+
 }

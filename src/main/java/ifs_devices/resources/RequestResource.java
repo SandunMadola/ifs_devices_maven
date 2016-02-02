@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ifs_devices.resources;
-
 import ifs_devices.model.Edit_Mode;
 import ifs_devices.model.Request;
 import ifs_devices.service.RequestService;
@@ -30,26 +24,26 @@ public class RequestResource {
     RequestService requestService = new RequestService();
 
     @GET
-    public List<Request> getRequest() {
+    public List<Request> getRequest() {/*Get all requested devices from the device table*/
         System.out.println("/request call");
         return requestService.getRequest();
     }
 
     @POST
-    public Request addRequest(Request request) {
+    public Request addRequest(Request request) {/*Add new request to the device table*/
         System.out.println("/request call");
         return requestService.addRequest(request);
     }
 
     @PUT
-    @Path("/{reqID}")
+    @Path("/{reqID}") /*Update changes done to the requested device and save in device table*/
     public Request updateEmployee(@PathParam("reqID") int id, Request request) {
         request.setId(id);
         return requestService.updateRequest(request);
     }
     
     @PUT
-    @Path("/edit/{reqID}")
+    @Path("/edit/{reqID}") /*Update for available device and save in device table*/
     public Edit_Mode editDetails(@PathParam("reqID") int id, Edit_Mode edit_Mode) {
         edit_Mode.setRequest_ID(id);
         return requestService.editDetails(edit_Mode);

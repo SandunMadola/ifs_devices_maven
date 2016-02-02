@@ -17,12 +17,11 @@ import java.util.List;
 public class RequestService {
 
     public List<Request> getRequest() {
-        System.out.println("RequestService call");
+        System.out.println("RequestService call for get requested devices");
         List<Request> req = null;
         try {
             Model model = new Model();
             req = model.GetRequest();
-            //System.out.println("sandun");
         } catch (Exception e) {
             System.out.println("error");
         }
@@ -31,7 +30,7 @@ public class RequestService {
     }
 
     public Request addRequest(Request request) {
-        System.out.println("RequestService call");
+        System.out.println("RequestService call for insert a new request");
         Request req = null;
         try {
             Model model = new Model();
@@ -44,7 +43,7 @@ public class RequestService {
     }
 
     public Request updateRequest(Request request) {
-        System.out.println("EmployeeService Update");
+        System.out.println("RequestService call for update a request");
         Request req = null;
         try {
             Model model = new Model();
@@ -57,7 +56,7 @@ public class RequestService {
     }
 
     public Edit_Mode editDetails(Edit_Mode edit_Mode) {
-        System.out.println("Edit mode Service");
+        System.out.println("RequestService call for update a available device details");
         Edit_Mode edit_Mode1 = null;
         try {
             Model model = new Model();

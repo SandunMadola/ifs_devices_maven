@@ -15,30 +15,8 @@ import java.util.List;
 
 public class Query {
 
-    static ArrayList<Employee> GetFeeds(Connection connection) throws Exception {
-        System.out.println("Query");
-        ArrayList<Employee> empdata = new ArrayList<Employee>();
-        try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM employee");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Employee emp = new Employee();
-//                emp.setId(rs.getInt("id"));
-//                emp.setName(rs.getString("name"));
-//                emp.setAge(rs.getInt("age"));
-                emp.setUsername(rs.getString("username"));
-                emp.setPid(rs.getString("product_Area_ID"));
-                emp.setSubpid(rs.getString("sub_Product_Area_ID"));
-                empdata.add(emp);
-            }
-            return empdata;
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
     public static Request addRequest(Request request, Connection connection) throws SQLException {
-        System.out.println("Inside the Query");
+        System.out.println("Query - for add a new request");
         String Device_name = request.getDevice_name();
         String Type = request.getType();
         String Platform = request.getPlatform();
@@ -73,7 +51,7 @@ public class Query {
     }
 
     public static Request updateRequest(Request request, Connection connection) throws SQLException {
-        System.out.println("Inside the Query");
+        System.out.println("Query - for update a request");
         int Id = request.getId();
         String Device_name = request.getDevice_name();
         String Type = request.getType();
@@ -95,8 +73,7 @@ public class Query {
 
         String query = "UPDATE device SET"
                 + " device_Name = '" + Device_name + "', type = '" + Type + "', platform = '" + Platform + "', OS = '" + OS + "', size = '" + Size + "', resolution = '" + Resolution + "', username = '" + UserName + "', sub_Product_Area = '" + SPA + "', request_Status = '" + Request_Status + "', priority = '" + Priority + "', location = '" + Location + "', comments = '" + Comment + "', url = '" + URL + "', project = '" + Project + "', requested_Date = '" + Date + "',device_ID = '" + device_ID + "', reject_comment = '" + R_Comment + "' WHERE request_ID = " + Id;
-//                + " VALUES ('" + Device_name + "','" + Type + "','" + Platform + "','" + OS + "','" + Size + "','" + Resolution + "','" + UserName + "','" + SPA + "','" + Request_Status + "','" + Priority + "','" + Location + "','" + Comment + "','" + URL + "','" + Project + "','" + Date + "')";
-        //db set auto increment
+
         System.out.println(query);
         try {
             Statement statement = connection.createStatement();
@@ -109,7 +86,7 @@ public class Query {
     }
 
     public static Edit_Mode editDetails(Edit_Mode edit_Mode, Connection connection) throws SQLException {
-        System.out.println("Inside the Query editDetails");
+        System.out.println("Query - for edit details of available device");
         String device_ID = edit_Mode.getDevice_ID();
         String device_Name = edit_Mode.getDevice_Name();
         String product_Area = edit_Mode.getProduct_Area();
@@ -139,7 +116,7 @@ public class Query {
     }
 
     public static ArrayList<Request> getRequest(Connection connection) throws Exception {
-        System.out.println("Query");
+        System.out.println("Query - for get all requests");
         ArrayList<Request> requests = new ArrayList<Request>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM device where request_Status != 'Available'");
