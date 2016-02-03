@@ -76,6 +76,11 @@ div {
     margin: 2.1rem 0px 1.68rem 2px;
 }
 
+.b_2 img {
+    width: 160px;
+    height: 160px;
+}
+
 .list_style_buttons {
     position: absolute;
     right: 0;

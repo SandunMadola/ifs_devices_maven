@@ -1,7 +1,4 @@
-/**
- *
- * @author sanmlk
- */
+
 package ifs_devices.model;
 
 import java.sql.Connection;

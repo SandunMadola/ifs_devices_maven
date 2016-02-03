@@ -1,85 +1,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>        
-<!--<section>
+<section>
     <div class="ignore"></div>
 
-    <div class="main_content">-->
+    <div class="main_content">
        
             <h4> Search page </h4>
          
- 
 
-<link href="styles/device_style.css" rel="stylesheet" type="text/css"/>
-<section class="b_4">
-    
-    <div class="main_content"> 
         
-        <div class="ignore"></div>     
-        <div class="ifs_banner">
-
-            <center>
-                <ul class="devicelist">
-
-                    <!--device cf--> 
-
-                    <li class = "hoverable card-panel row" ng-repeat="item in devices | orderBy: ['color'] "> 
-                        <!--<div class="row">-->
-                        <a href="#/details/{{devices.indexOf(item)}}">
-                            
-
-                            <div class="info col s1 m1 l1 hide-on-small-only vertical-line" style="height: 16%;width: 5px; background-color: {{item.color}};float: left; " > </div>
-                            <div class="info col s1 m1 l1 hide-on-med-and-up vertical-line" style="height: 18%;width: 5px; background-color: {{item.color}};float: left; " > </div>
-
-
-
-                            <div class="col s11 m3 l4 hide-on-med-and-up " style="float: none">
-                                <img style="width: 45%" ng-src="images/{{item.image_no}}.jpg">
-
-                            </div>
-
-                            <div class="info col s12 m5 l5">
-
-                                <h3  class="col s12 m11 l11 "> {{item.device_Name}} - [id  {{item.device_ID}}] </h3>
-
-                                <h4 class="col s12 m11 l11"> Type : {{item.type}} </h4>
-                                <h4 class="col s12 m11 l11"> Platform : {{item.platform}} </h4>
-                                <h4 class="col s12 m11 l11"> Owned by : {{item.product_Area}} {{item.sub_Product_Area}} </h4>
-                                <br>
-                                <h4 class="col s12 m11 l11"> Currently with : {{item.username}}  </h4>
-                               
-
-                            </div>
-
-                            <div class="col s11 m3 l4 hide-on-small-only">
-                                <img  style="width: 55%" ng-src="images/{{item.image_no}}.jpg">
-                            </div>
-
-
-                            <div class="buttonClass col s12 m2 l2" >
-
-                                <button ng-hide="{{item.transaction_Mode == 'unavailable'}} || {{item.transaction_Mode == 'booked'}}"  style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Now </button>
-                                 <p ng-hide="{{item.transaction_Mode == 'unavailable'}} || {{item.transaction_Mode == 'booked'}}" class="col s1 hide-on-med-and-up"> </p>
-                                <button style="margin-top:  20px" type="button"  class="waves-effect waves-light btn col s5 m11 l11">Later</button>
-                                 <p class="col s1 hide-on-med-and-up"> </p>
-                                <button ng-show="{{item.transaction_Mode == 'unavailable'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Return </button>
-                                <button ng-show="{{item.transaction_Mode == 'booked'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Get Now </button>
-                                <button ng-show="{{item.transaction_Mode == 'booked'}}" style="margin-top:  20px" type="button" class="waves-effect waves-light btn col s5 m11 l11"> Cancel </button>
-                                <p class="col s1 hide-on-med-and-up"> </p>
-
-
-                            </div>
-                        </a>
-                    </li>
-
-                </ul>
-
-            </center>
-        </div>
-
-        <div class="clear"></div>
     </div>
-
 </section>
-
-<!--        
-    </div>
-</section>-->
