@@ -14,10 +14,10 @@ homeCtrls.factory('shareVariable', function () {
 });
 
 homeCtrls.controller('staticCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
-        
+
         $http.get('Fixed_Json/productArea.json').success(function (data) {
             $scope.pro = data;
-        });       
+        });
         $http.get('Fixed_Json/type.json').success(function (data) {
             $scope.typ = data;
         });
@@ -45,11 +45,11 @@ homeCtrls.controller('homeCtrl', ['$scope', function ($scope) {
 
     }]);
 
-homeCtrls.controller('searchCtrl', ['$scope', '$http',function ($scope, $http) {
+homeCtrls.controller('searchCtrl', ['$scope', '$http', function ($scope, $http) {
         $http.get('webapi/search').success(function (data) {
             $scope.devices = data;
         });
-        
+
     }]);
 
 homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function ($scope, shareVariable, $http) {
@@ -215,7 +215,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.transactionID = $("#getTransID").text();
             $scope.color = $("#getcolor").text();
 
-            if (returnDevice.userName == $scope.username && $scope.color=='red') {
+            if (returnDevice.userName == $scope.username && $scope.color == 'red') {
 //                $scope.msg = "Request granted!";
 //                $(".call_to_modal").click();
                 var config = {
@@ -248,7 +248,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
             $scope.transactionID = $("#getTransID").text();
             $scope.color = $("#getcolor").text();
 
-            if (cancel.userName == $scope.username && $scope.color=='orange') {
+            if (cancel.userName == $scope.username && $scope.color == 'orange') {
 //                $scope.msg = "Request granted!";
 //                $(".call_to_modal").click();
                 var config = {
@@ -434,12 +434,42 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.set = function () {
             $('#toast_holder').hide();
         };
-
+        
+        
+        $('#toast_holder_2').hide();
+        $scope.show_2 = function (reqs) {
+            $scope.req = reqs;
+            $('#toast_holder_2').show();
+        };
+        $scope.set_2 = function () {
+            $('#toast_holder_2').hide();
+        };
+        
+        
+        $('#toast_holder_3').hide();
+        $scope.show_3 = function (reqs) {
+            $scope.req = reqs;
+            $('#toast_holder_3').show();
+        };
+        $scope.set_3 = function () {
+            $('#toast_holder_3').hide();
+        };
+        
+        $('#toast_holder_4').hide();
+        $scope.show_4 = function (reqs) {
+            $scope.req = reqs;
+            $('#toast_holder_4').show();
+        };
+        $scope.set_4 = function () {
+            $('#toast_holder_4').hide();
+        };
+                
+        
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
         });
-
+        
         $(document).ready(function () {
             $('.modal-trigger').leanModal();
         });
@@ -456,6 +486,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
 
         $scope.update = function (request, changed) {
             $('#toast_holder').hide();
+            $('#toast_holder_2').hide();
             $('#wait_moment').fadeIn('slow');
             if (changed === 'Not') {
                 $scope.status = request.request_Status;
@@ -475,7 +506,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
                 resolution: request.resolution,
                 location: request.location,
                 SPA: request.SPA,
-                PA:request.PA,
+                PA: request.PA,
                 project: request.project,
                 request_Status: $scope.status,
                 URL: request.URL,
@@ -498,6 +529,29 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
                 $scope.PostDataResponse = data;
                 $('#wait_moment').fadeOut('slow');
                 $('.toast_show').click(Materialize.toast('Updated Successfully !!!', 2000));
+
+            });
+            res.error(function (data, status, headers, config) {
+                $('#wait_moment').fadeOut('slow');
+                alert("failure message: " + JSON.stringify({data: data}));
+                $('#wait_moment').fadeOut('slow');
+                $('.toast_show').click(Materialize.toast('Error, Try again...', 2000));
+
+            });
+        };
+
+
+
+        $scope.delete = function (request) {
+            $('#toast_holder_3').hide();
+            $('#toast_holder_4').hide();
+            $('#wait_moment').fadeIn('slow');
+            var url = 'webapi/request/' + request.id;
+            var res = $http.delete(url);
+            res.success(function (data, status, headers, config) {
+                $scope.PostDataResponse = data;
+                $('#wait_moment').fadeOut('slow');
+                $('.toast_show').click(Materialize.toast('Deleted Successfully !!!', 2000));
 
             });
             res.error(function (data, status, headers, config) {

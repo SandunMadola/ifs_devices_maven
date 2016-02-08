@@ -580,6 +580,9 @@
                                 <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
                             </div>                           
                         </div>
+                        <button style="margin-bottom: 20px;" class="btn waves-effect waves-light" ng-click="show_2(req)" type="submit" name="action">Make It Available
+                            <i ng-click="show_2(req)" style="line-height: inherit;padding: 0;" class="material-icons right">send</i>
+                        </button>
                     </div>
                     <div class="collapsible-body row col s12 m12 l12" ng-show="_edit3"><!--Edit Mode-->              
                         <form name="userForm">
@@ -692,6 +695,9 @@
                                 <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
                             </div>                           
                         </div>
+                        <button style="margin-bottom: 20px;" class="btn waves-effect waves-light" ng-click="show_2(req)" type="submit" name="action">Make It Available
+                            <i ng-click="show_2(req)" style="line-height: inherit;padding: 0;" class="material-icons right">send</i>
+                        </button>                        
                     </div>
                     <div class="collapsible-body row col s12 m12 l12" ng-show="_edit3"><!--Edit Mode-->              
                         <form name="userForm">
@@ -807,6 +813,9 @@
                                 <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
                             </div>                           
                         </div>
+                        <button style="margin-bottom: 20px;" class="btn waves-effect waves-light" ng-click="show_3(req)" type="submit" name="action">Delete from the list
+                            <i ng-click="show_3(req)" style="line-height: inherit;padding: 0;" class="material-icons right">delete</i>
+                        </button>
                     </div>
                     <div class="collapsible-body row col s12 m12 l12" ng-show="_edit4"><!--Edit Mode-->              
                         <form name="userForm">
@@ -887,6 +896,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <button style="margin-bottom: 20px;" class="btn waves-effect waves-light" ng-click="show_4(req)" type="submit" name="action">Delete from the list
+                                <i ng-click="show_4(req)" style="line-height: inherit;padding: 0;" class="material-icons right">delete</i>
+                            </button> 
                         </form>
                     </div>                    
                 </li>
@@ -916,6 +928,9 @@
                                 <abbr title="Edit"><i class="material-icons ">edit_mode</i></abbr>
                             </div>                           
                         </div>
+                        <button style="margin-bottom: 20px;" class="btn waves-effect waves-light" ng-click="show_3(req)" type="submit" name="action">Delete from the list
+                            <i ng-click="show_3(req)" style="line-height: inherit;padding: 0;" class="material-icons right">delete</i>
+                        </button>                        
                     </div>
                     <div class="collapsible-body row col s12 m12 l12" ng-show="_edit4"><!--Edit Mode-->              
                         <form name="userForm">
@@ -988,20 +1003,32 @@
                             <div class="row"><p class="lll col s6 m6 l6 ">Requested Date</p>
                                 <input disabled class="lll col s6 m4 l4" type="search" value="{{req.date}}"/>
                             </div>
+                            <!--                            <div class="lll col s12 m2 l2">    <div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>
+                                                            <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="[_edit4 = !_edit4]" ng-show="_edit4" >
+                                                                <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                                                            </div>                   
+                                                            <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(req, changed)" ng-show="_edit4">
+                                                                <abbr title="Save"><i class="material-icons">save</i></abbr>
+                                                            </div>
+                                                        </div>-->
                             <div class="lll col s12 m2 l2">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
-                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="[_edit4 = !_edit4]" ng-show="_edit4" >
+                                <div class="btn-small waves-effect waves-light left col s4 m6 l6" ng-click="[_edit4 = !_edit4]" ng-show="_edit4" >
                                     <abbr title="Back"><i class="material-icons">undo</i> </abbr>
                                 </div>                   
-                                <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(req, changed)" ng-show="_edit4">
+                                <div class="btn-small waves-effect waves-light left col s4 m6 l6" ng-click="update(req, changed)" ng-show="_edit4">
                                     <abbr title="Save"><i class="material-icons">save</i></abbr>
                                 </div>
-                            </div>
+                                <div class="btn-small waves-effect waves-light left col s4 m6 l6" ng-click="show_4(req)" ng-show="_edit4">
+                                    <abbr title="Make it Available"><i class="material-icons">delete</i></abbr>
+                                </div>                                  
+                            </div>                                                                       
                         </form>
                     </div>                    
                 </li>
             </ul>    
         </div>      
     </div>
+
     <div id="toast_holder" style="display: none;" class="col s12 l12 m12 row">            
         <div class="toast_1 col s12 l12 m12" style="top: 0px; opacity: 1;">
             <div class="row" style="padding-top: 20px;">
@@ -1015,13 +1042,44 @@
             <!--                {{req}}-->
         </div>
     </div>
-    <div id="modal1" class="modal card-panel">
-        <div class="modal-content">
-            <h4>ss</h4>           
+    <div id="toast_holder_2" style="display: none;" class="col s12 l12 m12 row">            
+        <div class="toast_1 col s12 l12 m12" style="top: 0px; opacity: 1;">
+            <div class="row" style="padding-top: 20px;">
+                <h6 class="col s6 m6 l6">Device ID </h6>
+                <input class="col s6 m6 l6" style="height: 3rem;" type="search" ng-model="req.device_ID">
+            </div>
+            <div class="row col s12 m12 l12">
+                <div class="col s6"><button class=" btn" ng-click="update(req, 'Available')">set</button></div>
+                <div class="col s6"><button class=" btn" ng-click="set_2()">cancel</button></div>
+            </div>
+            <!--                {{req}}-->
         </div>
-        <button class="btn modal-action modal-close waves-effect waves-purple waves-light">OK</button>
-        <div> <p> </p> </div>
+    </div>
+    <div id="toast_holder_3" style="display: none;" class="col s12 l12 m12 row">            
+        <div class="toast_1 col s12 l12 m12" style="top: 0px; opacity: 1;">
+            <div class="row" style="padding-top: 20px;">
+                <h4 class="">Want to delete {{req.device_name}} ?</h4>                
+            </div>
+            <div class="row col s12 m12 l12">
+                <div class="col s6"><button class=" btn" ng-click="delete(req)">Delete</button></div>
+                <div class="col s6"><button class=" btn" ng-click="set_3()">Cancel</button></div>
+            </div>
+            <!--                {{req}}-->
+        </div>
+    </div> 
+    <div id="toast_holder_4" style="display: none;" class="col s12 l12 m12 row">            
+        <div class="toast_1 col s12 l12 m12" style="top: 0px; opacity: 1;">
+            <div class="row" style="padding-top: 20px;">
+                <h4 class="">Want to delete {{req.device_name}} ?</h4>                
+            </div>
+            <div class="row col s12 m12 l12">
+                <div class="col s6"><button class=" btn" ng-click="delete(req)">Delete</button></div>
+                <div class="col s6"><button class=" btn" ng-click="set_4()">Cancel</button></div>
+            </div>
+            <!--                {{req}}-->
+        </div>
     </div>    
+
 </section>
 
 <script>

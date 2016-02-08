@@ -67,4 +67,16 @@ public class RequestService {
 
         return edit_Mode1;
     }
+
+    public String deleteRequest(int reqId) {
+        System.out.println("RequestService call for delete rejected request");
+        String msg = null;
+        try {
+            Model model = new Model();
+            msg = model.deleteRequest(reqId);
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return msg;
+    }
 }

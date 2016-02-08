@@ -1,4 +1,3 @@
-
 package ifs_devices.model;
 
 import java.sql.Connection;
@@ -99,7 +98,7 @@ public class Query {
         int request_ID = edit_Mode.getRequest_ID();
 
         String query = "UPDATE device SET"
-                + " device_ID = '" + device_ID + "', device_Name = '" + device_Name + "', product_Area = '" + product_Area + "', sub_Product_Area = '" + sub_Product_Area + "', resolution = '" + resolution + "',"+ " size = '" + size + "', os = '" + os + "', url = '" + url + "', location = '" + location + "', type = '" + type + "',"+ " platform = '" + platform + "' WHERE request_ID = " + request_ID;
+                + " device_ID = '" + device_ID + "', device_Name = '" + device_Name + "', product_Area = '" + product_Area + "', sub_Product_Area = '" + sub_Product_Area + "', resolution = '" + resolution + "'," + " size = '" + size + "', os = '" + os + "', url = '" + url + "', location = '" + location + "', type = '" + type + "'," + " platform = '" + platform + "' WHERE request_ID = " + request_ID;
 
         System.out.println(query);
 
@@ -145,6 +144,20 @@ public class Query {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public static String deleteRequest(int reqId, Connection connection) throws SQLException {
+        System.out.println("Query - for delete rejected request");
+        int request_ID = reqId;
+        String query = "DELETE FROM device WHERE request_ID = " + request_ID;
+        System.out.println(query);
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
+        return "Successfull!!!";
     }
 
     public static BorrowDevice addBorrowRequest(BorrowDevice borrowRequest, Connection connection) throws SQLException {
@@ -204,7 +217,7 @@ public class Query {
         ArrayList<BorrowDevice> bookreq = new ArrayList<BorrowDevice>();
         try {
 
-            PreparedStatement ps = connection.prepareStatement("SELECT transaction_Mode, from_Date, to_Date,username FROM borrow_device WHERE device_ID ="+ id + " AND ((transaction_Mode = 'booked' AND to_date >= CURDATE()) OR (transaction_Mode = 'unavailable' AND to_date >= CURDATE())) ORDER BY from_Date ASC");
+            PreparedStatement ps = connection.prepareStatement("SELECT transaction_Mode, from_Date, to_Date,username FROM borrow_device WHERE device_ID =" + id + " AND ((transaction_Mode = 'booked' AND to_date >= CURDATE()) OR (transaction_Mode = 'unavailable' AND to_date >= CURDATE())) ORDER BY from_Date ASC");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -269,7 +282,8 @@ public class Query {
             throw e;
         }
     }
-     static ArrayList<DeviceList> GetAllSearchedDevices(String val,Connection connection) throws Exception {
+
+    static ArrayList<DeviceList> GetAllSearchedDevices(String val, Connection connection) throws Exception {
         System.out.println("Inside the Query");
         ArrayList<DeviceList> Searcheddevicedata = new ArrayList<DeviceList>();
         try {
@@ -280,7 +294,6 @@ public class Query {
                 DeviceList Searcheddevicels = new DeviceList();
 
 //                Searcheddevicels.setName(rs.getString("name"));
-
                 Searcheddevicels.setDevice_Name(rs.getString("device_Name"));
                 Searcheddevicels.setType(rs.getString("type"));
                 Searcheddevicels.setPlatform(rs.getString("platform"));
@@ -301,14 +314,14 @@ public class Query {
                 Searcheddevicels.setFrom_Date(rs.getString("from_Date"));
                 Searcheddevicels.setTo_Date(rs.getString("to_date"));
                 Searcheddevicedata.add(Searcheddevicels);
-                
+
             }
             return Searcheddevicedata;
         } catch (Exception e) {
             throw e;
         }
     }
-     
+
     public static String deleteTransaction(int id, Connection connection) throws SQLException {
         System.out.println("Inside the Query");
         String query = "DELETE FROM borrow_device WHERE transaction_ID = " + id + "";
