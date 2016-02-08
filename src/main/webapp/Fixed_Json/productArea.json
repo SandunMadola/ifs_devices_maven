@@ -1,6 +1,13 @@
 {
-    "Technology": "Technology",
-    "Training": "Training",
-    "HR": "HR",
-    "R&D": "R&D"
+    "Corporate Services ":"Corporate Services ",
+    "Development Services":"Development Services",
+    "Financials & HR":"Financials & HR",
+    "IFS Labs":"IFS Labs",
+    "Manufacturing":"Manufacturing",
+    "Methods & Processes":"Methods & Processes",
+    "Projects":"Projects",
+    "Service & Assets":"Service & Assets",
+    "Supply Chain":"Supply Chain",
+    "Technology":"Technology",
+    "Training":"Training"
 }
