@@ -21,7 +21,7 @@ public class Model {
         System.out.println("Model - for get all new requests");
         ArrayList<Request> req = null;
         try (Connection connection = Database.Get_Connection();) {
-            req = Query.getRequest(connection);            
+            req = Query.getRequest(connection);
         } catch (Exception e) {
             System.out.println("error" + e);
         }
@@ -31,7 +31,7 @@ public class Model {
     public Request updateRequest(Request request) throws Exception {
         System.out.println("Model - for update a new request");
         Request req = null;
-        try (Connection connection = Database.Get_Connection();){            
+        try (Connection connection = Database.Get_Connection();) {
             req = Query.updateRequest(request, connection);
         } catch (Exception e) {
             System.out.println("erro" + e);
@@ -43,13 +43,24 @@ public class Model {
     public Edit_Mode editDetails(Edit_Mode edit_Mode) throws Exception {
         System.out.println("Model - for update a available device");
         Edit_Mode edi = null;
-        try (Connection connection = Database.Get_Connection();){            
+        try (Connection connection = Database.Get_Connection();) {
             edi = Query.editDetails(edit_Mode, connection);
         } catch (Exception e) {
             System.out.println("erro" + e);
         }
 
         return edi;
+    }
+
+    public String deleteRequest(int reqId) throws Exception {
+        System.out.println("Model - for delete rejected request");
+        String msg = null;
+        try (Connection connection = Database.Get_Connection();) {
+             msg = Query.deleteRequest(reqId, connection);
+        } catch (Exception e) {
+            System.out.println("erro" + e);
+        }
+        return msg;
     }
 
     public BorrowDevice addBorrowRequest(BorrowDevice borrowRequest) throws Exception {
@@ -91,7 +102,7 @@ public class Model {
     public ArrayList<DeviceList> GetAllDevices() throws Exception {
 
         ArrayList<DeviceList> allDevices = null;
-        try (Connection connection = Database.Get_Connection();){
+        try (Connection connection = Database.Get_Connection();) {
             allDevices = Query.GetAllDevices(connection);
         } catch (Exception e) {
             throw e;
@@ -102,14 +113,14 @@ public class Model {
     public ArrayList<DeviceList> GetAllSearchedDevices(String val) throws Exception {
         System.out.println("Inside the model");
         ArrayList<DeviceList> allSearchedDevices = null;
-        try (Connection connection = Database.Get_Connection();) {    
-            allSearchedDevices = Query.GetAllSearchedDevices(val,connection);
+        try (Connection connection = Database.Get_Connection();) {
+            allSearchedDevices = Query.GetAllSearchedDevices(val, connection);
         } catch (Exception e) {
             throw e;
         }
         return allSearchedDevices;
     }
-    
+
 //    public ArrayList<DeviceList> GetAllSearchedDevices() throws Exception {
 //
 //        ArrayList<DeviceList> allSearchedDevices = null;
@@ -121,7 +132,6 @@ public class Model {
 //        }
 //        return allSearchedDevices;
 //    }
-
     public String deleteTransaction(int id) throws Exception {
         System.out.println("Inside the model");
         String del = null;

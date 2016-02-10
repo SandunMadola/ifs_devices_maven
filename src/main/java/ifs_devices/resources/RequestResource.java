@@ -1,9 +1,11 @@
 package ifs_devices.resources;
+
 import ifs_devices.model.Edit_Mode;
 import ifs_devices.model.Request;
 import ifs_devices.service.RequestService;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -41,11 +43,18 @@ public class RequestResource {
         request.setId(id);
         return requestService.updateRequest(request);
     }
-    
+
     @PUT
     @Path("/edit/{reqID}") /*Update for available device and save in device table*/
     public Edit_Mode editDetails(@PathParam("reqID") int id, Edit_Mode edit_Mode) {
         edit_Mode.setRequest_ID(id);
         return requestService.editDetails(edit_Mode);
+    }
+
+    @DELETE
+    @Path("/{reqID}")
+    public String deleteRequest(@PathParam("reqID") int id) {/*Add new request to the device table*/
+        System.out.println("/request delete call");
+        return requestService.deleteRequest(id);
     }
 }

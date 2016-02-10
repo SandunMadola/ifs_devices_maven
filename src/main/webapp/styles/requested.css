@@ -79,13 +79,36 @@ and open the template in the editor.
         left: 20%;
         top: 30%;
     } 
-    #toast_holder{       
-        display: block;
-        width: 90%;
-        display: block;
-        position: fixed;
-        margin-top: -1200px;
-        margin-left: 5%;
+    #toast_holder{ // make it avaliable edit view            
+                   display: block;
+                   width: 90%;
+                   display: block;
+                   position: fixed;
+                   margin-top: -1200px;
+                   margin-left: 5%;
+    }
+    #toast_holder_2{ // make it avaliable expandable view      
+                     display: block;
+                     width: 90%;
+                     display: block;
+                     position: fixed;
+                     margin-top: -900px;
+                     margin-left: 5%;
+    }
+    #toast_holder_3{ //delete toast (delete,cancel)
+                     display: block;
+                     width: 90%;
+                     position: fixed;
+                     margin-top: -960px;
+                     margin-left: 5%;
+    }
+    #toast_holder_4{ // delete toast edit view(delete,cancel)
+                     display: block;
+                     width: 90%;
+                     display: block;
+                     position: fixed;
+                     margin-top: -1200px;
+                     margin-left: 5%;
     }
 }
 @media only screen and (min-width : 601px) and (max-width : 992px) {
@@ -97,10 +120,31 @@ and open the template in the editor.
     } 
     #toast_holder{
         display: block;
+        width: 50%;
+        position: fixed;
+        margin-top: -1200px;
+        margin-left: 25%;
+    }
+    #toast_holder_2{
+        display: block;
+        width: 50%;
+        position: fixed;
+        margin-top: -850px;
+        margin-left: 25%;
+    }
+    #toast_holder_3{
+        display: block;
         width: 90%;
         position: fixed;
-        margin-top: -1100px;
+        margin-top: -890px;
         margin-left: 5%;
+    }
+    #toast_holder_4{ // make it avaliable edit view            
+                     display: block;
+                     position: fixed;
+                     margin-top: -1250px;
+                     margin-left: 5%;
+                     width: 90%;
     }
 }
 
@@ -113,10 +157,31 @@ and open the template in the editor.
     } 
     #toast_holder{
         display: block;
-        width:40%;
-        display: block;
+        width:40%;        
         position: fixed;
-        margin-top: -1100px;
+        margin-top: -1150px;
         margin-left: 15%;
     }
+    #toast_holder_2{
+        display: block;
+        width: 40%;
+        position: fixed;
+        margin-top: -800px;
+        margin-left: 15%;
+    }
+    #toast_holder_3{
+        display: block;
+        width: 50%;
+        position: fixed;
+        margin-top: -900px;
+        margin-left: 15%;
+    }
+    #toast_holder_4{ // make it avaliable edit view            
+                     display: block;
+                     width: 50%;
+                     position: fixed;
+                     margin-top: -1250px;
+                     margin-left: 15%;
+    }
+
 }
