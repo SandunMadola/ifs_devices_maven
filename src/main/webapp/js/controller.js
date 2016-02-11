@@ -37,6 +37,7 @@ homeCtrls.controller('staticCtrl', ['$scope', 'shareVariable', '$http', function
         $scope.search_bar = true;
         $scope.searched = function () {
             $scope.search_bar = !$scope.search_bar;
+            $scope.globalSearch = "";
         };
         $('#wait_moment').fadeOut('slow');
     }]);
