@@ -37,21 +37,26 @@
         </div>
 
     </div>
-<!--    {{some}}
-    {{edit_item}}    
-    {{edit[edit_item].name}}-->
+    <!--    {{some}}
+        {{edit_item}}    
+        {{edit[edit_item].name}}-->
 
     <div class="row">
+<!--        <form action="webapi/request/image" method="post" enctype="multipart/form-data">
+
+            <p>
+                Select a file : <input type="file" name="file"/>
+            </p>
+
+            <input type="submit" value="Upload It" />
+        </form>-->
         <form class="col s12" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
             <div class="row">
 
                 <div class="hoverable card-panel row">
 
                     <!--<div class="row"><p class="col s12 m6 l6 "></p><p class="col s12 m6 l6"></p></div>For adding space-->
-                    <div class="input-field lll col  s12 m12 l12 row">
-                        <div class="lll s12 m6 l6"><img id="preview" class="hoverable" ng-src="images/{{edit[edit_item].image_no}}.jpg" max-height="100px" min-height="100px" width="100" /></div>
-                        <input class="lll col s12 m6 l6" type="file" name="image" onchange="previewImage(this)" accept="image/*"/>
-                    </div>
+
                     <div class="row" ><p class="lll col s6 m6 l6 ">Device ID</p>                
                         <input ng-model="edit[edit_item].device_ID" class="validate lll col s6 m6 l5" type="search" value="{{edit[edit_item].device_ID}}">
                     </div>                    
@@ -93,13 +98,25 @@
                         <select class="browser-default validate lll col s6 m5 l5" ng-model="edit[edit_item].platform">
                             <option ng-repeat="value in plt">{{value}}</option>
                         </select>
-                    </div>                                    
-                    <div class="row lll col s12 m12 l6 right">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
-                        <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="goBack()">
-                            <abbr title="Back"><i class="material-icons">undo</i> </abbr>
+                    </div>             
+                    
+                    <div class="input-field row">
+                        <div class="lll col s6 m6 l6"><img id="preview" class="hoverable left" ng-src="images/{{edit[edit_item].image_no}}.jpg" max-height="100px" min-height="100px" width="100" /></div>
+                        <input class="lll col s12 m6 l5" type="file" name="image" onchange="previewImage(this)" accept="image/*"/>
+                        
+                        
+                    </div>
+                    
+                    <div class="row col s12 m12 l12">    <!--<div class="btn-small waves-effect waves-light lll col s12 m1 l1" ng-click="_edit4 = !_edit4" ng-hide="_edit4"><i class="material-icons">edit_mode</i></div>-->
+                        <div class="lll col  s6 m6 l6">
+                        <div style="margin:0 12px; width: 130px" class="btn-small btn waves-effect waves-light" ng-click="goBack()">
+                            <abbr title="Back"><i class="material-icons">undo</i></abbr>Back
                         </div>                   
-                        <div class="btn-small waves-effect waves-light left col s6 m6 l6" ng-click="update(edit[edit_item])">
-                            <abbr title="Save"><i class="material-icons">save</i></abbr>
+                            </div>
+                        <div class="lll col  s6 m6 l6">
+                        <div style="margin:0 12px; width: 130px" class="btn-small btn waves-effect waves-light" ng-click="update(edit[edit_item])">
+                            <abbr title="Save"><i class="material-icons">save</i></abbr>Save
+                        </div>
                         </div>
                     </div>
                 </div></div>

@@ -91,10 +91,36 @@ homeCtrls.controller('deviceCtrl', ['$scope', 'shareVariable', '$http', function
     }]);
 
 homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+        $('.now_').hide();
+        $('.later_').hide();
+        $('.get').hide();
+        $('.cancel').hide();
+        $('.return').hide();
+
         $http.get('webapi/devices').success(function (data) {
             $scope.devices = data;
             $scope.whichItem = $routeParams.itemId;
 //            $('later_call').click();
+            if ($scope.devices[$scope.whichItem].color === 'green') {
+                $('.now_').show();
+                $('.later_').show();
+                $('.get_').hide();
+                $('.cancel_').hide();
+                $('.return_').hide();
+            } else if ($scope.devices[$scope.whichItem].color === 'red') {
+                $('.now_').hide();
+                $('.later_').show();
+                $('.get_').hide();
+                $('.cancel_').hide();
+                $('.return_').show();
+            } else {
+                $('.now_').hide();
+                $('.later_').show();
+                $('.get_').show();
+                $('.cancel_').show();
+                $('.return_').hide();
+            }
+            ;
 
         });
 
@@ -434,8 +460,8 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.set = function () {
             $('#toast_holder').hide();
         };
-        
-        
+
+
         $('#toast_holder_2').hide();
         $scope.show_2 = function (reqs) {
             $scope.req = reqs;
@@ -444,8 +470,8 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.set_2 = function () {
             $('#toast_holder_2').hide();
         };
-        
-        
+
+
         $('#toast_holder_3').hide();
         $scope.show_3 = function (reqs) {
             $scope.req = reqs;
@@ -454,7 +480,7 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.set_3 = function () {
             $('#toast_holder_3').hide();
         };
-        
+
         $('#toast_holder_4').hide();
         $scope.show_4 = function (reqs) {
             $scope.req = reqs;
@@ -463,13 +489,13 @@ homeCtrls.controller('requestedCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.set_4 = function () {
             $('#toast_holder_4').hide();
         };
-                
-        
+
+
         $scope.some = "Requsted Devices";
         $(document).ready(function () {
             $('ul.tabs').tabs();
         });
-        
+
         $(document).ready(function () {
             $('.modal-trigger').leanModal();
         });

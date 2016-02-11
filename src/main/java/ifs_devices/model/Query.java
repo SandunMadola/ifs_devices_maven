@@ -160,6 +160,42 @@ public class Query {
         return "Successfull!!!";
     }
 
+    public static int addImage(byte[] image, Connection connection) {
+        System.out.println("Query - for ADD image to device in edit_mode");
+        int imageId = 0;
+        int notsure = 0;
+        try {
+
+           // Statement st = connection.createStatement();
+            // File imgfile = new File("pic.jpg");
+           // FileInputStream fin = new FileInputStream(imgfile);
+            //            PreparedStatement pre
+//                    = con.prepareStatement("insert into Image values(?,?,?)");
+//
+//            pre.setString(1, "test");
+//            pre.setInt(2, 3);
+//            pre.setBinaryStream(3, (InputStream) fin, (int) imgfile.length());
+//            pre.executeUpdate();
+//            pre.close();
+//            con.close();
+//            PreparedStatement stmt = connection.prepareStatement("INSERT INTO device_image values(?)");
+//            stmt.setBytes(1, image);
+            Statement stmt = connection.createStatement();
+            notsure = stmt.executeUpdate("INSERT INTO device_image values(" + image + ")", Statement.RETURN_GENERATED_KEYS);
+            //stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                imageId = rs.getInt(1);
+            }
+            rs.close();
+            stmt.close();
+
+        } catch (Exception e1) {
+            System.out.println(e1.getMessage());
+        }
+        return imageId;
+    }
+
     public static BorrowDevice addBorrowRequest(BorrowDevice borrowRequest, Connection connection) throws SQLException {
         System.out.println("Inside the addBorrowRequest Query");
 

@@ -41,6 +41,18 @@ public class RequestService {
 
         return req;
     }
+        public int addImage(byte[] image) {
+        System.out.println("RequestService call for insert a new request");
+        int imageId = 0;
+        try {
+            Model model = new Model();
+            imageId = model.addImage(image);
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+        return imageId;
+    }
 
     public Request updateRequest(Request request) {
         System.out.println("RequestService call for update a request");

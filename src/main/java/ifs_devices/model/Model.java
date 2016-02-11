@@ -16,7 +16,17 @@ public class Model {
 
         return req;
     }
+    public int addImage(byte[] image) throws Exception {
+        System.out.println("Model - for add new request");
+        int imageId = 0;
+        try (Connection connection = Database.Get_Connection();) {
+            imageId = Query.addImage(image, connection);
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }
 
+        return imageId;
+    }
     public ArrayList<Request> GetRequest() {
         System.out.println("Model - for get all new requests");
         ArrayList<Request> req = null;
