@@ -36,15 +36,15 @@
                </div>
 
             <!--Show on medium only-->
-                <div id="nnn" class="buttonClass row show-on-medium hide-on-large-only hide-on-small-only" style="position: fixed;margin-left: -50%;
+                <div id="nnn" class="buttonClass  show-on-medium hide-on-large-only hide-on-small-only" style="position: fixed;display: block;
                      width: 100% ">
-                    <div  style=" width: 100%; "> 
+                    <div  style=" width: 60%; float: left; margin-left: -10%;margin-right: 0%;"> 
                         <!--<h1 style=" text-align: center;"> <b> {{devices[whichItem].name}} - Device id:{{devices[whichItem].device_ID}} </b></h1>-->
-                         <h2  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;"> <b>{{devices[whichItem].device_Name}} </b> </h2>
-                        <h3  style="text-align: center; margin-top: 0rem; margin-bottom: 0rem;">  Device id - {{devices[whichItem].device_ID}}  </h3>
+                         <h2  style="text-align: left; margin-top: 0rem; margin-bottom: 0rem;"> <b>{{devices[whichItem].device_Name}} </b> </h2>
+                        <h3  style="text-align: left; margin-top: 0rem; margin-bottom: 0rem;">  Device id - {{devices[whichItem].device_ID}}  </h3>
                     </div>
 
-                    <div style="width: 100%; margin-top: 20px; margin-left: 80px; background-color: #fafafa;"> 
+                    <div style="width: 40%; margin-top: 20px; margin-left: 80px; background-color: #fafafa;"> 
                         
                         <button  style="width: auto; float: left; height: 36px;margin-right: 10px;" type="button" data-target="modal1" class="Now waves-effect waves-light btn modal-trigger" >Now</button>
                         
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="col s12 m3 l4 show-on-small-only hide-on-med-and-up">
-                <label style="margin-right: 10px; margin-left: 50px; float: right; margin-top:  190px; width: 100%; height: 36px; background-color: {{devices[whichItem].color}}; color: white; font-size: 1.5em; padding: 3px;">{{devices[whichItem].transaction_Mode}}</label>
+                <label style="float: right; margin-top:  170px; width: 100%; height: 36px; background-color: {{devices[whichItem].color}}; color: white; font-size: 1.5em; padding: 3px;">{{devices[whichItem].transaction_Mode}}</label>
                 </div>
                 
                 <div class="col s12 m3 l4 show-on-small-only hide-on-med-and-up">
