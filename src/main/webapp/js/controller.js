@@ -197,7 +197,7 @@ homeCtrls.controller('detailsCtrl', ['$scope', '$http', '$routeParams', function
                 username: later.userName,
                 device_ID: $("#getdeviceID").text(),
                 from_Date: later.from,
-                to_Date: $scope.yy + '-' + ($scope.mm + 1) + '-' + $scope.dd
+                to_Date: $scope.yy + '-' + $scope.mm  + '-' + $scope.dd
             };
 
             var config = {
